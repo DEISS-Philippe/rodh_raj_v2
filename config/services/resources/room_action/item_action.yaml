@@ -1,0 +1,8 @@
+sylius_resource:
+  resources:
+    sylius.room_action_item_action:
+      driver: doctrine/orm
+      classes:
+        controller: App\Controller\Resources\ResourceController
+        model: App\Entity\RoomAction\ItemAction
+        repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository

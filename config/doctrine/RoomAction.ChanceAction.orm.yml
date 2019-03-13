@@ -1,0 +1,16 @@
+App\Entity\RoomAction\ChanceAction:
+  type: entity
+  table: room_action_chance_action
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    chance:
+      type: integer
+  manyToOne:
+    parentChoice:
+      targetEntity: App\Entity\RoomAction\Choice
+      mappedBy: chanceAction

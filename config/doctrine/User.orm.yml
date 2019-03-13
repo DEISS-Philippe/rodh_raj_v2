@@ -1,0 +1,32 @@
+App\Entity\User:
+  type: entity
+  table: item
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    login:
+      type: string
+      length: 255
+    class:
+      type: string
+      length: 255
+    life:
+      type: integer
+    roomNumber:
+      type: string
+      length: 255
+  manyToOne:
+    currentRoomAction:
+      targetEntity:
+        inversedBy: user
+  oneToMany:
+    blackListedRooms:
+      targetEntity:
+        inversedBy: user
+    items:
+      targetEntity:
+        inversedBy: user

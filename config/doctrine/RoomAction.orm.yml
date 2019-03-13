@@ -1,0 +1,33 @@
+App\Entity\RoomAction:
+  type: entity
+  table: room_action
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    text:
+      type: string
+      length: 1023
+    action:
+      type: string
+      length: 511
+    upVotes:
+      type: integer
+    downVotes:
+      type: integer
+    isStartRoomAction:
+      type: boolean
+    isCustomRoomAction:
+      type: boolean
+  manyToOne:
+    room:
+      targetEntity: App\Entity\RoomAction\Room
+      inversedBy: roomAction
+  oneToMany:
+    choices:
+      targetEntity: App\Entity\RoomAction\Choice
+      mappedBy: roomAction
+

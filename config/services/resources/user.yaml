@@ -1,0 +1,8 @@
+sylius_resource:
+  resources:
+    sylius.user:
+      driver: doctrine/orm
+      classes:
+        controller: App\Controller\Resources\ResourceController
+        model: App\Entity\User
+        repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository

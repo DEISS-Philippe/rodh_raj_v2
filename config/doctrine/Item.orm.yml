@@ -1,0 +1,13 @@
+App\Entity\Item:
+    type: entity
+    table: item
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255

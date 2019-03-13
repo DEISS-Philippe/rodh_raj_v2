@@ -1,0 +1,4 @@
+imports:
+    - { resource: 'resources/item.yaml' }
+    - { resource: 'resources/user.yaml' }
+    - { resource: 'resources/room_action.yaml' }
