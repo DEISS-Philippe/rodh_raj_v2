@@ -1,6 +1,6 @@
 App\Entity\User:
   type: entity
-  table: item
+  table: user
   id:
     id:
       type: integer
@@ -11,22 +11,24 @@ App\Entity\User:
     login:
       type: string
       length: 255
+      nullable: false
     class:
       type: string
       length: 255
+      nullable: true
     life:
       type: integer
+      nullable: false
     roomNumber:
       type: string
       length: 255
   manyToOne:
     currentRoomAction:
-      targetEntity:
-        inversedBy: user
+      targetEntity: App\Entity\RoomAction
   oneToMany:
     blackListedRooms:
-      targetEntity:
-        inversedBy: user
+      targetEntity: App\Entity\RoomAction
+      mappedBy: userBlackList
     items:
-      targetEntity:
-        inversedBy: user
+      targetEntity: App\Entity\Item
+      mappedBy: user

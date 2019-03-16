@@ -21,3 +21,5 @@ App\Entity\RoomAction\Choice:
     roomAction:
       targetEntity: App\Entity\RoomAction
       inversedBy: choices
+      joinColumn:
+        nullable: false

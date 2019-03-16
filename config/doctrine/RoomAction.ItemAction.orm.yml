@@ -13,3 +13,5 @@ App\Entity\RoomAction\ItemAction:
   manyToOne:
     item:
       targetEntity: App\Entity\Item
+      joinColumn:
+        nullable: false

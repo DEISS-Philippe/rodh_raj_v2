@@ -9,9 +9,10 @@ class Item implements ResourceInterface
 {
     /** @var int */
     private $id;
-
     /** @var string */
     private $name = '';
+    /** User|null */
+    private $user;
 
     /**
      * @return int
@@ -28,10 +29,27 @@ class Item implements ResourceInterface
         return $this->name;
     }
     /**
-     * @param string $title
+     * @param string $name
      */
     public function setName($name)
     {
         $this->name = $name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
 }

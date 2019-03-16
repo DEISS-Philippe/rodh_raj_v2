@@ -13,8 +13,8 @@ class User implements ResourceInterface
     private $id;
     /** @var string */
     private $login = '';
-    /** @var string */
-    private $class = '';
+    /** @var string|null */
+    private $class;
     /** @var int */
     private $life = 3;
     /** @var RoomAction[]|null */
@@ -57,17 +57,17 @@ class User implements ResourceInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getClass(): string
+    public function getClass(): ?string
     {
         return $this->class;
     }
 
     /**
-     * @param string $class
+     * @param string|null $class
      */
-    public function setClass(string $class): void
+    public function setClass(?string $class): void
     {
         $this->class = $class;
     }

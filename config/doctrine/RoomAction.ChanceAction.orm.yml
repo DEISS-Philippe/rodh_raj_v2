@@ -14,3 +14,17 @@ App\Entity\RoomAction\ChanceAction:
     parentChoice:
       targetEntity: App\Entity\RoomAction\Choice
       mappedBy: chanceAction
+      joinColumn:
+        nullable: false
+    successRoomAction:
+      targetEntity: App\Entity\RoomAction
+      joinColumn:
+        name: success_room_action_id
+        referencedColumnName: id
+        nullable: false
+    failRoomAction:
+      targetEntity: App\Entity\RoomAction
+      joinColumn:
+        name: fail_room_action_id
+        referencedColumnName: id
+        nullable: false

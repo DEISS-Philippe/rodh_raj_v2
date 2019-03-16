@@ -11,3 +11,4 @@ App\Entity\RoomAction\Room:
     name:
       type: string
       length: 255
+      nullable: false

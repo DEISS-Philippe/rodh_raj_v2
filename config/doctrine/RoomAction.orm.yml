@@ -11,13 +11,17 @@ App\Entity\RoomAction:
     text:
       type: string
       length: 1023
+      nullable: false
     action:
       type: string
       length: 511
+      nullable: true
     upVotes:
       type: integer
+      nullable: false
     downVotes:
       type: integer
+      nullable: false
     isStartRoomAction:
       type: boolean
     isCustomRoomAction:
@@ -26,8 +30,10 @@ App\Entity\RoomAction:
     room:
       targetEntity: App\Entity\RoomAction\Room
       inversedBy: roomAction
+    userBlackList:
+      targetEntity: App\Entity\User
+      inversedBy: blackListedRooms
   oneToMany:
     choices:
       targetEntity: App\Entity\RoomAction\Choice
       mappedBy: roomAction
-

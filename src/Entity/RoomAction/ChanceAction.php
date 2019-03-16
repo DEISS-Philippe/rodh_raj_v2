@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity\RoomAction;
 
+use App\Entity\RoomAction;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 class ChanceAction implements ResourceInterface
@@ -13,10 +14,10 @@ class ChanceAction implements ResourceInterface
     private $parentChoice = null;
     /** @var int */
     private $chance = 0;
-//    /** @var Choice */
-//    private $successChoice = null;
-//    /** @var Choice */
-//    private $failChoice = null;
+    /** @var RoomAction */
+    private $successRoomAction = null;
+    /** @var RoomAction */
+    private $failRoomAction = null;
 
     /**
      * @return int
@@ -45,7 +46,7 @@ class ChanceAction implements ResourceInterface
     /**
      * @return int
      */
-    public function getChances(): int
+    public function getChance(): int
     {
         return $this->chance;
     }
@@ -53,41 +54,41 @@ class ChanceAction implements ResourceInterface
     /**
      * @param int $chance
      */
-    public function setChances(int $chance): void
+    public function setChance(int $chance): void
     {
         $this->chance = $chance;
     }
-//
-//    /**
-//     * @return Choice
-//     */
-//    public function getSuccessChoice(): Choice
-//    {
-//        return $this->successChoice;
-//    }
-//
-//    /**
-//     * @param Choice $successChoice
-//     */
-//    public function setSuccessChoice(Choice $successChoice): void
-//    {
-//        $this->successChoice = $successChoice;
-//    }
-//
-//    /**
-//     * @return Choice
-//     */
-//    public function getFailChoice(): Choice
-//    {
-//        return $this->failChoice;
-//    }
-//
-//    /**
-//     * @param Choice $failChoice
-//     */
-//    public function setFailChoice(Choice $failChoice): void
-//    {
-//        $this->failChoice = $failChoice;
-//    }
+
+    /**
+     * @return RoomAction
+     */
+    public function getSuccessRoomAction(): RoomAction
+    {
+        return $this->successRoomAction;
+    }
+
+    /**
+     * @param RoomAction $successRoomAction
+     */
+    public function setSuccessRoomAction(RoomAction $successRoomAction): void
+    {
+        $this->successRoomAction = $successRoomAction;
+    }
+
+    /**
+     * @return RoomAction
+     */
+    public function getFailRoomAction(): RoomAction
+    {
+        return $this->failRoomAction;
+    }
+
+    /**
+     * @param RoomAction $failRoomAction
+     */
+    public function setFailRoomAction(RoomAction $failRoomAction): void
+    {
+        $this->failRoomAction = $failRoomAction;
+    }
 
 }

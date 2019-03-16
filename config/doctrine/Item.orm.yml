@@ -11,3 +11,8 @@ App\Entity\Item:
         name:
             type: string
             length: 255
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: App\Entity\User
+            inversedBy: items
