@@ -2,8 +2,6 @@
 
 <p> Web game using: </p>
 <br>
-<br>
-<br>
 <ul>
   <li>symfony/symfony</li>
   <li>sylius/grid-bundle</li>
