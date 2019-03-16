@@ -6,13 +6,16 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements ResourceInterface
+class User implements UserInterface, \Serializable, ResourceInterface
 {
     /** @var int */
     private $id;
     /** @var string */
-    private $login = '';
+    private $name;
+    /** @var string */
+    private $password;
     /** @var string|null */
     private $class;
     /** @var int */
@@ -32,6 +35,47 @@ class User implements ResourceInterface
         $this->items = new ArrayCollection();
     }
 
+    public function getRoles(): array
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
+    }
+
+    public function getUsername(): string
+    {
+        $this->name;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function serialize()
+    {
+        return serialize(
+            [
+                $this->id,
+                $this->name,
+                $this->password
+            ]
+        );
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->name,
+            $this->password
+            ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
     /**
      * @return int
      */
@@ -43,17 +87,33 @@ class User implements ResourceInterface
     /**
      * @return string
      */
-    public function getLogin(): string
+    public function getName(): string
     {
-        return $this->login;
+        return $this->name;
     }
 
     /**
-     * @param string $login
+     * @param string $name
      */
-    public function setLogin(string $login): void
+    public function setName(string $name): void
     {
-        $this->login = $login;
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 
     /**

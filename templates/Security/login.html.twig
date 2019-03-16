@@ -1,0 +1,19 @@
+{% block body %}
+    <div class="aligner">
+
+        <div class="container">
+            <div class="game-title">
+                <h1>app.project.name</h1>
+            </div>
+            <div class="form-container form-container-login">
+                <form action="{{ path('login') }}" method="POST">
+                    <input type="text" placeholder="app.user.name">
+                    <div class="border"></div>
+                    <input type="text" placeholder="app.user.password">
+                    <input type="submit" value="Connexion">
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -8,7 +8,11 @@ App\Entity\User:
       generator:
         strategy: AUTO
   fields:
-    login:
+    name:
+      type: string
+      length: 255
+      nullable: false
+    password:
       type: string
       length: 255
       nullable: false

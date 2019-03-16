@@ -2,3 +2,8 @@
     #path: /
     #methods: [GET]
     #controller: App\Controller\DefaultController::index
+
+login:
+    path: /login
+    methods: [GET, POST]
+    controller: App\Controller\SecurityController::login
