@@ -7,3 +7,6 @@ login:
     path: /login
     methods: [GET, POST]
     controller: App\Controller\SecurityController::login
+
+logout:
+    path: /logout

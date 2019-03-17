@@ -1,0 +1,5 @@
+app:
+    project:
+        name: 'Le Donjon sans fin'
+        login: 'Page de connexion'
+        homepage: 'Page Menu'

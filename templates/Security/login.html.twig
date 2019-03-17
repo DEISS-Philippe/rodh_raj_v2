@@ -1,15 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    <title>{{ 'app.project.login'|trans }}</title>
+{% endblock %}
+
 {% block body %}
     <div class="aligner">
 
         <div class="container">
             <div class="game-title">
-                <h1>app.project.name</h1>
+                <h1>{{ 'app.project.name'|trans }}</h1>
             </div>
             <div class="form-container form-container-login">
+                {% if error %}
+                    <div class="alert--danger"><p>{{ error.messageKey | trans(error.messageData, 'security') }}</p></div>
+                {% endif %}
+
                 <form action="{{ path('login') }}" method="POST">
-                    <input type="text" placeholder="app.user.name">
+                    <input type="text" placeholder="app.user.name" id="username" name="_username" value="{{ last_username }}">
                     <div class="border"></div>
-                    <input type="text" placeholder="app.user.password">
+                    <input type="password" placeholder="app.user.password" id="password" name="_password">
                     <input type="submit" value="Connexion">
                 </form>
             </div>

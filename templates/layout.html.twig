@@ -3,17 +3,17 @@
 
 <head>
     {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
         <link href="{{ asset('assets/css/reset.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('assets/css/knackcss.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('assets/css/style.css') }}" type="text/css" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
     {% endblock %}
 
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1">
 
     {% block title %}
-        <title>app.project.homepage</title>
+        <title>{{ 'app.project.homepage'|trans }}</title>
     {% endblock %}
 </head>
 

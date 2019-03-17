@@ -80,3 +80,6 @@ input[type="submit"]{
     display: block;
     background-color: #fff;
 }
+.alert--danger {
+    margin-bottom: 10px;
+}
