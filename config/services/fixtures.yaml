@@ -1,2 +1,13 @@
-App\DataFixture\UserFixtures:
-    parameters
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                user: ~
+
+services:
+    app.fixture.user:
+        class: App\Fixture\UserFixture
+        arguments:
+            - '@security.user_password_encoder.generic'
+            - '@sylius.repository.user'
+        tags: ['sylius_fixtures.fixture']

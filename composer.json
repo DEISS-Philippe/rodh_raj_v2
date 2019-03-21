@@ -8,6 +8,7 @@
         "craue/formflow-bundle": "^3.1",
         "knplabs/knp-menu-bundle": "^2.2",
         "sensio/framework-extra-bundle": "^5.1",
+        "sylius/fixtures-bundle": "^1.4",
         "sylius/grid-bundle": "^1.4",
         "sylius/resource-bundle": "^1.4",
         "symfony/asset": "4.2.*",

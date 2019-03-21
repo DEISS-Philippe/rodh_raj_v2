@@ -1,8 +1,8 @@
 imports:
+    - { resource: services/aliases.yaml }
     - { resource: parameters.yaml }
     - { resource: services/resources.yaml }
     - { resource: services/fixtures.yaml }
-    - { resource: services/aliases.yaml }
 
 
 services:

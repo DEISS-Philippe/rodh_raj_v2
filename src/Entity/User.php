@@ -67,7 +67,7 @@ class User implements UserInterface, \Serializable, ResourceInterface
         );
     }
 
-    public function unserialize($serialized)
+    public function unSerialize($serialized)
     {
         list(
             $this->id,

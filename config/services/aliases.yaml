@@ -1,0 +1,3 @@
+services:
+#    App\Repository\Company\Bottle\BottleRepository: '@sylius.repository.company_bottle'
+    App\Repository\User: '@sylius.repository.user'
