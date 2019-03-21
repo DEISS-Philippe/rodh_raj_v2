@@ -11,4 +11,4 @@ sylius_resource:
       classes:
         controller: App\Controller\Resources\ResourceController
         model: App\Entity\RoomAction
-        repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+        repository: App\Repository\RoomActionRepository

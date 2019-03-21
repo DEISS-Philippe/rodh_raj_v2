@@ -3,6 +3,7 @@ imports:
     - { resource: parameters.yaml }
     - { resource: services/resources.yaml }
     - { resource: services/fixtures.yaml }
+    - { resource: services/factory.yaml }
 
 
 services:

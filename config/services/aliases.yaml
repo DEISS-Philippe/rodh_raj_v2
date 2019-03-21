@@ -1,3 +1,16 @@
 services:
-#    App\Repository\Company\Bottle\BottleRepository: '@sylius.repository.company_bottle'
-    App\Repository\User: '@sylius.repository.user'
+    App\Repository\UserRepository: '@sylius.repository.user'
+    App\Repository\RoomActionRepository: '@sylius.repository.room_action'
+    App\Repository\ItemRepository: '@sylius.repository.item'
+    App\Repository\RoomAction\ChanceActionRepository: '@sylius.repository.room_action_chance_action'
+    App\Repository\RoomAction\ChoiceRepository: '@sylius.repository.room_action_choice'
+    App\Repository\RoomAction\ItemActionRepository: '@sylius.repository.room_action_item_action'
+    App\Repository\RoomAction\RoomRepository: '@sylius.repository.room_action_room'
+
+    App\Factory\UserFactory: '@sylius.factory.user'
+    App\Factory\ItemFactory: '@sylius.factory.item'
+    App\Factory\RoomActionFactory: '@sylius.factory.room_action'
+    App\Factory\RoomAction\ItemActionFactory: '@sylius.factory.room_action_item_action'
+    App\Factory\RoomAction\ChanceActionFactory: '@sylius.factory.room_action_chance_action'
+    App\Factory\RoomAction\ChoiceFactory: '@sylius.factory.room_action_choice'
+    App\Factory\RoomAction\RoomFactory: '@sylius.factory.room_action_room'
