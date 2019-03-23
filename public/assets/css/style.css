@@ -23,6 +23,12 @@ body {
     min-height: 100vh;
 }
 
+.container_basic {
+    max-width: 800px;
+    padding: 0 8px 0 8px;
+    margin: auto;
+}
+
 .aligner {
     width: 100%;
     height: 100vh;
@@ -30,12 +36,21 @@ body {
     justify-content: center;
     align-items: center;
 }
-.container {
+.container_login {
     position: relative;
     top: -10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.logout {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+}
+.s_img {
+    max-width: 25px;
 }
 
 .game-title {
@@ -44,7 +59,7 @@ body {
     margin-bottom: 12vh;
 }
 .game-title h1 {
-    font-size: 60px;
+    font-size: 55px;
 }
 
 .form-container {
@@ -64,6 +79,7 @@ body {
     text-align: center;
 }
 
+
 /*
 FORMS
  */
@@ -82,4 +98,20 @@ input[type="submit"]{
 }
 .alert--danger {
     margin-bottom: 10px;
+}
+::placeholder {
+    color: #111;
+}
+
+/*
+Page
+ */
+
+.bckg-grey {
+    padding: 5px;
+    background-color: #EDEDED;
+}
+
+.menuGrid > div {
+    padding: 8px;
 }

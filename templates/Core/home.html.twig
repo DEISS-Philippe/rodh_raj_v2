@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    <title>{{ 'app.project.homepage'|trans }}</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container_basic">
+        <div class="game-title">
+            <h1>{{ 'app.project.start'|trans }}</h1>
+        </div>
+        <section class="grid-5 has-gutter menuGrid">
+            <div>
+                <div class="bckg-grey">
+                    {#<a href="{{ path('donjon_vanilla') }}"></a>#}
+                    <a href="#">{{ 'app.project.vanilla_button'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-4">{{ 'app.project.vanilla_explanation'|trans }}</div>
+            <div>
+                <div class="bckg-grey">
+                    {#<a href="{{ path('donjon_custom') }}"></a>#}
+                    <a href="#">{{ 'app.project.custom_button'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-4">{{ 'app.project.custom_explanation'|trans }}</div>
+            <div>
+                <div class="bckg-grey">
+                    {#<div><a href="{{ path('create_room') }}"></a></div>#}
+                    <a href="#">{{ 'app.project.create_room_button'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-4">{{ 'app.project.create_room_explanation'|trans }}</div>
+        </section>
+    </div>
+{% endblock %}

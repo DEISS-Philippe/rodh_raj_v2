@@ -48,7 +48,7 @@ class User implements UserInterface, \Serializable, ResourceInterface
 
     public function getUsername(): string
     {
-        $this->name;
+        return $this->name;
     }
 
     public function eraseCredentials()

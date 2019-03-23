@@ -7,7 +7,7 @@
 {% block body %}
     <div class="aligner">
 
-        <div class="container">
+        <div class="container_login">
             <div class="game-title">
                 <h1>{{ 'app.project.name'|trans }}</h1>
             </div>
@@ -17,10 +17,10 @@
                 {% endif %}
 
                 <form action="{{ path('login') }}" method="POST">
-                    <input type="text" placeholder="app.user.name" id="username" name="_username" value="{{ last_username }}">
+                    <input type="text" placeholder="{{ 'app.user.name'|trans }}" id="username" name="_username" value="{{ last_username }}">
                     <div class="border"></div>
-                    <input type="password" placeholder="app.user.password" id="password" name="_password">
-                    <input type="submit" value="Connexion">
+                    <input type="password" placeholder="{{ 'app.user.password'|trans }}" id="password" name="_password">
+                    <input type="submit" value="{{ 'app.login'|trans }}">
                 </form>
             </div>
         </div>

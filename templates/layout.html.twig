@@ -18,9 +18,17 @@
 </head>
 
 <body>
-<div class="wrapper">
-    {% block body %}
+    <div class="wrapper">
+        {% if app.user %}
+            <div class="logout">
+                <a href="{{ path('logout') }}" title="{{ 'app.logout'|trans }}"><img class="s_img" src="{{ asset('assets/images/deconnexion.png') }}" alt="Deconnexion"></a>
+            </div>
+        {% endif %}
+
+        {% block body %}
+        {% endblock %}
+    </div>
+    {% block javascripts %}
     {% endblock %}
-</div>
 </body>
 </html>

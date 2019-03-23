@@ -12,3 +12,7 @@ App\Entity\RoomAction\Room:
       type: string
       length: 255
       nullable: false
+  oneToMany:
+    roomActions:
+      targetEntity: App\Entity\RoomAction
+      mappedBy: room

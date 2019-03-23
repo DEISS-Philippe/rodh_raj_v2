@@ -10,3 +10,22 @@ login:
 
 logout:
     path: /logout
+
+homepage:
+    path: /
+    methods: [GET, POST]
+    controller: App\Controller\HomeController::displayAction
+
+forbidden:
+    path: /forbidden
+    methods: [GET, POST]
+    controller: App\Controller\ForbiddenController::displayAction
+
+
+#donjon_vanilla:
+#    path: /donjon
+#    resource:#
+
+#donjon_custom:
+#    path: /donjon
+#    resource:

@@ -29,7 +29,7 @@ App\Entity\RoomAction:
   manyToOne:
     room:
       targetEntity: App\Entity\RoomAction\Room
-      inversedBy: roomAction
+      inversedBy: roomActions
     userBlackList:
       targetEntity: App\Entity\User
       inversedBy: blackListedRooms

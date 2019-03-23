@@ -28,3 +28,7 @@ App\Entity\RoomAction\ChanceAction:
         name: fail_room_action_id
         referencedColumnName: id
         nullable: false
+  oneToOne:
+    parentChoice:
+      targetEntity: App\Entity\RoomAction\Choice
+      mappedBy: chanceAction

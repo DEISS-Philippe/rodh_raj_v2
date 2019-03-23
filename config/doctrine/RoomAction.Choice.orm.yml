@@ -1,25 +1,25 @@
 App\Entity\RoomAction\Choice:
-  type: entity
-  table: room_action_choice
-  id:
+    type: entity
+    table: room_action_choice
     id:
-      type: integer
-      id: true
-      generator:
-        strategy: AUTO
-  fields:
-    text:
-      type: string
-      length: 1023
-  oneToOne:
-    chanceAction:
-      targetEntity: App\Entity\RoomAction\ChanceAction
-      inversedBy: parentChoice
-  manyToOne:
-    itemAction:
-      targetEntity: App\Entity\RoomAction\ItemAction
-    roomAction:
-      targetEntity: App\Entity\RoomAction
-      inversedBy: choices
-      joinColumn:
-        nullable: false
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        text:
+            type: string
+            length: 1023
+    oneToOne:
+        chanceAction:
+            targetEntity: App\Entity\RoomAction\ChanceAction
+            inversedBy: parentChoice
+    manyToOne:
+        itemAction:
+            targetEntity: App\Entity\RoomAction\ItemAction
+        roomAction:
+            targetEntity: App\Entity\RoomAction
+            inversedBy: choices
+            joinColumn:
+                nullable: false
