@@ -1,10 +1,6 @@
 imports:
-    - { resource: services/aliases.yaml }
     - { resource: parameters.yaml }
-    - { resource: services/resources.yaml }
-    - { resource: services/fixtures.yaml }
-    - { resource: services/factory.yaml }
-
+    - { resource: 'services/*.yaml' }
 
 services:
     # default configuration for services in *this* file

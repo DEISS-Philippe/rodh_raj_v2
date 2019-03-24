@@ -5,9 +5,10 @@ namespace App\Controller;
 
 use App\Entity\RoomAction;
 use App\Entity\User;
+use App\Event\DonjonControllerEvent;
 use App\Repository\RoomActionRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class DonjonController extends AbstractController
@@ -16,8 +17,6 @@ class DonjonController extends AbstractController
         int $id, RoomActionRepository $roomActionRepository, TokenStorageInterface $tokenStorage
     )
     {
-        //TODO passer les tests de début de roomAction en listeners ?
-
         /** @var RoomAction $currentRoomAction */
         $currentRoomAction = $roomActionRepository->find($id);
         $currentChoices = $currentRoomAction->getChoices();
@@ -25,16 +24,13 @@ class DonjonController extends AbstractController
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
 
-        $lifeToLoose = $currentRoomAction->getLooseLife();
-        if ($lifeToLoose !== null) {
-            // Si la sale fait perdre de la vie, l'enlève à celle du user
-            $currentUserLife = $user->getLife();
-            $user->setLife($currentUserLife - $lifeToLoose);
+        $dispatcher = new EventDispatcher();
 
-            if ($user->getLife() === User::LIFE_EMPTY) {
-                //Le joueur est mort
-                return $this->redirectToRoute('donjon_you_died');
-            }
+        $donjonRoomEvent = new DonjonControllerEvent($currentRoomAction, $user);
+        $dispatcher->addListener(DonjonControllerEvent::PRE_DISPLAY_DONJON, $donjonRoomEvent);
+
+        if ($user->getLife() === User::LIFE_EMPTY) {
+            return $this->redirectToRoute('donjon_you_died');
         }
 
         //Adapte les choice
@@ -42,7 +38,7 @@ class DonjonController extends AbstractController
         $itemChoice = [];
         /** @var RoomAction\Choice $choice */
         foreach ($currentChoices as $choice) {
-            if ($choice->getChanceAction() && $choice->getChanceAction()->getChance() !== null) {
+            if (!empty($choice->getChanceAction()->getChance())) {
                 //Si une chance est associée à la réussite de l'action
                 /** @var RoomAction\ChanceAction $chanceAction */
                 $chanceAction = $choice->getChanceAction();
@@ -64,10 +60,12 @@ class DonjonController extends AbstractController
             }
         }
 
-        dump($resource);
+        dump($currentRoomAction);
 
         return $this->render('Core/donjon.html.twig', [
-            'resource' => $resource,
+            'roomAction' => $currentRoomAction,
+            'resultChoiceArray' => $resultChoiceArray,
+            'itemChoice' => $itemChoice,
         ]);
     }
 

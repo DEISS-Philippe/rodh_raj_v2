@@ -1,0 +1,7 @@
+services:
+    app.listener.stock_movement:
+        class: App\Event\Listener\UserListner
+        arguments:
+            - '@sylius.repository.user'
+        tags:
+            - { name: kernel.event_listener, event: app.donjon_room.pre_display, method: handleLife }
