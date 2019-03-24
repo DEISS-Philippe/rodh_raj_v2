@@ -21,11 +21,8 @@ forbidden:
     methods: [GET, POST]
     controller: App\Controller\ForbiddenController::displayAction
 
-
-#donjon_vanilla:
-#    path: /donjon
-#    resource:#
-
-#donjon_custom:
-#    path: /donjon
-#    resource:
+donjon:
+    prefix:
+        en: /dungeon
+        fr: /donjon
+    resource: 'routes/donjon.yaml'

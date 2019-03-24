@@ -26,6 +26,8 @@ App\Entity\RoomAction:
       type: boolean
     isCustomRoomAction:
       type: boolean
+    looseLife:
+      type: integer
   manyToOne:
     room:
       targetEntity: App\Entity\RoomAction\Room

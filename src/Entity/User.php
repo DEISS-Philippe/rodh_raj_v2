@@ -10,6 +10,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface, \Serializable, ResourceInterface
 {
+    const LIFE_FULL = 3;
+    const LIFE_EMPTY = 0;
+    const START_ROOM_NUMBER = 1;
+
     /** @var int */
     private $id;
     /** @var string */
@@ -188,18 +192,13 @@ class User implements UserInterface, \Serializable, ResourceInterface
         return $this->blackListedRooms;
     }
 
-    /**
-     * @param RoomAction[]|null $blackListedRooms
-     */
     public function addBlackListedRoom(RoomAction $blackListedRoom): void
     {
         if (!$this->blackListedRooms->contains($blackListedRoom)) {
             $this->blackListedRooms->add($blackListedRoom);
         }
     }
-    /**
-     * @param RoomAction[]|null $blackListedRooms
-     */
+
     public function removeBlackListedRoom(RoomAction $blackListedRoom): void
     {
         if ($this->blackListedRooms->contains($blackListedRoom)) {
@@ -232,6 +231,16 @@ class User implements UserInterface, \Serializable, ResourceInterface
         if ($this->items->contains($item)) {
             $this->items->removeElement($item);
         }
+    }
+
+    public function resetBlackListedRoom()
+    {
+        $this->blackListedRooms = null;
+    }
+
+    public function resetItems()
+    {
+        $this->items = null;
     }
 
 }

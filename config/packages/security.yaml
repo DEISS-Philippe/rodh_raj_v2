@@ -22,7 +22,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/game, roles: ROLE_USER }
+         - { path: ^/donjon, roles: ROLE_USER }
          - { path: ^/forbidden, roles: ROLE_USER }
     encoders:
         App\Entity\User:

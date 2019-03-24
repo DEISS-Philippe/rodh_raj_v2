@@ -1,0 +1,82 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    <title>{{ 'app.project.homepage'|trans }}</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container_donjon">
+        <div class="room_top">
+            <div class="room_title">
+                <h1>resource.room.name</h1>
+            </div>
+            <div class="room_number">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+            </div>
+        </div>
+
+        <div class="character">
+            <div class="character_life character_child">
+                <div class="character_title"><p>{{ 'app.donjon.character.life'|trans }}</p></div>
+                <div class="character_attribute">|||</div>
+            </div>
+            <div class="character_items character_child">
+                <div class="character_title"><p>{{ 'app.donjon.character.items'|trans }}</p></div>
+                <div class="character_attribute"><p>Objet Numéro 1</p></div>
+            </div>
+        </div>
+
+        <section class="room_action">
+            <div class="room_mj">
+                <div class="room_mj_head">
+                    <img src="{{ asset('assets/images/mj.png') }}" alt="Game Master">
+                </div>
+                <div class="room_mj_bubble">
+                    <img src="{{ asset('assets/images/bulle-08.png') }}" alt="">
+                </div>
+            </div>
+
+            <div class="room_txt">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur culpa deleniti doloremque ducimus eligendi error est exercitationem fuga id illum impedit modi perferendis quas quisquam ratione recusandae sequi, suscipit velit.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur consequuntur, cupiditate deleniti dicta distinctio dolorum et exercitationem iste necessitatibus nemo nostrum perspiciatis porro quas quia ratione suscipit vitae voluptatem!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis dolorum ducimus expedita facere fugiat, laudantium maiores nemo perspiciatis praesentium quidem repellendus tempore ut? Debitis est nam optio possimus quis quisquam!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consectetur cumque distinctio inventore minus, necessitatibus officia, placeat provident quaerat qui quod repellat repudiandae suscipit, tempore ut vel voluptatem voluptates voluptatibus.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur deserunt dignissimos eligendi esse, expedita impedit magnam minima nesciunt saepe vitae. Assumenda dignissimos expedita, labore molestiae quaerat quos sed temporibus ut.
+                </p>
+            </div>
+
+            {#<div class="room_appreciation">#}
+                {##}
+            {#</div>#}
+
+            <div class="room_choices">
+                <div class="room_choice bckg-grey">
+                    <a href="#" class="full_link"></a>
+                    <div class="fl">
+                        <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+                    </div>
+                    <div class="room_choice_txt">
+                        Choix Numéro 1 Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1
+                    </div>
+                </div>
+                <div class="room_choice bckg-grey">
+                    <a href="#" class="full_link"></a>
+                    <div class="fl">
+                        <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+                    </div>
+                    <div class="room_choice_txt">
+                        Choix Numéro 1 Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1Choix Numéro 1
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}

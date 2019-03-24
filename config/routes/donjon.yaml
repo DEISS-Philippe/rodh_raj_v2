@@ -1,0 +1,11 @@
+donjon_vanilla:
+    prefix:
+        en: /vanilla
+        fr: /vanilla
+    resource: 'donjon/donjon_vanilla.yaml'
+
+donjon_you_died:
+    path:
+        en: /you-died
+        fr: /vous-etes-mort
+    controller: App\Controller\YouDiedController::displayAction

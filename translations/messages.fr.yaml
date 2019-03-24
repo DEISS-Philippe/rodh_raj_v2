@@ -16,3 +16,7 @@ app:
     user:
         name: 'Login'
         password: 'Mot de passe'
+    donjon:
+        character:
+            life: 'Vie :'
+            items: 'Objets :'

@@ -31,6 +31,8 @@ class RoomAction implements ResourceInterface
     private $isCustomRoomAction = false;
     /** @var User|null */
     private $userBlackList;
+    /** @var int|null */
+    private $looseLife;
 
     public function __construct()
     {
@@ -201,6 +203,22 @@ class RoomAction implements ResourceInterface
     public function setUserBlackList(?User $userBlackList): void
     {
         $this->userBlackList = $userBlackList;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLooseLife(): ?int
+    {
+        return $this->looseLife;
+    }
+
+    /**
+     * @param int|null $looseLife
+     */
+    public function setLooseLife(?int $looseLife): void
+    {
+        $this->looseLife = $looseLife;
     }
 
 }

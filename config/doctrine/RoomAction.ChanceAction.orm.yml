@@ -11,11 +11,6 @@ App\Entity\RoomAction\ChanceAction:
     chance:
       type: integer
   manyToOne:
-    parentChoice:
-      targetEntity: App\Entity\RoomAction\Choice
-      mappedBy: chanceAction
-      joinColumn:
-        nullable: false
     successRoomAction:
       targetEntity: App\Entity\RoomAction
       joinColumn:
