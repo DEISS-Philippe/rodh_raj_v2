@@ -60,8 +60,6 @@ class DonjonController extends AbstractController
             }
         }
 
-        dump($currentRoomAction);
-
         return $this->render('Core/donjon.html.twig', [
             'roomAction' => $currentRoomAction,
             'resultChoiceArray' => $resultChoiceArray,

@@ -10,6 +10,7 @@ app:
         start: 'A L ''AVENTURE COMPAGNON !'
         vanilla_button: 'Donjon Vanilla'
         vanilla_explanation: 'Les donjons vanilla ne comportent que les salles créés par le créateur du site et ses amis un peu simplets. Elles constituent l’expérience classique du Donjon sans fin. Et puis, soyons honête : tout le monde préfère la vanille.'
+        back_to_menu: 'Retour au menu'
 
     login: 'Connexion'
     logout: 'Déconnexion'

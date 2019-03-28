@@ -212,3 +212,29 @@ Page
     position: absolute;
     z-index: 1;
 }
+
+.you_died {
+    padding-top: 20vh;
+}
+.skullContainer {
+    text-align: center;
+}
+.skullContainer > img {
+    height: 220px;
+}
+.skullMessage {
+    font-size: 3em;
+}
+.text_center {
+    text-align: center;
+}
+.skullComment {
+    margin-top: 10vh;
+}
+.menuLink {
+    margin-top: 15px;
+    position: relative;
+    top: 0;
+    left: 0;
+    font-weight: 600;
+}

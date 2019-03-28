@@ -5,6 +5,7 @@ donjon_vanilla:
     resource: 'donjon/donjon_vanilla.yaml'
 
 donjon_you_died:
+    methods: [GET]
     path:
         en: /you-died
         fr: /vous-etes-mort

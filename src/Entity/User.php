@@ -46,7 +46,6 @@ class User implements UserInterface, \Serializable, ResourceInterface
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
         return null;
     }
 
@@ -57,7 +56,6 @@ class User implements UserInterface, \Serializable, ResourceInterface
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
 
     public function serialize()

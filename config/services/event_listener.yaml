@@ -1,6 +1,6 @@
 services:
     app.listener.stock_movement:
-        class: App\Event\Listener\UserListner
+        class: App\Event\Listener\UserListener
         arguments:
             - '@sylius.repository.user'
         tags:

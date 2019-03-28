@@ -9,7 +9,7 @@ use App\Entity\User;
 use App\Event\DonjonControllerEvent;
 use App\Repository\UserRepository;
 
-final class UserListner
+final class UserListener
 {
 
     /**
@@ -23,7 +23,7 @@ final class UserListner
         $this->userRepository = $userRepository;
     }
 
-    private function handleLife(DonjonControllerEvent $event): void
+    public function handleLife(DonjonControllerEvent $event): void
     {
         /** @var RoomAction $currentRoomAction */
         $currentRoomAction = $event->getSubject();
