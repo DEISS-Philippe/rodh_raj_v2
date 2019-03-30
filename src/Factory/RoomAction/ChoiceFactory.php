@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Factory\RoomAction;
 
+use App\Entity\RoomAction;
 use Sylius\Component\Resource\Factory;
 
 class ChoiceFactory implements Factory\FactoryInterface
@@ -20,5 +21,15 @@ class ChoiceFactory implements Factory\FactoryInterface
     public function createNew()
     {
         return $this->factory->createNew();
+    }
+
+    public function createNewWithBasicValues(string $text, RoomAction $targetRoomAction)
+    {
+        /** @var RoomAction\Choice $choice */
+        $choice = $this->createNew();
+        $choice->setTargetRoomAction($targetRoomAction);
+        $choice->setText($text);
+
+        return $choice;
     }
 }

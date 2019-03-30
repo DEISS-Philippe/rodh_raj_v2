@@ -9,12 +9,14 @@ use App\Event\DonjonControllerEvent;
 use App\Repository\RoomActionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class DonjonController extends AbstractController
 {
     public function displayRoomAction(
-        int $id, RoomActionRepository $roomActionRepository, TokenStorageInterface $tokenStorage
+        Request $request, int $id, RoomActionRepository $roomActionRepository, TokenStorageInterface $tokenStorage
     )
     {
         /** @var RoomAction $currentRoomAction */
@@ -35,7 +37,7 @@ class DonjonController extends AbstractController
 
         //Adapte les choice
         $resultChoiceArray = [];
-        $itemChoice = [];
+        $itemChoiceArray = [];
         /** @var RoomAction\Choice $choice */
         foreach ($currentChoices as $choice) {
             if (!empty($choice->getChanceAction()->getChance())) {
@@ -46,29 +48,43 @@ class DonjonController extends AbstractController
 
                 //test si réussi
                 if ($failureChance <= rand(0, 10)) {
-                    $resultChoiceArray[] = ['parentChoice' => $choice->getId(), 'resultRoomAction' => $chanceAction->getSuccessRoomAction()];
+                    $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getFailRoomAction(), 'text' => $choice->getText()];
                 } else {
-                    $resultChoiceArray[] = ['parentChoice' => $choice->getId(), 'resultRoomAction' => $chanceAction->getFailRoomAction()];
+                    $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getSuccessRoomAction(), 'text' => $choice->getText()];
                 }
 
                 //test si le joueur à des items liés aux choice
                 if ($user->getItems()->contains($choice->getItemAction()->getItem())) {
-                    $itemChoice[] = ['parentChoice' => $choice->getId(), 'hasItem' => true];
+                    $itemChoiceArray[] = ['hasItem' => true, 'resultRoomAction' => $choice->getTargetRoomAction(), 'text' => $choice->getText()];
                 } else {
-                    $itemChoice[] = ['parentChoice' => $choice->getId(), 'hasItem' => false];
+                    $itemChoiceArray[] = ['hasItem' => false, 'text' => $choice->getText()];
                 }
             }
         }
 
-        return $this->render('Core/donjon.html.twig', [
-            'roomAction' => $currentRoomAction,
-            'resultChoiceArray' => $resultChoiceArray,
-            'itemChoice' => $itemChoice,
-        ]);
+        $currentRoute = $request->attributes->get('_route');
+
+        if ($currentRoute === 'donjon_vanilla_display_room') {
+            return $this->render('Core/donjon_vanilla.html.twig', [
+                'roomAction' => $currentRoomAction,
+                'resultChoiceArray' => $resultChoiceArray,
+                'itemChoiceArray' => $itemChoiceArray,
+            ]);
+        }
+        elseif($currentRoute === 'donjon_custom_display_room') {
+            return $this->render('Core/donjon_custom.html.twig', [
+                'roomAction' => $currentRoomAction,
+                'resultChoiceArray' => $resultChoiceArray,
+                'itemChoiceArray' => $itemChoiceArray,
+            ]);
+        }
+        else {
+            throw new BadRequestHttpException('Vous vous êtes perdu dans le néant ?');
+        }
     }
 
     public function displayTestRoomAction()
     {
-        return $this->render('Core/donjon.html.twig');
+        return $this->render('Core/donjon_test.html.twig');
     }
 }

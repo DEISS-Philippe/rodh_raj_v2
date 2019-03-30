@@ -1,0 +1,107 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    <title>{{ 'app.project.homepage'|trans }}</title>
+{% endblock %}
+
+{% block body %}
+    {% set user = app.user %}
+    
+    <div class="container_donjon">
+        <div class="room_top">
+            <div class="room_title">
+                <h1>resource.room.name</h1>
+            </div>
+
+            <div class="room_number">
+            {% for i in 0..7 %}
+                {% if user.roomNumber is same as(i) %}
+                    <div class="underLined">
+                        {{ i }}
+                    </div>
+                {% else %}
+                    <div>
+                        {{ i }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+
+        <div class="character">
+            <div class="character_life character_child">
+                <div class="character_title"><p>{{ 'app.donjon.character.life'|trans }}</p></div>
+                <div class="character_attribute">
+                    {% for i in user.life %}
+                        |
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="character_items character_child">
+                <div class="character_title"><p>{{ 'app.donjon.character.items'|trans }}</p></div>
+                {% for item in user.items %}
+                    <div class="character_attribute"><p>{{ item.name }}</p></div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <section class="room_action">
+            <div class="room_mj">
+                <div class="room_mj_head">
+                    <img src="{{ asset('assets/images/mj.png') }}" alt="Game Master">
+                </div>
+                <div class="room_mj_bubble">
+                    <img src="{{ asset('assets/images/bulle-08.png') }}" alt="">
+                </div>
+            </div>
+
+            <div class="room_txt">
+                <p>
+                    {{ roomAction.text }}
+                </p>
+            </div>
+
+            {#<div class="room_appreciation">#}
+                {##}
+            {#</div>#}
+
+            <div class="room_choices">
+
+                {% for choice in roomAction.choices %}
+                    <div class="room_choice bckg-grey">
+                        <a href="{{ path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id}) }}" class="full_link"></a>
+                        <div class="fl">
+                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+                        </div>
+                        <div class="room_choice_txt">
+                            {{ choice.text }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for choice in resultChoiceArray %}
+                    <div class="room_choice bckg-grey">
+                        <a href="{{ path('donjon_vanilla_display_room', {'id': choice.resultRoomAction.id}) }}" class="full_link"></a>
+                        <div class="fl">
+                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+                        </div>
+                        <div class="room_choice_txt">
+                            {{ choice.text }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for choice in itemChoiceArray %}
+                    <div class="room_choice bckg-grey">
+                        <a href="{{ path('donjon_vanilla_display_room', {'id': choice.resultRoomAction.id}) }}" class="full_link {% if choice.hasItem ? '' : 'disabled' %}"></a>
+                        <div class="fl">
+                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+                        </div>
+                        <div class="room_choice_txt">
+                            {{ choice.text }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </section>
+    </div>
+{% endblock %}

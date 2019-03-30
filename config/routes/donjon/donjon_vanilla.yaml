@@ -5,6 +5,13 @@ donjon_vanilla_display_room:
     methods: [GET, POST]
     controller: App\Controller\DonjonController::displayRoomAction
 
+donjon_custom_display_room:
+    path: /{id}
+    requirements:
+        id: '\d+'
+    methods: [GET, POST]
+    controller: App\Controller\DonjonController::displayRoomAction
+
 donjon_vanilla_display_test_room:
     path: /test-room
     methods: [GET, POST]

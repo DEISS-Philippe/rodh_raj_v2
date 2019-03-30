@@ -114,7 +114,15 @@ input[type="submit"]{
 /*
 Page
  */
-
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    border: 1px solid #AA3333;
+}
+.underLined {
+    border-bottom: 1px solid #111;
+    padding-bottom: 3px;
+}
 .bckg-grey {
     padding: 5px;
     background-color: #EDEDED;

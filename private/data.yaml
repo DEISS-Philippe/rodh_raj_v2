@@ -1,0 +1,10 @@
+room1:
+    name: 'Entrée du donjon'
+    text: 'Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.
+
+          Certaines épreuves marquent un virage dans une existence. D’autres ne sont que ramassis de futilités posées sur le chemin de la vie tel un étron fumant attendant patiemment le pied du passant distrait.
+          Un donjon est l’épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. De biens nombreuses raisons de s’aventurer dans un endroit ou le danger est à chaque tournant.
+
+          Oserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?'
+    choices:
+        text: 'Se rendre au Donjon'
