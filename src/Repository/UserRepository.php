@@ -5,8 +5,9 @@ namespace App\Repository;
 
 use App\Entity\RoomAction;
 use App\Entity\User;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-class UserRepository extends \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+class UserRepository extends EntityRepository
 {
     public function resetUserGameData(User $user, RoomAction $startRoomAction)
     {
@@ -19,5 +20,16 @@ class UserRepository extends \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRe
         $this->add($user);
 
         return $user;
+    }
+
+    public function addOneToRoomNumber(User $user)
+    {
+        $roomNumber = $user->getRoomNumber();
+        $roomNumber++;
+        $user->setRoomNumber($roomNumber);
+
+        $this->add($user);
+
+        return $roomNumber;
     }
 }

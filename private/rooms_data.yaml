@@ -1,23 +1,30 @@
-# Générer les roomAction success et failure AVANT l'inseretion de la roomAction qui donne les conditions
+# Générer les roomAction success et failure AVANT l'insertion de la roomAction qui donne les conditions
+#action:
+# 0 : prendre
+# 1 : donner
+# ! les titres doivent matcher à 100% (target) !
 
 # full options display
-roomTest:
-    name: 'Titre Test'
-    text: 'texte test'
-    looseLife: '1'
-    isStartRoomAction: 'true'
-    choices:
-        choice1:
-            text: 'Se rendre au Donjon'
-            itemAction:
-                item: 'passoire'
-                action: 'give'
-            chanceAction:
-                chance: '6'
-                successRoomActionTitle: 'Titre TestSucces'
-                failureRoomActionTitle: 'Titre TestFailure'
+# roomTest:
+#    name: 'Titre Test'
+#    text: 'texte test'
+#    looseLife: '1'
+#    isStartRoomAction: 'true'
+#    isEndOfRoom: 'true'
+#    choices:
+#        choice1:
+#            target: 'Titre Test'
+#            text: 'Se rendre au Donjon'
+#            itemAction:
+#                item: 'passoire'
+#                action: '0'
+#            chanceAction:
+#                chance: '6'
+#                successRoomActionTitle: 'Titre Test'
+#                failureRoomActionTitle: 'Titre Test'
 
 room1:
+    isStartRoomAction: 'true'
     name: 'Entrée du donjon'
     text: 'Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.
 
@@ -28,3 +35,28 @@ room1:
     choices:
         choice1:
             text: 'Se rendre au Donjon'
+room2:
+    name: 'Titre Test'
+    text: 'texte test'
+    looseLife: '1'
+    isStartRoomAction: 'true'
+    choices:
+        choice1:
+            target: 'Entrée du donjon'
+            text: 'test choice'
+            itemAction:
+                item: 'passoire'
+                action: '1'
+room3:
+    name: 'Titre Test2'
+    text: 'texte test2'
+    looseLife: '1'
+    isEndOfRoom: 'true'
+    choices:
+        choice1:
+            target: 'Entrée du donjon'
+            text: 'test choice'
+            chanceAction:
+                chance: '6'
+                successRoomActionTitle: 'Titre Test'
+                failureRoomActionTitle: 'Entrée du donjon'

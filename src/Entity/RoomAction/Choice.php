@@ -64,7 +64,7 @@ class Choice implements ResourceInterface
     /**
      * @return RoomAction
      */
-    public function getTargetRoomAction(): RoomAction
+    public function getTargetRoomAction(): ?RoomAction
     {
         return $this->targetRoomAction;
     }
@@ -72,7 +72,7 @@ class Choice implements ResourceInterface
     /**
      * @param RoomAction $targetRoomAction
      */
-    public function setTargetRoomAction(RoomAction $targetRoomAction): void
+    public function setTargetRoomAction(?RoomAction $targetRoomAction): void
     {
         $this->targetRoomAction = $targetRoomAction;
     }

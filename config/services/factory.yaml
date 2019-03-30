@@ -12,7 +12,7 @@ services:
         public: true
 
     app.factory.item:
-        class: App\Factory\RoomActionFactory
+        class: App\Factory\ItemFactory
         decorates: sylius.factory.item
         arguments: ['@app.factory.item.inner']
         public: true

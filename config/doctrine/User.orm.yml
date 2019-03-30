@@ -33,6 +33,7 @@ App\Entity\User:
     blackListedRooms:
       targetEntity: App\Entity\RoomAction
       mappedBy: userBlackList
+  manyToMany:
     items:
       targetEntity: App\Entity\Item
       mappedBy: user

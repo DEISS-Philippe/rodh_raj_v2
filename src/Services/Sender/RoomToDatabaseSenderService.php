@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Sender;
 
 use App\Entity\Item;
 use App\Entity\RoomAction;
@@ -57,17 +57,29 @@ class RoomToDatabaseSenderService
 
     public function RoomArraySender(array $roomArray): void
     {
+
         foreach ($roomArray as $room) {
             $newRoomAction = $this->roomActionFactory->createNewWithBasicValues($room['name'], $room['text']);
             if (!empty($room['loosLife'])) {
                 $newRoomAction->setLooseLife($room['loosLife']);
             }
+            if (!empty($room['isStartRoomAction'])) {
+                $newRoomAction->setIsStartRoomAction(true);
+            }
+            if (!empty($room['isEndOfRoom'])) {
+                $newRoomAction->setIsEndOfRoom(true);
+            }
 
             $this->roomActionRepository->add($newRoomAction);
 
             foreach ($room['choices'] as $choice) {
+                $targetRoomAction = null;
+                if (!empty($room['choices']['target'])) {
+                    $targetRoomAction = $room['choices']['target'];
+                }
+
                 /** @var Choice $choice */
-                $newChoice = $this->choiceFactory->createNewWithBasicValues($choice['text'], $newRoomAction);
+                $newChoice = $this->choiceFactory->createNewWithBasicValues($choice['text'], $newRoomAction, $targetRoomAction);
                 $this->choiceRepository->add($newChoice);
 
                 if (!empty($choice['itemAction']['item']) && !empty($choice['itemAction']['action'])) {

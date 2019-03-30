@@ -23,11 +23,12 @@ class ChoiceFactory implements Factory\FactoryInterface
         return $this->factory->createNew();
     }
 
-    public function createNewWithBasicValues(string $text, RoomAction $targetRoomAction)
+    public function createNewWithBasicValues(string $text, RoomAction $parentRoomAction, RoomAction $targetRoomAction = null)
     {
         /** @var RoomAction\Choice $choice */
         $choice = $this->createNew();
         $choice->setTargetRoomAction($targetRoomAction);
+        $choice->setRoomAction($parentRoomAction);
         $choice->setText($text);
 
         return $choice;

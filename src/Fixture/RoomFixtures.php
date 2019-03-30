@@ -2,7 +2,7 @@
 
 namespace App\Fixture;
 
-use App\Services\RoomToDatabaseSenderService;
+use App\Services\Sender\RoomToDatabaseSenderService;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 use Symfony\Component\Yaml\Yaml;

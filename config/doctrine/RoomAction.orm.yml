@@ -1,41 +1,45 @@
 App\Entity\RoomAction:
-  type: entity
-  table: room_action
-  id:
+    type: entity
+    table: room_action
     id:
-      type: integer
-      id: true
-      generator:
-        strategy: AUTO
-  fields:
-    text:
-      type: string
-      length: 1023
-      nullable: false
-    action:
-      type: string
-      length: 511
-      nullable: true
-    upVotes:
-      type: integer
-      nullable: false
-    downVotes:
-      type: integer
-      nullable: false
-    isStartRoomAction:
-      type: boolean
-    isCustomRoomAction:
-      type: boolean
-    looseLife:
-      type: integer
-  manyToOne:
-    room:
-      targetEntity: App\Entity\RoomAction\Room
-      inversedBy: roomActions
-    userBlackList:
-      targetEntity: App\Entity\User
-      inversedBy: blackListedRooms
-  oneToMany:
-    choices:
-      targetEntity: App\Entity\RoomAction\Choice
-      mappedBy: roomAction
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            nullable: false
+        text:
+            type: string
+            length: 1023
+            nullable: false
+        action:
+            type: string
+            length: 511
+            nullable: true
+        upVotes:
+            type: integer
+            nullable: false
+        downVotes:
+            type: integer
+            nullable: false
+        isStartRoomAction:
+            type: boolean
+        isCustomRoomAction:
+            type: boolean
+        isEndOfRoom:
+            type: boolean
+        looseLife:
+            type: integer
+            nullable: true
+    manyToOne:
+        userBlackList:
+            targetEntity: App\Entity\User
+            inversedBy: blackListedRooms
+    oneToMany:
+        choices:
+            targetEntity: App\Entity\RoomAction\Choice
+            mappedBy: roomAction

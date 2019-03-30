@@ -26,6 +26,8 @@ class RoomAction implements ResourceInterface
     private $isStartRoomAction = false;
     /** @var bool */
     private $isCustomRoomAction = false;
+    /** @var bool */
+    private $isEndOfRoom = false;
     /** @var User|null */
     private $userBlackList;
     /** @var int|null */
@@ -218,6 +220,22 @@ class RoomAction implements ResourceInterface
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEndOfRoom(): bool
+    {
+        return $this->isEndOfRoom;
+    }
+
+    /**
+     * @param bool $isEndOfRoom
+     */
+    public function setIsEndOfRoom(bool $isEndOfRoom): void
+    {
+        $this->isEndOfRoom = $isEndOfRoom;
     }
 
 }
