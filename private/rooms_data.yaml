@@ -1,3 +1,22 @@
+# Générer les roomAction success et failure AVANT l'inseretion de la roomAction qui donne les conditions
+
+# full options display
+roomTest:
+    name: 'Titre Test'
+    text: 'texte test'
+    looseLife: '1'
+    isStartRoomAction: 'true'
+    choices:
+        choice1:
+            text: 'Se rendre au Donjon'
+            itemAction:
+                item: 'passoire'
+                action: 'give'
+            chanceAction:
+                chance: '6'
+                successRoomActionTitle: 'Titre TestSucces'
+                failureRoomActionTitle: 'Titre TestFailure'
+
 room1:
     name: 'Entrée du donjon'
     text: 'Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.
@@ -7,4 +26,5 @@ room1:
 
           Oserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?'
     choices:
-        text: 'Se rendre au Donjon'
+        choice1:
+            text: 'Se rendre au Donjon'

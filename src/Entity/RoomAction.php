@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\RoomAction\Choice;
-use App\Entity\RoomAction\Room;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -13,8 +12,6 @@ class RoomAction implements ResourceInterface
 {
     /** @var int */
     private $id;
-    /** @var Room */
-    private $room = '0';
     /** @var string */
     private $text = '';
     /** @var Choice[] */
@@ -33,6 +30,8 @@ class RoomAction implements ResourceInterface
     private $userBlackList;
     /** @var int|null */
     private $looseLife;
+    /** @var string|null */
+    private $name;
 
     public function __construct()
     {
@@ -53,22 +52,6 @@ class RoomAction implements ResourceInterface
     public function setId(int $id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return Room
-     */
-    public function getRoom(): Room
-    {
-        return $this->room;
-    }
-
-    /**
-     * @param Room $room
-     */
-    public function setRoom(Room $room): void
-    {
-        $this->room = $room;
     }
 
     /**
@@ -219,6 +202,22 @@ class RoomAction implements ResourceInterface
     public function setLooseLife(?int $looseLife): void
     {
         $this->looseLife = $looseLife;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
     }
 
 }

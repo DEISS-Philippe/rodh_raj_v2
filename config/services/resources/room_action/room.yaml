@@ -1,8 +1,0 @@
-sylius_resource:
-  resources:
-    sylius.room_action_room:
-      driver: doctrine/orm
-      classes:
-        controller: App\Controller\Resources\ResourceController
-        model: App\Entity\RoomAction\Room
-        repository: App\Repository\RoomAction\RoomRepository

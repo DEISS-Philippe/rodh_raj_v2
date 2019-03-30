@@ -23,10 +23,11 @@ class RoomActionFactory implements Factory\FactoryInterface
         return $this->factory->createNew();
     }
 
-    public function createNewWithBasicValues(string $text, ?int $looseLife = null)
+    public function createNewWithBasicValues(string $name, string $text, ?int $looseLife = null)
     {
         /** @var RoomAction $roomAction */
         $roomAction = $this->createNew();
+        $roomAction->setName($name);
         $roomAction->setText($text);
         $roomAction->setLooseLife($looseLife);
 

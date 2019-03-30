@@ -34,9 +34,3 @@ services:
         decorates: sylius.factory.room_action_item_action
         arguments: ['@app.factory.room_action_item_action.inner']
         public: true
-
-    app.factory.room_action_room:
-        class: App\Factory\RoomAction\RoomFactory
-        decorates: sylius.factory.room_action_room
-        arguments: ['@app.factory.room_action_room.inner']
-        public: true
