@@ -26,14 +26,14 @@ class RoomAction implements ResourceInterface
     private $isStartRoomAction = false;
     /** @var bool */
     private $isCustomRoomAction = false;
-    /** @var bool */
-    private $isEndOfRoom = false;
     /** @var User|null */
     private $userBlackList;
     /** @var int|null */
     private $looseLife;
     /** @var string|null */
     private $name;
+    /** @var string|null */
+    private $code;
 
     public function __construct()
     {
@@ -223,19 +223,19 @@ class RoomAction implements ResourceInterface
     }
 
     /**
-     * @return bool
+     * @return string|null
      */
-    public function isEndOfRoom(): bool
+    public function getCode(): ?string
     {
-        return $this->isEndOfRoom;
+        return $this->code;
     }
 
     /**
-     * @param bool $isEndOfRoom
+     * @param string|null $code
      */
-    public function setIsEndOfRoom(bool $isEndOfRoom): void
+    public function setCode(?string $code): void
     {
-        $this->isEndOfRoom = $isEndOfRoom;
+        $this->code = $code;
     }
 
 }

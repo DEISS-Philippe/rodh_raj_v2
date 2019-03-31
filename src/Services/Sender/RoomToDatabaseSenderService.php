@@ -59,27 +59,27 @@ class RoomToDatabaseSenderService
     {
 
         foreach ($roomArray as $room) {
-            $newRoomAction = $this->roomActionFactory->createNewWithBasicValues($room['name'], $room['text']);
+            $newRoomAction = $this->roomActionFactory->createNewWithBasicValues($room['name'], $room['text'], $room['code']);
             if (!empty($room['loosLife'])) {
                 $newRoomAction->setLooseLife($room['loosLife']);
             }
             if (!empty($room['isStartRoomAction'])) {
                 $newRoomAction->setIsStartRoomAction(true);
             }
-            if (!empty($room['isEndOfRoom'])) {
-                $newRoomAction->setIsEndOfRoom(true);
-            }
 
             $this->roomActionRepository->add($newRoomAction);
 
             foreach ($room['choices'] as $choice) {
                 $targetRoomAction = null;
-                if (!empty($room['choices']['target'])) {
+                if (!empty($choice['target'])) {
                     $targetRoomAction = $room['choices']['target'];
                 }
 
                 /** @var Choice $choice */
                 $newChoice = $this->choiceFactory->createNewWithBasicValues($choice['text'], $newRoomAction, $targetRoomAction);
+                if (!empty($choice['isBackToMenu'])) {
+                    $newChoice->setIsBackToMenu(true);
+                }
                 $this->choiceRepository->add($newChoice);
 
                 if (!empty($choice['itemAction']['item']) && !empty($choice['itemAction']['action'])) {
@@ -100,14 +100,14 @@ class RoomToDatabaseSenderService
                 }
 
                 if (!empty($choice['chanceAction']['chance'])
-                    && !empty($choice['chanceAction']['successRoomActionTitle'])
-                    && !empty($choice['chanceAction']['failureRoomActionTitle']))
+                    && !empty($choice['chanceAction']['successRoomActionCode'])
+                    && !empty($choice['chanceAction']['failureRoomActionCode']))
                 {
                     $chanceAction = $choice['chanceAction'];
                     /** @var RoomAction $successRoomAction */
-                    $successRoomAction = $this->roomActionRepository->findOneBy(['name' => $chanceAction['successRoomActionTitle']]);
+                    $successRoomAction = $this->roomActionRepository->findOneBy(['name' => $chanceAction['successRoomActionCode']]);
                     /** @var RoomAction $failureRoomAction */
-                    $failureRoomAction = $this->roomActionRepository->findOneBy(['name' => $chanceAction['failureRoomActionTitle']]);
+                    $failureRoomAction = $this->roomActionRepository->findOneBy(['name' => $chanceAction['failureRoomActionCode']]);
 
                     if ($successRoomAction !== null && $failureRoomAction !== null) {
                         /** @var ChanceAction $chanceAction */

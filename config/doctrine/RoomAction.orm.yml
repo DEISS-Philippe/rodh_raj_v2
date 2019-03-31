@@ -30,11 +30,12 @@ App\Entity\RoomAction:
             type: boolean
         isCustomRoomAction:
             type: boolean
-        isEndOfRoom:
-            type: boolean
         looseLife:
             type: integer
             nullable: true
+        code:
+            type: string
+            nullable: false
     manyToOne:
         userBlackList:
             targetEntity: App\Entity\User

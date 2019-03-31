@@ -10,6 +10,7 @@ class HomeController extends AbstractController
 {
     public function displayAction()
     {
+        //TODO mettre ça dans les fixtures
         $databaseSenderService = $this->container->get('app.service.sender.room');
         $roomsArray = Yaml::parseFile('C:\xampp\htdocs\rodh_raj\private\rooms_data.yaml');
 

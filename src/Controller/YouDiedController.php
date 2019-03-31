@@ -22,7 +22,7 @@ class YouDiedController extends AbstractController
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
         /** @var RoomAction $startRoomAction */
-        $startRoomAction = $roomActionRepository->findOneBy(['name' => 'Entrée du donjon']);
+        $startRoomAction = $roomActionRepository->findOneBy(['code' => 'entree_du_donjon_1']);
 
         //Teste Nouvelle partie : reset des propriétés de jeu pour le joueur
         $userRepository->resetUserGameData($user, $startRoomAction);

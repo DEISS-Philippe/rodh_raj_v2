@@ -39,12 +39,12 @@ class DonjonController extends AbstractController
         }
 
         // Gestion de navigation si approche salle du boss
-        if ($currentRoomAction->isEndOfRoom() === true) {
+        if ($currentRoomAction->isStartRoomAction() === true) {
             $roomNumber = $userRepository->addOneToRoomNumber($user);
             if ($roomNumber >= 7) {
 
                 /** @var RoomAction $bossRoom */
-                $bossRoom = $roomActionRepository->findOneBy(['name' => 'Salle du Boss']);
+                $bossRoom = $roomActionRepository->findOneBy(['code' => 'salle_du_boss_1']);
 
                 if ($currentRoute === 'donjon_vanilla_display_room') {
                     return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossRoom->getId()]);
@@ -67,10 +67,10 @@ class DonjonController extends AbstractController
                 //Si une chance est associée à la réussite de l'action
                 /** @var RoomAction\ChanceAction $chanceAction */
                 $chanceAction = $choice->getChanceAction();
-                $failureChance = $chanceAction->getChance();
+                $successChance = $chanceAction->getChance();
 
                 //test si réussi
-                if ($failureChance <= rand(0, 10)) {
+                if ($successChance < rand(0, 10)) {
                     $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getFailRoomAction(), 'text' => $choice->getText()];
                 } else {
                     $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getSuccessRoomAction(), 'text' => $choice->getText()];
@@ -85,6 +85,8 @@ class DonjonController extends AbstractController
             }
         }
         $blackListedRoomActions = $user->getBlackListedRooms();
+
+        //TODO exclure salle de début et celle du boss avec isStartRoomAction
 
         //Génère la possible RoomActions à venir
         $availableNextRoomActions = $roomActionRepository->findBy(['isStartRoomAction' => true]);

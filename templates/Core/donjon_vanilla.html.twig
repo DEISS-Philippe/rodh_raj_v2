@@ -69,13 +69,15 @@
 
                 {% for choice in roomAction.choices %}
                     {% if choice.targetRoomAction is null %}
-                        set nextId = nextRoomActionId
+                        set path = path('donjon_vanilla_display_room', {'id': nextRoomActionId})
+                    {% elseif choice.isBackToMenu is true %}
+                        set path = path('homepage')
                     {% else %}
-                        set nextId = choice.targetRoomAction.id
+                        set path = path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id})
                     {% endif %}
 
                     <div class="room_choice bckg-grey">
-                        <a href="{{ path('donjon_vanilla_display_room', {'id': nextId}) }}" class="full_link"></a>
+                        <a href="{{ path }}" class="full_link"></a>
                         <div class="fl">
                             <img src="{{ asset('assets/images/fleche.png') }}" alt="">
                         </div>

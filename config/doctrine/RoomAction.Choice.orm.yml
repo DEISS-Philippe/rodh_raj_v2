@@ -11,6 +11,8 @@ App\Entity\RoomAction\Choice:
         text:
             type: string
             length: 1023
+        isBackToMenu:
+            type: boolean
     oneToOne:
         chanceAction:
             targetEntity: App\Entity\RoomAction\ChanceAction

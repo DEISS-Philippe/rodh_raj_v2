@@ -20,6 +20,8 @@ class Choice implements ResourceInterface
     private $itemAction = null;
     /** @var ChanceAction|null */
     private $chanceAction = null;
+    /** @var bool */
+    private $isBackToMenu = false;
 
     /**
      * @return int
@@ -109,5 +111,19 @@ class Choice implements ResourceInterface
         $this->chanceAction = $chanceAction;
     }
 
+    /**
+     * @return bool
+     */
+    public function isBackToMenu(): bool
+    {
+        return $this->isBackToMenu;
+    }
 
+    /**
+     * @param bool $isBackToMenu
+     */
+    public function setIsBackToMenu(bool $isBackToMenu): void
+    {
+        $this->isBackToMenu = $isBackToMenu;
+    }
 }
