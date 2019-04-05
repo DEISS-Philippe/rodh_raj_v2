@@ -53,78 +53,80 @@ roomAction1_1:
             target: 'entree_du_donjon_2'
             text: 'Rentrer chez Maman.'
 
+#
+#roomAction2_2:
+#    code: 'les_trois_couloirs_2'
+#    name: 'Les trois couloirs'
+#    text: 'Une herse tombe du plafond et vous barre la route. La voix caverneuse du propriétaire des lieux retentit : “BIEN ESSAYÉ, MAIS TU NE M’AURA PAS COMME ÇA PETIT MALIN !”.'
+#    choices:
+#        choice1:
+#            text: 'Prendre le couloir de droite.'
+#        choice2:
+#            text: 'Prendre le couloir de gauche.'
+#roomAction2_1:
+#    code: 'les_trois_couloirs_1'
+#    isStartRoomAction: 'true'
+#    name: 'Les trois couloirs'
+#    text: 'La seule épreuve de cette salle consiste apparemment à mettre à l’épreuve les capacités décisionnel de l’aventurier. Trois couloirs vous font face, chacun allant dans une direction différente.'
+#    choices:
+#        choice1:
+#            text: 'Prendre le couloir de droite.'
+#        choice2:
+#            text: 'Prendre le couloir du milieu.'
+#            target: 'les_trois_couloirs_2'
+#        choice3:
+#            text: 'Prendre le couloir de gauche.'
+#
+#
+#roomAction3_4:
+#    code: 'salle_au_mur_4'
+#    name: 'Salle au Mur'
+#    text: 'Succès ! Vous voilà en haut.'
+#    choices:
+#        choice1:
+#            text: 'Continuer vers la salle suivante.'
+#roomAction3_3:
+#    code: 'salle_au_mur_3'
+#    name: 'Salle au Mur'
+#    text: 'Vous manquez votre prise et retombez face contre terre.'
+#    looseLife: '1'
+#    choices:
+#        choice1:
+#            text: 'Retenter de grimper à main nues.'
+#            chanceAction:
+#                chance: '7'
+#                successRoomActionCode: 'salle_au_mur_3'
+#                failureRoomActionCode: 'salle_au_mur_4'
+#roomAction3_2:
+#    code: 'salle_au_mur_2'
+#    name: 'Salle au Mur'
+#    looseLife: '1'
+#    text: 'Une fois à mi parcours, votre échelle craque sans crier gare. Votre chute spectaculaire vous laisse une intense douleur au postérieur.'
+#    choices:
+#        choice1:
+#            text: 'Tenter de grimper à main nues.'
+#            target: 'salle_au_mur_2'
+#            chanceAction:
+#                chance: '6'
+#                successRoomActionCode: 'salle_au_mur_3'
+#                failureRoomActionCode: 'salle_au_mur_4'
+#roomAction3_1:
+#    code: 'salle_au_mur_1'
+#    isStartRoomAction: 'true'
+#    name: 'Salle au Mur'
+#    text: 'Pour une fois vous voilà face à autre chose que des horreurs: un mur. Celui-ci faisant une dizaine de mètres de haut. Vous apercevez la porte de la salle suivante en son sommet.'
+#    choices:
+#        choice1:
+#            text: 'Utiliser l’échelle cachée dans un coin de la pièce.'
+#            target: 'salle_au_mur_2'
+#        choice2:
+#            text: 'Tenter de grimper à main nues.'
+#            chanceAction:
+#                chance: '6'
+#                successRoomActionCode: 'salle_au_mur_4'
+#                failureRoomActionCode: 'salle_au_mur_3'
 
-roomAction2_2:
-    code: 'les_trois_couloirs_2'
-    name: 'Les trois couloirs'
-    text: 'Une herse tombe du plafond et vous barre la route. La voix caverneuse du propriétaire des lieux retentit : “BIEN ESSAYÉ, MAIS TU NE M’AURA PAS COMME ÇA PETIT MALIN !”.'
-    choices:
-        choice1:
-            text: 'Prendre le couloir de droite.'
-        choice2:
-            text: 'Prendre le couloir de gauche.'
-roomAction2_1:
-    code: 'les_trois_couloirs_1'
-    isStartRoomAction: 'true'
-    name: 'Les trois couloirs'
-    text: 'La seule épreuve de cette salle consiste apparemment à mettre à l’épreuve les capacités décisionnel de l’aventurier. Trois couloirs vous font face, chacun allant dans une direction différente.'
-    choices:
-        choice1:
-            text: 'Prendre le couloir de droite.'
-        choice2:
-            text: 'Prendre le couloir du milieu.'
-            target: 'les_trois_couloirs_2'
-        choice3:
-            text: 'Prendre le couloir de gauche.'
-
-
-roomAction3_4:
-    code: 'salle_au_mur_4'
-    name: 'Salle au Mur'
-    text: 'Succès ! Vous voilà en haut.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante.'
-roomAction3_3:
-    code: 'salle_au_mur_3'
-    name: 'Salle au Mur'
-    text: 'Vous manquez votre prise et retombez face contre terre.'
-    looseLife: '1'
-    choices:
-        choice1:
-            text: 'Retenter de grimper à main nues.'
-            chanceAction:
-                chance: '7'
-                successRoomActionCode: 'salle_au_mur_3'
-                failureRoomActionCode: 'salle_au_mur_4'
-roomAction3_2:
-    code: 'salle_au_mur_2'
-    name: 'Salle au Mur'
-    looseLife: '1'
-    text: 'Une fois à mi parcours, votre échelle craque sans crier gare. Votre chute spectaculaire vous laisse une intense douleur au postérieur.'
-    choices:
-        choice1:
-            text: 'Tenter de grimper à main nues.'
-            target: 'salle_au_mur_2'
-            chanceAction:
-                chance: '6'
-                successRoomActionCode: 'salle_au_mur_3'
-                failureRoomActionCode: 'salle_au_mur_4'
-roomAction3_1:
-    code: 'salle_au_mur_1'
-    isStartRoomAction: 'true'
-    name: 'Salle au Mur'
-    text: 'Pour une fois vous voilà face à autre chose que des horreurs: un mur. Celui-ci faisant une dizaine de mètres de haut. Vous apercevez la porte de la salle suivante en son sommet.'
-    choices:
-        choice1:
-            text: 'Utiliser l’échelle cachée dans un coin de la pièce.'
-            target: 'salle_au_mur_2'
-        choice2:
-            text: 'Tenter de grimper à main nues.'
-            chanceAction:
-                chance: '6'
-                successRoomActionCode: 'salle_au_mur_4'
-                failureRoomActionCode: 'salle_au_mur_3'
+#WIP
 
 #roomAction4_2:
 #    code: 'grotte_humide_2'

@@ -34,6 +34,8 @@ class RoomToDatabaseSenderService
     private $itemActionRepository;
     private $itemRepository;
 
+    protected $roomArray;
+
     public function __construct(UserRepository $userRepository, RoomActionRepository $roomActionRepository,
                                 RoomActionFactory $roomActionFactory,
                                 ChoiceFactory $choiceFactory, ChanceActionFactory $chanceActionFactory,
@@ -57,73 +59,154 @@ class RoomToDatabaseSenderService
 
     public function RoomArraySender(array $roomArray): void
     {
+        $this->roomArray = $roomArray;
 
         foreach ($roomArray as $room) {
-            $newRoomAction = $this->roomActionFactory->createNewWithBasicValues($room['name'], $room['text'], $room['code']);
-            if (!empty($room['loosLife'])) {
-                $newRoomAction->setLooseLife($room['loosLife']);
+            $this->treatRoom($room);
+        }
+    }
+
+    public function treatRoom(array $room): void
+    {
+        if ($this->checkExisting($room) === true) {
+            return;
+        }
+
+        $newRoomAction = $this->treatRoomAction($room);
+
+        foreach ($room['choices'] as $choice) {
+            $newChoice = $this->treatChoice($choice, $newRoomAction);
+
+            if (!empty($choice['itemAction']['item']) && !empty($choice['itemAction']['action'])) {
+                $this->treatItemAction($choice);
             }
-            if (!empty($room['isStartRoomAction'])) {
-                $newRoomAction->setIsStartRoomAction(true);
+
+            if (!empty($choice['chanceAction']['chance'])
+                && !empty($choice['chanceAction']['successRoomActionCode'])
+                && !empty($choice['chanceAction']['failureRoomActionCode']))
+            {
+                $this->treatChanceAction($choice, $newChoice);
             }
+        }
+    }
 
-            $this->roomActionRepository->add($newRoomAction);
-
-            foreach ($room['choices'] as $choice) {
-                $targetRoomAction = null;
-                if (!empty($choice['target'])) {
-                    $targetRoomAction = $room['choices']['target'];
-                }
-
-                /** @var Choice $choice */
-                $newChoice = $this->choiceFactory->createNewWithBasicValues($choice['text'], $newRoomAction, $targetRoomAction);
-                if (!empty($choice['isBackToMenu'])) {
-                    $newChoice->setIsBackToMenu(true);
-                }
-                $this->choiceRepository->add($newChoice);
-
-                if (!empty($choice['itemAction']['item']) && !empty($choice['itemAction']['action'])) {
-                    $itemName = $choice['itemAction']['item'];
-                    $action = intval($choice['itemAction']['action']);
-
-                    $item = $this->itemRepository->findOneBy(['name' => $itemName]);
-                    if (!$item instanceof Item){
-                        $item = $this->itemFactory->createNewWithName($itemName);
-                        $this->itemRepository->add($item);
-                    }
-
-                    /** @var ItemAction $itemAction */
-                    $itemAction = $this->itemActionFactory->createNew();
-                    $itemAction->setAction($action);
-                    $itemAction->setItem($item);
-                    $this->itemActionRepository->add($itemAction);
-                }
-
-                if (!empty($choice['chanceAction']['chance'])
-                    && !empty($choice['chanceAction']['successRoomActionCode'])
-                    && !empty($choice['chanceAction']['failureRoomActionCode']))
-                {
-                    $chanceAction = $choice['chanceAction'];
-                    /** @var RoomAction $successRoomAction */
-                    $successRoomAction = $this->roomActionRepository->findOneBy(['name' => $chanceAction['successRoomActionCode']]);
-                    /** @var RoomAction $failureRoomAction */
-                    $failureRoomAction = $this->roomActionRepository->findOneBy(['name' => $chanceAction['failureRoomActionCode']]);
-
-                    if ($successRoomAction !== null && $failureRoomAction !== null) {
-                        /** @var ChanceAction $chanceAction */
-                        $chanceAction = $this->chanceActionFactory->createNewWithBasic(
-                            $chanceAction['chance'],
-                            $newChoice,
-                            $successRoomAction,
-                            $failureRoomAction
-                        );
-
-                        $this->chanceActionRepository->add($chanceAction);
-                    } else {
-                        throw new ParameterNotFoundException('Success or Failure RoomAction not found');
-                    }
-                }
+    public function findAndTreatRoomByCode(string $code): void
+    {
+        foreach ($this->roomArray as $room) {
+            if ($room['code'] === $code) {
+                $this->treatRoom($room);
             }
+        }
+    }
+
+    public function existOrTreatRoomByCode(string $code)
+    {
+        /** @var RoomAction|null $roomAction */
+        $existingRoomAction = $this->roomActionRepository->findOneBy(['code' => $code]);
+        if ($existingRoomAction !== null){
+            /** @var RoomAction $targetRoomAction */
+            return $existingRoomAction;
+        }
+        else {
+            $this->findAndTreatRoomByCode($code);
+            $existingRoomAction = $this->roomActionRepository->findOneBy(['code' => $code]);
+            return $existingRoomAction;
+        }
+    }
+
+    public function checkExisting(array $room): bool
+    {
+        $existing = $this->roomActionRepository->findOneBy(['code' => $room['code']]);
+        if ($existing) {
+            return true;
+        }
+        return false;
+    }
+
+    public function treatRoomAction(array $room): RoomAction
+    {
+        $newRoomAction = $this->roomActionFactory->createNewWithBasicValues($room['name'], $room['text'], $room['code']);
+        if (!empty($room['looseLife'])) {
+            $newRoomAction->setLooseLife($room['loosLife']);
+        }
+        if (!empty($room['isStartRoomAction'])) {
+            $newRoomAction->setIsStartRoomAction(true);
+        }
+
+        $this->roomActionRepository->add($newRoomAction);
+        
+        return $newRoomAction;
+    }
+
+    public function treatChoice(array $choice, RoomAction $newRoomAction): Choice
+    {
+        //null correspond à prochaine salle aléatoire
+        $targetRoomAction = null;
+        if (!empty($choice['target'])) {
+            /** @var RoomAction|null $roomAction */
+            $this->existOrTreatRoomByCode($choice['target']);
+        }
+
+        /** @var Choice $choice */
+        $newChoice = $this->choiceFactory->createNewWithBasicValues($choice['text'], $newRoomAction, $targetRoomAction);
+        if (!empty($choice['isBackToMenu'])) {
+            $newChoice->setIsBackToMenu(true);
+        }
+        $this->choiceRepository->add($newChoice);
+
+        return $newChoice;
+    }
+
+    public function treatItemAction(array $choice)
+    {
+        $itemName = $choice['itemAction']['item'];
+        $action = intval($choice['itemAction']['action']);
+
+        $item = $this->itemRepository->findOneBy(['name' => $itemName]);
+        if (!$item instanceof Item){
+            $item = $this->itemFactory->createNewWithName($itemName);
+            $this->itemRepository->add($item);
+        }
+
+        /** @var ItemAction $itemAction */
+        $itemAction = $this->itemActionFactory->createNew();
+        $itemAction->setAction($action);
+        $itemAction->setItem($item);
+        $this->itemActionRepository->add($itemAction);
+
+        return $itemAction;
+    }
+
+    public function treatChanceAction(array $choice, Choice $newChoice): ChanceAction
+    {
+        $chanceAction = $choice['chanceAction'];
+        $successRoomActionCode = $chanceAction['successRoomActionCode'];
+        $failureRoomAction = $chanceAction['failureRoomActionCode'];
+        /** @var RoomAction $successRoomAction */
+        $successRoomAction = $this->roomActionRepository->findOneBy(['code' => $successRoomActionCode]);
+        /** @var RoomAction $failureRoomAction */
+        $failureRoomAction = $this->roomActionRepository->findOneBy(['code' => $failureRoomAction]);
+
+        if (!$successRoomAction instanceof RoomAction) {
+            $successRoomAction = $this->existOrTreatRoomByCode($successRoomActionCode);
+        }
+        if (!$failureRoomAction instanceof RoomAction) {
+            $failureRoomAction = $this->existOrTreatRoomByCode($failureRoomAction);
+        }
+
+        if ($successRoomAction !== null && $failureRoomAction !== null) {
+            /** @var ChanceAction $chanceAction */
+            $chanceAction = $this->chanceActionFactory->createNewWithBasic(
+                $chanceAction['chance'],
+                $newChoice,
+                $successRoomAction,
+                $failureRoomAction
+            );
+            $this->chanceActionRepository->add($chanceAction);
+
+            return $chanceAction;
+        } else {
+            throw new ParameterNotFoundException('Success or Failure RoomAction not found');
         }
     }
 }
