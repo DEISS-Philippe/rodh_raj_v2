@@ -3,7 +3,6 @@ sylius_fixtures:
         default:
             fixtures:
                 user: ~
-                room: ~
 
 services:
     app.fixture.user:
@@ -11,10 +10,4 @@ services:
         arguments:
             - '@security.user_password_encoder.generic'
             - '@sylius.repository.user'
-        tags: ['sylius_fixtures.fixture']
-
-    app.fixture.room:
-        class: App\Fixture\RoomFixtures
-        arguments:
-            - '@app.service.sender.room'
         tags: ['sylius_fixtures.fixture']
