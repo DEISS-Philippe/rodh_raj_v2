@@ -32,8 +32,8 @@
             <div class="character_life character_child">
                 <div class="character_title"><p>{{ 'app.donjon.character.life'|trans }}</p></div>
                 <div class="character_attribute">
-                    {% for i in user.life %}
-                        |
+                    {% for i in 1..user.life %}
+                        <p>|</p>
                     {% endfor %}
                 </div>
             </div>
@@ -48,10 +48,10 @@
         <section class="room_action">
             <div class="room_mj">
                 <div class="room_mj_head">
-                    <img src="{{ asset('assets/images/mj.png') }}" alt="Game Master">
+                    <img src="{{ asset('assets/images/mj.svg') }}" alt="Game Master">
                 </div>
                 <div class="room_mj_bubble">
-                    <img src="{{ asset('assets/images/bulle-08.png') }}" alt="">
+                    <img src="{{ asset('assets/images/bulle.svg') }}" alt="">
                 </div>
             </div>
 
@@ -68,43 +68,50 @@
             <div class="room_choices">
 
                 {% for choice in roomAction.choices %}
-                    {% if choice.targetRoomAction is null %}
-                        {% set room_path = path('donjon_vanilla_display_room', {'id': nextRoomActionId}) %}
-                    {% elseif choice.isBackToMenu == true %}
-                        {% set room_path = path('homepage')%}
-                    {% else %}
-                        {% set room_path = path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id}) %}
+
+                    {% if (choice.itemAction is null) and (choice.chanceAction is null) %}
+
+                        {% if choice.isBackToMenu == true %}
+                            {% set room_path = path('homepage')%}
+                        {% elseif (choice.targetRoomAction is null) %}
+                            {% set room_path = path('donjon_vanilla_display_room', {'id': nextRoomActionId}) %}
+                            <div>TO NEXT ROOM</div>
+                        {% else %}
+                            {% set room_path = path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id}) %}
+                        {% endif %}
+
+                        <div class="room_choice bckg-grey">
+                            <a href="{{ room_path }}" class="full_link"></a>
+                            <div class="fl">
+                                <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+                            </div>
+                            <div class="room_choice_txt">
+                                {{ choice.text }}
+                            </div>
+                        </div>
                     {% endif %}
 
+                {% endfor %}
+
+                {% for resultChoice in resultChoiceArray %}
                     <div class="room_choice bckg-grey">
-                        <a href="{{ room_path }}" class="full_link"></a>
+                        <a href="{{ path('donjon_vanilla_display_room', {'id': resultChoice.resultRoomAction.id}) }}" class="full_link"></a>
                         <div class="fl">
                             <img src="{{ asset('assets/images/fleche.png') }}" alt="">
                         </div>
                         <div class="room_choice_txt">
-                            {{ choice.text }}
+                            {{ resultChoice.text }}
                         </div>
                     </div>
                 {% endfor %}
-                {% for choice in resultChoiceArray %}
+                {% for itemChoice in itemChoiceArray %}
                     <div class="room_choice bckg-grey">
-                        <a href="{{ path('donjon_vanilla_display_room', {'id': choice.resultRoomAction.id}) }}" class="full_link"></a>
+                        <a href="{{ path('donjon_vanilla_display_room', {'id': itemChoice.resultRoomAction.id}) }}" class="full_link {% if choice.hasItem ? '' : 'disabled' %}{% endif %}"></a>
                         <div class="fl">
                             <img src="{{ asset('assets/images/fleche.png') }}" alt="">
                         </div>
                         <div class="room_choice_txt">
-                            {{ choice.text }}
-                        </div>
-                    </div>
-                {% endfor %}
-                {% for choice in itemChoiceArray %}
-                    <div class="room_choice bckg-grey">
-                        <a href="{{ path('donjon_vanilla_display_room', {'id': choice.resultRoomAction.id}) }}" class="full_link {% if choice.hasItem ? '' : 'disabled' %}{% endif %}"></a>
-                        <div class="fl">
-                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">
-                        </div>
-                        <div class="room_choice_txt">
-                            {{ choice.text }}
+                            {{ itemChoice.text }}
                         </div>
                     </div>
                 {% endfor %}

@@ -17,15 +17,20 @@ App\Entity\RoomAction\Choice:
         chanceAction:
             targetEntity: App\Entity\RoomAction\ChanceAction
             inversedBy: parentChoice
+            cascade: [ PERSIST, REMOVE ]
+            fetch: EAGER
     manyToOne:
         itemAction:
             targetEntity: App\Entity\RoomAction\ItemAction
+            cascade: [ PERSIST, REMOVE ]
+            fetch: EAGER
         roomAction:
             targetEntity: App\Entity\RoomAction
             inversedBy: choices
             joinColumn:
                 nullable: false
         targetRoomAction:
+            fetch: EAGER
             targetEntity: App\Entity\RoomAction
             joinColumn:
                 nullable: true

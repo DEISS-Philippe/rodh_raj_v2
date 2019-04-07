@@ -28,6 +28,69 @@
 #                successRoomActionCode: 'Code Test'
 #                failureRoomActionCode: 'Code Test'
 
+roomAction_boss_1:
+    code: 'salle_du_boss_1'
+    name: 'Salle du Boss'
+    isStartRoomAction: 'true'
+    text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : la mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
+           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu’ils n’auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
+           Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier.
+           “Alors comme ça vous avez réussi à m’atteindre ? Bravo à vous. Maintenant mourez rapidement s’il vous plait : j’ai du travail !”.
+           L’air commence à crépiter d’énergie magique : c’est l''heure du combat de boss !
+
+           Soyons honêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?'
+    choices:
+        choice1:
+            text: 'Fuiez pauvre fou !'
+            target: 'entree_du_donjon_2'
+        choice2:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 2
+                successRoomActionCode: 'salle_du_boss_2'
+                failureRoomActionCode: 'salle_du_boss_3'
+        choice3:
+            text: 'Jouer de votre instrument de musique.'
+            target: 'salle_du_boss_4'
+            itemAction:
+                action: 0
+                item: 'Instrument de musique'
+
+roomAction_boss_2:
+    code: 'salle_du_boss_2'
+    name: 'Salle du Boss'
+    text: 'Vous trébuchez maladroitement sur le premier pavé venu tout en lachant votre épée. Cette action inattendue destabilise le mage qui se met à rire de manière incontrôlée. C''est à ce moment que votre épée décide de retomber et se plante entre les yeux du boss. Victoire !'
+    choices:
+        choice1:
+            text: 'Retour au menu.'
+            isBackToMenu: 'true'
+roomAction_boss_3:
+    code: 'salle_du_boss_3'
+    name: 'Salle du Boss'
+    text: 'D''un claquement de doigts, votre corps se transforme en merguez géante. Au moins votre mort à été rapide et sans douleure (ou presque).'
+    choices:
+        choice1:
+            text: 'Retour au menu.'
+            isBackToMenu: 'true'
+roomAction_boss_4:
+    code: 'salle_du_boss_4'
+    name: 'Salle du Boss'
+    text: 'Le mage mauve se tortille de douleur face à votre offensive à faire grincer des dents. Petit à petit son corps se désintègre jusqu''à former un petit tas de poussière.
+           Si gagne:
+           Qui l''aurait cru ? Toujours est il qu’un coffre rempli de babioles magiques et d’argent vous attend sagement derrière le bureau de feu le maître des lieux. Félicitation aventurier ! La chance vous sourira peut être au prochain donjon ?'
+    choices:
+        choice1:
+            text: 'Retour au menu.'
+            isBackToMenu: 'true'
+
+roomAction1_2:
+    code: 'entree_du_donjon_2'
+    name: 'Entrée du donjon'
+    text: 'Bravo ! Enfin quelqu’un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n’est pas vécue.'
+    choices:
+        choice1:
+            isBackToMenu: 'true'
+            text: 'Retour au Menu'
 roomAction1_1:
     code: 'entree_du_donjon_1'
     isStartRoomAction: 'true'
@@ -44,15 +107,6 @@ roomAction1_1:
         choice2:
             target: 'entree_du_donjon_2'
             text: 'Rentrer chez Maman.'
-
-roomAction1_2:
-    code: 'entree_du_donjon_2'
-    name: 'Entrée du donjon'
-    text: 'Bravo ! Enfin quelqu’un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n’est pas vécue.'
-    choices:
-        choice1:
-            isBackToMenu: 'true'
-            text: 'Retour au Menu'
 
 
 roomAction2_2:
@@ -106,7 +160,6 @@ roomAction3_2:
     choices:
         choice1:
             text: 'Tenter de grimper à main nues.'
-            target: 'salle_au_mur_2'
             chanceAction:
                 chance: 6
                 successRoomActionCode: 'salle_au_mur_3'
@@ -127,40 +180,6 @@ roomAction3_1:
                 successRoomActionCode: 'salle_au_mur_4'
                 failureRoomActionCode: 'salle_au_mur_3'
 
-roomAction4_1:
-    code: 'grotte_humide_1'
-    isStartRoomAction: 'true'
-    name: 'Grotte humide'
-    text: 'Vous connaissez le nom de ces pics de pierres qui sortent du sol et du plafond. Se sont des stalagmites et des stalag[?] … Ah ben non en fait. Heureusement un gros rocher sur le côté pourrait vous aider à vous remettre de cet effort intellectuel immense.'
-    choices:
-        choice1:
-            text: 'Se reposer sur le rocher.'
-            chanceAction:
-                chance: 2
-                successRoomActionCode: 'grotte_humide_3'
-                failureRoomActionCode: 'grotte_humide_2'
-        choice2:
-            text: 'Pas de repos pour les braves ! Continuer sa route.'
-roomAction4_3:
-    code: 'grotte_humide_3'
-    name: 'Grotte humide'
-    text: 'Le repos vous rend un peu de vos forces.'
-    looseLife: -1
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante.'
-
-roomAction4_2:
-    code: 'grotte_humide_2'
-    name: 'Grotte humide'
-    text: 'A peine avez vous le moment de vous poser que le sol se met à trembler. S''asseoir sur un élémentaire de terre est rarement une bonne idée.'
-    choices:
-        choice1:
-            text: 'Combattre !'
-            chanceAction:
-                chance: 5
-                successRoomActionCode: 'grotte_humide_4'
-                failureRoomActionCode: 'grotte_humide_5'
 roomAction4_4:
     code: 'grotte_humide_4'
     name: 'Grotte humide'
@@ -176,9 +195,101 @@ roomAction4_5:
     choices:
         choice1:
             text: 'Continuer vers la salle suivante.'
+roomAction4_3:
+    code: 'grotte_humide_3'
+    name: 'Grotte humide'
+    text: 'Le repos vous rend un peu de vos forces.'
+    looseLife: -1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+roomAction4_2:
+    code: 'grotte_humide_2'
+    name: 'Grotte humide'
+    text: 'A peine avez vous le moment de vous poser que le sol se met à trembler. S''asseoir sur un élémentaire de terre est rarement une bonne idée.'
+    choices:
+        choice1:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 5
+                successRoomActionCode: 'grotte_humide_4'
+                failureRoomActionCode: 'grotte_humide_5'
+roomAction4_1:
+    code: 'grotte_humide_1'
+    isStartRoomAction: 'true'
+    name: 'Grotte humide'
+    text: 'Vous connaissez le nom de ces pics de pierres qui sortent du sol et du plafond. Se sont des stalagmites et des stalag[?] … Ah ben non en fait. Heureusement un gros rocher sur le côté pourrait vous aider à vous remettre de cet effort intellectuel immense.'
+    choices:
+        choice1:
+            text: 'Se reposer sur le rocher.'
+            chanceAction:
+                chance: 2
+                successRoomActionCode: 'grotte_humide_3'
+                failureRoomActionCode: 'grotte_humide_2'
+        choice2:
+            text: 'Pas de repos pour les braves ! Continuer sa route.'
 
 #TODO salle 5
 
+roomAction6_8:
+    code: 'dortoir_des_serviteurs_8'
+    name: 'Dortoir des serviteurs'
+    text: 'Salle brute !'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction6_7:
+    code: 'dortoir_des_serviteurs_7'
+    name: 'Dortoir des serviteurs'
+    text: 'Vous poursuivrez donc votre aventure avec une multitudes de petites morsures sur tous le corps et surtout la honte d''avoir perdu face à des lutins.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction6_6:
+    code: 'dortoir_des_serviteurs_6'
+    name: 'Dortoir des serviteurs'
+    text: 'Vous leurs réglez leurs comptes sans trop de problèmes. Après tout un lutin enragé reste un lutin.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction6_5:
+    code: 'dortoir_des_serviteurs_5'
+    name: 'Dortoir des serviteurs'
+    text: 'Hum … Vous avez mal dosé votre pouvoir et mettez les lutins sous état de rage berserk.'
+    choices:
+        choice1:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'dortoir_des_serviteurs_6'
+                failureRoomActionCode: 'dortoir_des_serviteurs_7'
+roomAction6_4:
+    code: 'dortoir_des_serviteurs_4'
+    name: 'Dortoir des serviteurs'
+    text: 'Intéressant… Une fois les lutins sous votre influence, ils vous proposent de creuser un passage directement vers le maître du donjon.'
+    choices:
+        choice1:
+            target: 'salle_du_boss_1'
+            text: 'Accepter.'
+        choice2:
+            text: 'Refuser poliment.'
+roomAction6_3:
+    code: 'dortoir_des_serviteurs_3'
+    name: 'Dortoir des serviteurs'
+    text: 'les petites bêtes paniquent trop pour dire quoi que ce soit.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction6_2:
+    code: 'dortoir_des_serviteurs_2'
+    name: 'Dortoir des serviteurs'
+    text: 'Intéressant… En échange de votre clémence, les lutins proposent de vous creuser un passage directement vers le maître du donjon.'
+    choices:
+        choice1:
+            target: 'salle_du_boss_1'
+            text: 'Accepter.'
+        choice2:
+            text: 'Refuser poliment et continuer vers la salle suivante'
 roomAction6_1:
     code: 'dortoir_des_serviteurs_1'
     name: 'Dortoir des serviteurs'
@@ -200,66 +311,57 @@ roomAction6_1:
                 chance: 3
                 successRoomActionCode: 'dortoir_des_serviteurs_4'
                 failureRoomActionCode: 'dortoir_des_serviteurs_5'
-roomAction6_2:
-    code: 'dortoir_des_serviteurs_2'
-    name: 'Dortoir des serviteurs'
-    text: 'Intéressant… En échange de votre clémence, les lutins proposent de vous creuser un passage directement vers le maître du donjon.'
-    choices:
-        choice1:
-            target: 'salle_du_boss_1'
-            text: 'Accepter.'
-        choice2:
-            text: 'Refuser poliment et continuer vers la salle suivante'
-roomAction6_3:
-    code: 'dortoir_des_serviteurs_3'
-    name: 'Dortoir des serviteurs'
-    text: 'les petites bêtes paniquent trop pour dire quoi que ce soit.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction6_4:
-    code: 'dortoir_des_serviteurs_4'
-    name: 'Dortoir des serviteurs'
-    text: 'Intéressant… Une fois les lutins sous votre influence, ils vous proposent de creuser un passage directement vers le maître du donjon.'
-    choices:
-        choice1:
-            target: 'salle_du_boss_1'
-            text: 'Accepter.'
-        choice2:
-            text: 'Refuser poliment et continuer vers la salle suivante.'
-roomAction6_5:
-    code: 'dortoir_des_serviteurs_5'
-    name: 'Dortoir des serviteurs'
-    text: 'Hum … Vous avez mal dosé votre pouvoir et mettez les lutins sous état de rage berserk.'
-    choices:
-        choice1:
-            text: 'Combattre !'
-            chanceAction:
-                chance: 6
-                successRoomActionCode: 'dortoir_des_serviteurs_6'
-                failureRoomActionCode: 'dortoir_des_serviteurs_7'
-roomAction6_6:
-    code: 'dortoir_des_serviteurs_6'
-    name: 'Dortoir des serviteurs'
-    text: 'Vous leurs réglez leurs comptes sans trop de problèmes. Après tout un lutin enragé reste un lutin.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction6_7:
-    code: 'dortoir_des_serviteurs_7'
-    name: 'Dortoir des serviteurs'
-    text: 'Vous poursuivrez donc votre aventure avec une multitudes de petites morsures sur tous le corps et surtout la honte d''avoir perdu face à des lutins.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction6_8:
-    code: 'dortoir_des_serviteurs_8'
-    name: 'Dortoir des serviteurs'
-    text: 'Salle brute !'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
 
+roomAction7_7:
+    code: 'salle_anciennement_vide_7'
+    name: 'Salle anciennement vide'
+    text: 'Vous partez direction la salle suivante avec trois aventuriers au trousses et un coffre entre les mains. Heureusement, ceux-ci s''essoufflent vite. Il ne pouvaient pas lutter face à votre expérience dans le domaine de la fuite. Apèrs avoir ouvert le coffre, vous y récupérez des champignons bleus.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+            itemAction:
+                item: 'Champignons bleus'
+                action: 1
+roomAction7_6:
+    code: 'salle_anciennement_vide_6'
+    name: 'Salle anciennement vide'
+    looseLife: 1
+    text: 'Vous êtes pris la main dans le sac ! Et recevez donc une main en travers de la figure.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction7_5:
+    code: 'salle_anciennement_vide_5'
+    name: 'Salle anciennement vide'
+    looseLife: -1
+    text: 'Votre victoire fut rapide et sanglante. Vous vous précipitez sur le coffre pour y trouver une pile de champignons bleus.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+            itemAction:
+                item: 'Champignons bleus'
+                action: 1
+roomAction7_4:
+    code: 'salle_anciennement_vide_4'
+    name: 'Salle anciennement vide'
+    text: 'En vous laissant aller à la conversation, vous apprenez que le maître du donjon à horreur de la mauvaise musique.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction7_3:
+    code: 'salle_anciennement_vide_3'
+    name: 'Salle anciennement vide'
+    text: 'Vous discutez de pluie et de beau temps dans un donjon.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction7_2:
+    code: 'salle_anciennement_vide_2'
+    name: 'Salle anciennement vide'
+    text: 'En vous laissant aller à la conversation, vous apprenez que le maître du donjon à horreur de la mauvaise musique.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
 roomAction7_1:
     code: 'salle_anciennement_vide_1'
     name: 'Salle anciennement vide'
@@ -284,59 +386,47 @@ roomAction7_1:
                 chance: 3
                 successRoomActionCode: 'salle_anciennement_vide_7'
                 failureRoomActionCode: 'salle_anciennement_vide_6'
-roomAction7_2:
-    code: 'salle_anciennement_vide_2'
-    name: 'Salle anciennement vide'
-    text: 'En vous laissant aller à la conversation, vous apprenez que le maître du donjon à horreur de la mauvaise musique.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction7_3:
-    code: 'salle_anciennement_vide_3'
-    name: 'Salle anciennement vide'
-    text: 'Vous discutez de pluie et de beau temps dans un donjon.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction7_4:
-    code: 'salle_anciennement_vide_4'
-    name: 'Salle anciennement vide'
-    text: 'En vous laissant aller à la conversation, vous apprenez que le maître du donjon à horreur de la mauvaise musique.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction7_5:
-    code: 'salle_anciennement_vide_5'
-    name: 'Salle anciennement vide'
-    looseLife: -1
-    text: 'Votre victoire fut rapide et sanglante. Vous vous précipitez sur le coffre pour y trouver une pile de champignons bleus.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-            itemAction:
-                item: 'Champignons bleus'
-                action: 1
-roomAction7_6:
-    code: 'salle_anciennement_vide_6'
-    name: 'Salle anciennement vide'
-    looseLife: 1
-    text: 'Vous êtes pris la main dans le sac ! Et recevez donc une main en travers de la figure.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction7_7:
-    code: 'salle_anciennement_vide_7'
-    name: 'Salle anciennement vide'
-    text: 'Vous partez direction la salle suivante avec trois aventuriers au trousses et un coffre entre les mains. Heureusement, ceux-ci s''essoufflent vite. Il ne pouvaient pas lutter face à votre expérience dans le domaine de la fuite. Apèrs avoir ouvert le coffre, vous y récupérez des champignons bleus.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-            itemAction:
-                item: 'Champignons bleus'
-                action: 1
 
 #TODO salle 8
 
+roomAction9_6:
+    code: 'salle_des_espoirs_perdus_6'
+    name: 'Salle des espoirs perdus'
+    text: 'Vous repartez en direction de la salle suivante avec la tête qui tourne et trois litres de sang en mois.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction9_5:
+    code: 'salle_des_espoirs_perdus_5'
+    name: 'Salle des espoirs perdus'
+    text: 'Sa rhétorique irréprochable vous force à lui donner votre sang.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction9_4:
+    code: 'salle_des_espoirs_perdus_4'
+    name: 'Salle des espoirs perdus'
+    text: 'Après avoir débattu pendant plus d''une demi-journée, vous sortez vainqueur en laissant derrière vous un homme désespéré et au bord du suicide.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction9_3:
+    code: 'salle_des_espoirs_perdus_3'
+    name: 'Salle des espoirs perdus'
+    text: 'L''homme vous maitrise et vous prend votre sang par la force.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction9_2:
+    code: 'salle_des_espoirs_perdus_2'
+    name: 'Salle des espoirs perdus'
+    text: 'Vous n''avez même pas le temps de placer un coup d''épée que l''étrange personnage s''enfui à toutes jambes en criant.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
 roomAction9_1:
     code: 'salle_des_espoirs_perdus_1'
     name: 'Salle des espoirs perdus'
@@ -360,89 +450,3 @@ roomAction9_1:
             target: 'salle_des_espoirs_perdus_6'
         choice4:
             text: 'L’ignorer et poursuivre votre route.'
-roomAction9_2:
-    code: 'salle_des_espoirs_perdus_2'
-    name: 'Salle des espoirs perdus'
-    text: 'Vous n''avez même pas le temps de placer un coup d''épée que l''étrange personnage s''enfui à toutes jambes en criant.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction9_3:
-    code: 'salle_des_espoirs_perdus_3'
-    name: 'Salle des espoirs perdus'
-    text: 'L''homme vous maitrise et vous prend votre sang par la force.'
-    looseLife: 1
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction9_4:
-    code: 'salle_des_espoirs_perdus_4'
-    name: 'Salle des espoirs perdus'
-    text: 'Après avoir débattu pendant plus d''une demi-journée, vous sortez vainqueur en laissant derrière vous un homme désespéré et au bord du suicide.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-roomAction9_5:
-    code: 'salle_des_espoirs_perdus_5'
-    name: 'Salle des espoirs perdus'
-    text: 'Sa rhétorique irréprochable vous force à lui donner votre sang.'
-    looseLife: 1
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante'
-
-roomAction_boss_1:
-    code: 'salle_du_boss_1'
-    name: 'Salle du Boss'
-    isStartRoomAction: 'true'
-    text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : la mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
-           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu’ils n’auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
-           Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier.
-           “Alors comme ça vous avez réussi à m’atteindre ? Bravo à vous. Maintenant mourez rapidement s’il vous plait : j’ai du travail !”.
-           L’air commence à crépiter d’énergie magique : c’est l’heure du combat de boss !
-
-           Soyons honêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?'
-    choices:
-        choice1:
-            text: 'Fuiez pauvre fou !'
-            target: 'entree_du_donjon_2'
-        choice2:
-            text: 'Combattre !'
-            target: 'entree_du_donjon_2'
-            chanceAction:
-                chance: 2
-                successRoomActionCode: 'salle_du_boss_2'
-                failureRoomActionCode: 'salle_du_boss_3'
-        choice3:
-            text: 'Jouer de votre instrument de musique.'
-            target: 'salle_du_boss_4'
-            itemAction:
-                action: 0
-                item: 'Instrument de musique'
-
-roomAction_boss_2:
-    code: 'salle_du_boss_2'
-    name: 'Salle du Boss'
-    text: 'Vous trébuchez maladroitement sur le premier pavé venu tout en lachant votre épée. Cette action inattendue destabilise le mage qui se met à rire de manière incontrôlée. C''est à ce moment que votre épée décide de retomber et se plante entre les yeux du boss. Victoire !'
-    choices:
-        choice1:
-            text: 'Retour au menu.'
-            isBackToMenu: 'true'
-roomAction_boss_3:
-    code: 'salle_du_boss_3'
-    name: 'Salle du Boss'
-    text: 'D''un claquement de doigts, votre corps se transforme en merguez géante. Au moins votre mort à été rapide et sans douleure (ou presque).'
-    choices:
-        choice1:
-            text: 'Retour au menu.'
-            isBackToMenu: 'true'
-roomAction_boss_4:
-    code: 'salle_du_boss_4'
-    name: 'Salle du Boss'
-    text: 'Le mage mauve se tortille de douleur face à votre offensive à faire grincer des dents. Petit à petit son corps se désintègre jusqu''à former un petit tas de poussière.
-           Si gagne:
-           Qui l''aurait cru ? Toujours est il qu’un coffre rempli de babioles magiques et d’argent vous attend sagement derrière le bureau de feu le maître des lieux. Félicitation aventurier ! La chance vous sourira peut être au prochain donjon ?'
-    choices:
-        choice1:
-            text: 'Retour au menu.'
-            isBackToMenu: 'true'

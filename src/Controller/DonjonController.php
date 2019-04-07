@@ -22,7 +22,8 @@ class DonjonController extends AbstractController
     )
     {
         /** @var RoomAction $currentRoomAction */
-        $currentRoomAction = $roomActionRepository->find($id);
+        $currentRoomActionOriginal = $roomActionRepository->find($id);
+        $currentRoomAction = clone $roomActionRepository->find($id);
         $currentRoute = $request->attributes->get('_route');
         $currentChoices = $currentRoomAction->getChoices();
 
@@ -40,7 +41,7 @@ class DonjonController extends AbstractController
 
         // Gestion de navigation si approche salle du boss
         if ($currentRoomAction->isStartRoomAction() === true) {
-            #TODO ajouter room au apssage à la room suivante (ajoute ++ quand refresh page <- a fix)
+            #TODO ajouter room au passage à la room suivante (ajoute ++ quand refresh page <- a fix)
             $roomNumber = $userRepository->addOneToRoomNumber($user);
             if ($roomNumber >= 7) {
                 /** @var RoomAction $bossRoom */
@@ -69,11 +70,15 @@ class DonjonController extends AbstractController
                     $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getSuccessRoomAction(), 'text' => $choice->getText()];
                 }
 
-                //test si le joueur à des items liés aux choice
-                if (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction()->getItem())) {
+                #TODO gérer les item de manière complete
+                //test si le joueur à des items liés aux choice si oui, display le choice
+                if (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction()->getItem()) && $choice->getItemAction()->isAction() === false) {
                     $itemChoiceArray[] = ['hasItem' => true, 'resultRoomAction' => $choice->getTargetRoomAction(), 'text' => $choice->getText()];
-                } else {
-                    $itemChoiceArray[] = ['hasItem' => false, 'text' => $choice->getText()];
+                }
+                //Donne au joueur un item
+                elseif (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction()->getItem()) && $choice->getItemAction()->isAction() === true) {
+                    $user->addItem($choice->getItemAction()->getItem());
+                    $userRepository->add($user);
                 }
             }
         }
@@ -95,10 +100,8 @@ class DonjonController extends AbstractController
         $availableNextRoomActions = $availableNextRoomActions->toArray();
 
         $availableNextRoomActions = array_values($availableNextRoomActions);
-        dump($availableNextRoomActions);
 
-
-        $rand = rand(0, sizeof($availableNextRoomActions));
+        $rand = rand(0, (sizeof($availableNextRoomActions) - 1));
         /** @var RoomAction $nextRoomAction */
         $nextRoomAction = $availableNextRoomActions[$rand];
         $nextRoomActionId = $nextRoomAction->getId();

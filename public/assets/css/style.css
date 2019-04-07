@@ -91,6 +91,12 @@ body {
 /*
 FORMS
  */
+p {
+    margin-bottom: 0;
+}
+h1 {
+    margin-bottom: 0;
+}
 input{
     display: block;
     width: 100%;
@@ -103,6 +109,7 @@ input[type="submit"]{
     margin-top: 20px;
     display: block;
     background-color: #fff;
+    cursor: pointer;
 }
 .alert--danger {
     margin-bottom: 10px;
@@ -140,12 +147,13 @@ a.disabled {
 }
 .room_title {
     font-size: 35px;
-    padding-bottom: 4px;
     border-bottom: 1px solid #111;
+}
+.room_number {
+    margin-top: 10px;
 }
 .room_number > div {
     display: inline;
-    padding: 2px;
 }
 .room_number > .current {
     border-bottom: 1px solid #111;
@@ -202,6 +210,10 @@ a.disabled {
     left: 0;
     width: calc(100% - 24px);
     font-weight: 600;
+    transition: all 0.2s ease;
+}
+.room_choice:hover {
+    left: 10px;
 }
 
 .fl {

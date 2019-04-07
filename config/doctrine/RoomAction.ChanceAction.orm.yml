@@ -12,12 +12,14 @@ App\Entity\RoomAction\ChanceAction:
       type: integer
   manyToOne:
     successRoomAction:
+      fetch: EAGER
       targetEntity: App\Entity\RoomAction
       joinColumn:
         name: success_room_action_id
         referencedColumnName: id
         nullable: false
     failRoomAction:
+      fetch: EAGER
       targetEntity: App\Entity\RoomAction
       joinColumn:
         name: fail_room_action_id
