@@ -74,6 +74,8 @@ class VanillaRoomsWarmUp extends Command
 
     protected $roomArray;
     protected $output;
+    /** @var Choice */
+    protected $choice;
 
     public function __construct(UserRepository $userRepository, RoomActionRepository $roomActionRepository,
                                 RoomActionFactory $roomActionFactory,
@@ -139,6 +141,8 @@ class VanillaRoomsWarmUp extends Command
 
         foreach ($room['choices'] as $choice) {
             $newChoice = $this->treatChoice($choice, $newRoomAction);
+            $this->choice = $newChoice;
+
             if (!$newChoice instanceof Choice) {
                 $this->output->writeln('<bg=red;fg=black>['.date('Y-m-d H:i:s').'] !---- Error puting Choice "'.$choice['text'].'" in DB.</>', OutputInterface::VERBOSITY_VERBOSE);
                 return;
@@ -258,6 +262,7 @@ class VanillaRoomsWarmUp extends Command
         $itemAction = $this->itemActionFactory->createNew();
         $itemAction->setAction($action);
         $itemAction->setItem($item);
+        $this->choice->setItemAction($itemAction);
         $this->itemActionRepository->add($itemAction);
 
         return $itemAction;
@@ -294,6 +299,7 @@ class VanillaRoomsWarmUp extends Command
                 $successRoomAction,
                 $failureRoomAction
             );
+            $this->choice->setChanceAction($chanceAction);
             $this->chanceActionRepository->add($chanceAction);
 
             return $chanceAction;

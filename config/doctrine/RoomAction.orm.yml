@@ -36,7 +36,7 @@ App\Entity\RoomAction:
         code:
             type: string
             nullable: false
-    manyToOne:
+    manyToMany:
         userBlackList:
             targetEntity: App\Entity\User
             inversedBy: blackListedRooms
