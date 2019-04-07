@@ -230,7 +230,6 @@ class VanillaRoomsWarmUp extends Command
 
     public function treatChoice(array $choice, RoomAction $newRoomAction): Choice
     {
-        //TODO bug targetAction mission sometimes
         //null correspond à prochaine salle aléatoire
         $targetRoomAction = null;
         if (!empty($choice['target'])) {

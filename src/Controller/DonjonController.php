@@ -70,7 +70,6 @@ class DonjonController extends AbstractController
                     $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getSuccessRoomAction(), 'text' => $choice->getText()];
                 }
 
-                #TODO gérer les item de manière complete
                 //test si le joueur à des items liés aux choice si oui, display le choice
                 if (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction()->getItem()) && $choice->getItemAction()->isAction() === false) {
                     $itemChoiceArray[] = ['hasItem' => true, 'resultRoomAction' => $choice->getTargetRoomAction(), 'text' => $choice->getText()];
