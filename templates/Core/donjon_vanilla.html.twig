@@ -75,7 +75,6 @@
                             {% set room_path = path('homepage')%}
                         {% elseif (choice.targetRoomAction is null) %}
                             {% set room_path = path('donjon_vanilla_display_room', {'id': nextRoomActionId}) %}
-                            <div>TO NEXT ROOM</div>
                         {% else %}
                             {% set room_path = path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id}) %}
                         {% endif %}
