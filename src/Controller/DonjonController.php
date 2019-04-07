@@ -22,8 +22,7 @@ class DonjonController extends AbstractController
     )
     {
         /** @var RoomAction $currentRoomAction */
-        $currentRoomActionOriginal = $roomActionRepository->find($id);
-        $currentRoomAction = clone $roomActionRepository->find($id);
+        $currentRoomAction = $roomActionRepository->find($id);
         $currentRoute = $request->attributes->get('_route');
         $currentChoices = $currentRoomAction->getChoices();
 
