@@ -12,7 +12,12 @@
         <section class="grid-5 has-gutter menuGrid">
             <div>
                 <div class="bckg-grey">
-                    <a href="{{ path('donjon_vanilla_display_room', { 'id': 1}) }}">{{ 'app.project.vanilla_button'|trans }}</a>
+                    {% if (app.user.currentRoomAction is not null) %}
+                        {% set targetRoomId = app.user.currentRoomAction.id %}
+                    {% else %}
+                        {% set targetRoomId = 1 %}
+                    {% endif %}
+                    <a href="{{ path('donjon_vanilla_display_room', { 'id': targetRoomId }) }}">{{ 'app.project.vanilla_button'|trans }}</a>
                 </div>
             </div>
             <div class="col-4">{{ 'app.project.vanilla_explanation'|trans }}</div>

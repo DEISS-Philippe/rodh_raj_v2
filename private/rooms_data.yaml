@@ -28,11 +28,36 @@
 #                successRoomActionCode: 'Code Test'
 #                failureRoomActionCode: 'Code Test'
 
+roomAction1_1:
+    code: 'entree_du_donjon_1'
+    isStartRoomAction: 'true'
+    name: 'Entrée du donjon'
+    text: 'Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.
+
+          Certaines épreuves marquent un virage dans une existence. D’autres ne sont que ramassis de futilités posées sur le chemin de la vie tel un étron fumant attendant patiemment le pied du passant distrait.
+          Un donjon est l’épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. De biens nombreuses raisons de s’aventurer dans un endroit ou le danger est à chaque tournant.
+
+          Oserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?'
+    choices:
+        choice1:
+            text: 'Entrer dans le Donjon.'
+        choice2:
+            target: 'entree_du_donjon_2'
+            text: 'Rentrer chez Maman.'
+roomAction1_2:
+    code: 'entree_du_donjon_2'
+    name: 'Entrée du donjon'
+    text: 'Bravo ! Enfin quelqu’un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n’est pas vécue.'
+    choices:
+        choice1:
+            isBackToMenu: 'true'
+            text: 'Retour au Menu'
+
 roomAction_boss_1:
     code: 'salle_du_boss_1'
     name: 'Salle du Boss'
     isStartRoomAction: 'true'
-    text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : la mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
+    text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : le mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
            “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu’ils n’auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
            Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier.
            “Alors comme ça vous avez réussi à m’atteindre ? Bravo à vous. Maintenant mourez rapidement s’il vous plait : j’ai du travail !”.
@@ -82,32 +107,6 @@ roomAction_boss_4:
         choice1:
             text: 'Retour au menu.'
             isBackToMenu: 'true'
-
-roomAction1_2:
-    code: 'entree_du_donjon_2'
-    name: 'Entrée du donjon'
-    text: 'Bravo ! Enfin quelqu’un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n’est pas vécue.'
-    choices:
-        choice1:
-            isBackToMenu: 'true'
-            text: 'Retour au Menu'
-roomAction1_1:
-    code: 'entree_du_donjon_1'
-    isStartRoomAction: 'true'
-    name: 'Entrée du donjon'
-    text: 'Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.
-
-          Certaines épreuves marquent un virage dans une existence. D’autres ne sont que ramassis de futilités posées sur le chemin de la vie tel un étron fumant attendant patiemment le pied du passant distrait.
-          Un donjon est l’épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. De biens nombreuses raisons de s’aventurer dans un endroit ou le danger est à chaque tournant.
-
-          Oserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?'
-    choices:
-        choice1:
-            text: 'Entrer dans le Donjon.'
-        choice2:
-            target: 'entree_du_donjon_2'
-            text: 'Rentrer chez Maman.'
-
 
 roomAction2_2:
     code: 'les_trois_couloirs_2'

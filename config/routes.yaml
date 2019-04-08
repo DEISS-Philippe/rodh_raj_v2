@@ -21,3 +21,9 @@ donjon:
         en: /dungeon
         fr: /donjon
     resource: 'routes/donjon.yaml'
+
+ajax:
+    prefix:
+        en: /ajax
+        fr: /ajax
+    resource: 'routes/ajax.yaml'

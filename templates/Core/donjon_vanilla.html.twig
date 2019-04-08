@@ -78,7 +78,7 @@
                         {% else %}
                             {% set room_path = path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id}) %}
                         {% endif %}
-
+                        {{ dump(choice) }}
                         <div class="room_choice bckg-grey">
                             <a href="{{ room_path }}" class="full_link"></a>
                             <div class="fl">
@@ -93,6 +93,7 @@
                 {% endfor %}
 
                 {% for resultChoice in resultChoiceArray %}
+                    {{ dump(resultChoice) }}
                     <div class="room_choice bckg-grey">
                         <a href="{{ path('donjon_vanilla_display_room', {'id': resultChoice.resultRoomAction.id}) }}" class="full_link"></a>
                         <div class="fl">
@@ -104,6 +105,7 @@
                     </div>
                 {% endfor %}
                 {% for itemChoice in itemChoiceArray %}
+                    {{ dump(itemChoice) }}
                     <div class="room_choice bckg-grey">
                         <a href="{{ path('donjon_vanilla_display_room', {'id': itemChoice.resultRoomAction.id}) }}" class="full_link {% if choice.hasItem ? '' : 'disabled' %}{% endif %}"></a>
                         <div class="fl">

@@ -21,6 +21,7 @@ class DonjonController extends AbstractController
                                       TokenStorageInterface $tokenStorage, UserRepository $userRepository
     )
     {
+        //TODO purger currentRoomAction en fin de partie
         /** @var RoomAction $currentRoomAction */
         $currentRoomAction = $roomActionRepository->find($id);
         $currentRoute = $request->attributes->get('_route');
@@ -28,6 +29,9 @@ class DonjonController extends AbstractController
 
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
+
+        $user->setCurrentRoomAction($currentRoomAction);
+        $userRepository->add($user);
 
         $dispatcher = new EventDispatcher();
 
