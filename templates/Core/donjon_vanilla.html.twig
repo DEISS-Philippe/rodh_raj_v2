@@ -1,4 +1,6 @@
 {% extends 'layout.html.twig' %}
+{% import "Macro/ChoiceButtons.html.twig" as choiceButton %}
+
 
 {% block title %}
     <title>{{ 'app.project.homepage'|trans }}</title>
@@ -75,47 +77,61 @@
                             {% set room_path = path('homepage')%}
                         {% elseif (choice.targetRoomAction is null) %}
                             {% set room_path = path('donjon_vanilla_display_room', {'id': nextRoomActionId}) %}
+                            {{ dump(choice) }}
+                            <div class="room_choice bckg-grey {{ className }}">
+                                <form action="{{ room_path }}">
+                                    <input id="addToRoomNumbers" name="addToRoomNumbers" type="hidden" value="true">
+                                    <input type="submit" value="{{ choice.text }}">
+                                </form>
+                            </div>
                         {% else %}
                             {% set room_path = path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id}) %}
                         {% endif %}
-                        {{ dump(choice) }}
-                        <div class="room_choice bckg-grey">
-                            <a href="{{ room_path }}" class="full_link"></a>
-                            <div class="fl">
-                                <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+
+                        {% if choice.targetRoomAction is null %}
+                            {{ dump(choice) }}
+                            <div class="room_choice bckg-grey {{ className }}">
+                                <a href="{{ room_path }}" class="full_link"></a>
+                                <div class="fl">
+                                    <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+                                </div>
+                                <div class="room_choice_txt">
+                                    {{ choice.text }}
+                                </div>
                             </div>
-                            <div class="room_choice_txt">
-                                {{ choice.text }}
-                            </div>
-                        </div>
+                        {% endif %}
                     {% endif %}
 
                 {% endfor %}
 
-                {% for resultChoice in resultChoiceArray %}
-                    {{ dump(resultChoice) }}
-                    <div class="room_choice bckg-grey">
-                        <a href="{{ path('donjon_vanilla_display_room', {'id': resultChoice.resultRoomAction.id}) }}" class="full_link"></a>
-                        <div class="fl">
-                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">
-                        </div>
-                        <div class="room_choice_txt">
-                            {{ resultChoice.text }}
-                        </div>
-                    </div>
-                {% endfor %}
-                {% for itemChoice in itemChoiceArray %}
-                    {{ dump(itemChoice) }}
-                    <div class="room_choice bckg-grey">
-                        <a href="{{ path('donjon_vanilla_display_room', {'id': itemChoice.resultRoomAction.id}) }}" class="full_link {% if choice.hasItem ? '' : 'disabled' %}{% endif %}"></a>
-                        <div class="fl">
-                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">
-                        </div>
-                        <div class="room_choice_txt">
-                            {{ itemChoice.text }}
-                        </div>
-                    </div>
-                {% endfor %}
+                {{ choiceButton.displaySpecialButton(resultChoiceArray, false) }}
+                {{ choiceButton.displaySpecialButton(itemChoiceArray, true) }}
+
+
+{#                {% for resultChoice in resultChoiceArray %}#}
+{#                    {{ dump(resultChoice) }}#}
+{#                    <div class="room_choice bckg-grey">#}
+{#                        <a href="{{ path('donjon_vanilla_display_room', {'id': resultChoice.resultRoomAction.id}) }}" class="full_link"></a>#}
+{#                        <div class="fl">#}
+{#                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">#}
+{#                        </div>#}
+{#                        <div class="room_choice_txt">#}
+{#                            {{ resultChoice.text }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#                {% for itemChoice in itemChoiceArray %}#}
+{#                    {{ dump(itemChoice) }}#}
+{#                    <div class="room_choice bckg-grey">#}
+{#                        <a href="{{ path('donjon_vanilla_display_room', {'id': itemChoice.resultRoomAction.id}) }}" class="full_link {% if choice.hasItem ? '' : 'disabled' %}{% endif %}"></a>#}
+{#                        <div class="fl">#}
+{#                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">#}
+{#                        </div>#}
+{#                        <div class="room_choice_txt">#}
+{#                            {{ itemChoice.text }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
             </div>
 
         </section>

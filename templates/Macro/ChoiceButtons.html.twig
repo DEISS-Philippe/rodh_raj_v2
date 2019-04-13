@@ -1,0 +1,14 @@
+{% macro displaySpecialButton(choiceArray, isItem) %}
+    {% for choice in choiceArray %}
+        {{ dump(choice) }}
+        <div class="room_choice bckg-grey">
+            <a href="{{ path('donjon_vanilla_display_room', {'id': choice.resultRoomAction.id}) }}" class="full_link {% if isItem == true %}{% if choice.hasItem ? '' : 'disabled' %}{% endif %}{% endif %}"></a>
+            <div class="fl">
+                <img src="{{ asset('assets/images/fleche.png') }}" alt="">
+            </div>
+            <div class="room_choice_txt">
+                {{ choice.text }}
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}

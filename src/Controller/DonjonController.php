@@ -21,7 +21,7 @@ class DonjonController extends AbstractController
                                       TokenStorageInterface $tokenStorage, UserRepository $userRepository
     )
     {
-        //TODO purger currentRoomAction en fin de partie
+        //TODO purger currentRoomAction en fin de partie au clic sur un lien isBackToMenu
         /** @var RoomAction $currentRoomAction */
         $currentRoomAction = $roomActionRepository->find($id);
         $currentRoute = $request->attributes->get('_route');
