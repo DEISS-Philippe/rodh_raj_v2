@@ -8,7 +8,7 @@
 
 {% block body %}
     {% set user = app.user %}
-    
+
     <div class="container_donjon">
         <div class="room_top">
             <div class="room_title">
@@ -74,23 +74,22 @@
                     {% if (choice.itemAction is null) and (choice.chanceAction is null) %}
 
                         {% if choice.isBackToMenu == true %}
-                            {% set room_path = path('homepage')%}
+                            {% set room_path = path('homepage') %}
+                            <form action="{{ room_path }}" class="room_choice" method="POST">
+                                <input id="isBackToMenu" name="isBackToMenu" type="hidden" value="true">
+                                <button type="submit" class="full_link form_button">{{ choice.text }}</button>
+                            </form>
                         {% elseif (choice.targetRoomAction is null) %}
                             {% set room_path = path('donjon_vanilla_display_room', {'id': nextRoomActionId}) %}
                             {{ dump(choice) }}
-                            <div class="room_choice bckg-grey {{ className }}">
-                                <form action="{{ room_path }}">
-                                    <input id="addToRoomNumbers" name="addToRoomNumbers" type="hidden" value="true">
-                                    <input type="submit" value="{{ choice.text }}">
-                                </form>
-                            </div>
+                            <form action="{{ room_path }}" class="room_choice" method="POST">
+                                <input id="addToRoomNumbers" name="addToRoomNumbers" type="hidden" value="true">
+                                <button type="submit" class="full_link form_button">{{ choice.text }}</button>
+                            </form>
                         {% else %}
                             {% set room_path = path('donjon_vanilla_display_room', {'id': choice.targetRoomAction.id}) %}
-                        {% endif %}
-
-                        {% if choice.targetRoomAction is null %}
                             {{ dump(choice) }}
-                            <div class="room_choice bckg-grey {{ className }}">
+                            <div class="room_choice bckg-grey">
                                 <a href="{{ room_path }}" class="full_link"></a>
                                 <div class="fl">
                                     <img src="{{ asset('assets/images/fleche.png') }}" alt="">
@@ -100,6 +99,19 @@
                                 </div>
                             </div>
                         {% endif %}
+
+{#                        {% if choice.targetRoomAction is not null and choice.isBackToMenu == false %}#}
+{#                            {{ dump(choice) }}#}
+{#                            <div class="room_choice bckg-grey">#}
+{#                                <a href="{{ room_path }}" class="full_link"></a>#}
+{#                                <div class="fl">#}
+{#                                    <img src="{{ asset('assets/images/fleche.png') }}" alt="">#}
+{#                                </div>#}
+{#                                <div class="room_choice_txt">#}
+{#                                    {{ choice.text }}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endif %}#}
                     {% endif %}
 
                 {% endfor %}

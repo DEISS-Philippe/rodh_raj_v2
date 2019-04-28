@@ -121,7 +121,7 @@ roomAction2_1:
     code: 'les_trois_couloirs_1'
     isStartRoomAction: 'true'
     name: 'Les trois couloirs'
-    text: 'La seule épreuve de cette salle consiste apparemment à mettre à l’épreuve les capacités décisionnel de l’aventurier. Trois couloirs vous font face, chacun allant dans une direction différente.'
+    text: 'La seule activité de cette salle consiste apparemment à mettre à l’épreuve les capacités décisionnel de l’aventurier. Trois couloirs vous font face, chacun allant dans une direction différente.'
     choices:
         choice1:
             text: 'Prendre le couloir de droite.'

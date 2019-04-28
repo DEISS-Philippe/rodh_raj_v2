@@ -9,7 +9,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
 {
-    public function resetUserGameData(User $user, RoomAction $startRoomAction)
+    public function resetUserGameData(User $user, RoomAction $startRoomAction): User
     {
         $user->setCurrentRoomAction($startRoomAction);
         $user->setLife(User::LIFE_FULL);
@@ -22,7 +22,7 @@ class UserRepository extends EntityRepository
         return $user;
     }
 
-    public function addOneToRoomNumber(User $user)
+    public function addOneToRoomNumber(User $user): int
     {
         $roomNumber = $user->getRoomNumber();
         $roomNumber++;

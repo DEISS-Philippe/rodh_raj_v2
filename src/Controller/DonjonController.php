@@ -21,7 +21,8 @@ class DonjonController extends AbstractController
                                       TokenStorageInterface $tokenStorage, UserRepository $userRepository
     )
     {
-        //TODO purger currentRoomAction en fin de partie au clic sur un lien isBackToMenu
+        //TODO faire perdre la vie au joueur
+        //TODO display salle du boss à la 8e salle
         /** @var RoomAction $currentRoomAction */
         $currentRoomAction = $roomActionRepository->find($id);
         $currentRoute = $request->attributes->get('_route');
@@ -38,20 +39,26 @@ class DonjonController extends AbstractController
         $donjonRoomEvent = new DonjonControllerEvent($currentRoomAction, $user);
         $dispatcher->addListener(DonjonControllerEvent::PRE_DISPLAY_DONJON, $donjonRoomEvent);
 
+        if ($currentRoomAction->getLooseLife() !== null) {
+          $life = $user->getLife() - $currentRoomAction->getLooseLife();
+          $user->setLife($life);
+        }
         if ($user->getLife() === User::LIFE_EMPTY) {
             return $this->redirectToRoute('donjon_you_died');
         }
 
         // Gestion de navigation si approche salle du boss
         if ($currentRoomAction->isStartRoomAction() === true) {
-            #TODO ajouter room au passage à la room suivante (ajoute ++ quand refresh page <- a fix)
-            $roomNumber = $userRepository->addOneToRoomNumber($user);
-            if ($roomNumber >= 7) {
-                /** @var RoomAction $bossRoom */
-                $bossRoom = $roomActionRepository->findOneBy(['code' => 'salle_du_boss_1']);
-                $bossId = $bossRoom->getId();
+            if (!empty($request->request->get('addToRoomNumbers')) && $request->request->get('addToRoomNumbers') !== null) {
+                $roomNumber = $userRepository->addOneToRoomNumber($user);
+
+                if ($roomNumber >= 7) {
+                    /** @var RoomAction $bossRoom */
+                    $bossRoom = $roomActionRepository->findOneBy(['code' => 'salle_du_boss_1']);
+                    $bossId = $bossRoom->getId();
 
 //                return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossId]);
+                }
             }
         }
 

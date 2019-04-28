@@ -201,6 +201,10 @@ a.disabled {
     margin-top: 30px;
 }
 
+.room_choices form {
+    height: 34px;
+}
+
 .room_choice {
     margin-top: 15px;
     position: relative;
@@ -254,5 +258,10 @@ a.disabled {
     position: relative;
     top: 0;
     left: 0;
+    font-weight: 600;
+}
+
+.form_button {
+    text-align: left;
     font-weight: 600;
 }

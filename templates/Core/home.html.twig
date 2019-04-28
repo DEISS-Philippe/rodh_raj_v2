@@ -12,7 +12,7 @@
         <section class="grid-5 has-gutter menuGrid">
             <div>
                 <div class="bckg-grey">
-                    {% if (app.user.currentRoomAction is not null) %}
+                    {% if (app.user is not null) and (app.user.currentRoomAction is not null) %}
                         {% set targetRoomId = app.user.currentRoomAction.id %}
                     {% else %}
                         {% set targetRoomId = 1 %}
