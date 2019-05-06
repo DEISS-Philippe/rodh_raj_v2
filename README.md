@@ -1,13 +1,11 @@
-# rodh_raj_v2
+# Project Rodh'Raj
 
-<p> Web game using: </p>
-<br>
-<ul>
-  <li>symfony/symfony</li>
-  <li>sylius/grid-bundle</li>
-  <li>sylius/resource-bundle</li>
-</ul>
-<br>
-<ul>
-  <li>alsacreations/KNACSS</li>
-</ul>
+Sylius : For the documentation of the bundle testing/development, [see here](https://github.com/Sylius/PluginSkeleton)
+
+### Setup
+
+Setup vanilla rooms in database :
+
+```bash
+php bin/console app:vanilla-rooms-warmup
+```

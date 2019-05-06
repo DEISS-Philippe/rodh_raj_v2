@@ -28,6 +28,14 @@ class UserFixture extends AbstractFixture implements FixtureInterface
         $user->setRoomNumber(1);
 
         $this->userRepository->add($user);
+
+        $userBehat = new User();
+        $userBehat->setName('behatTestUser');
+        $userBehat->setPassword($this->encoder->encodePassword($user, 'behatTestUser1'));
+        $userBehat->setLife(3);
+        $userBehat->setRoomNumber(1);
+
+        $this->userRepository->add($userBehat);
     }
 
     public function getName():string

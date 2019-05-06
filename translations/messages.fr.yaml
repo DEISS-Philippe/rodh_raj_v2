@@ -1,7 +1,7 @@
 app:
     project:
         custom_button: 'Donjon Custom'
-        custom_explanation: 'Les donjons custom possèdent les salles vanilla en plus de celles créés par la communautée. Choisissez un donjon custom si vous doutez des capacités à faire rire du créateur du site. Après tout, il discrédite ses amis sans la moindre scrupule et prétend connaitre vos goût culinaires...'
+        custom_explanation: 'Les donjons custom possèdent les salles vanilla en plus de celles créés par la communautée. Choisissez un donjon custom si vous doutez des capacités à faire rire du créateur du site. Après tout, il discrédite ses amis sans le moindre scrupule et prétend connaitre vos goût culinaires...'
         create_room_button: 'Créer une salle'
         create_room_explanation: 'Vous vous sentez d’humeur créative ? Si oui vous avez la possibilité de créer votre salle pour qu’elle puisse être apparaitre en donjon custom.'
         homepage: 'Menu'

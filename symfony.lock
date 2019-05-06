@@ -1,6 +1,15 @@
 {
+    "behat/behat": {
+        "version": "v3.5.0"
+    },
+    "behat/gherkin": {
+        "version": "v4.6.0"
+    },
     "behat/transliterator": {
         "version": "v1.2.0"
+    },
+    "container-interop/container-interop": {
+        "version": "1.2.0"
     },
     "craue/formflow-bundle": {
         "version": "3.1.0"
@@ -239,9 +248,6 @@
     "sylius/fixtures-bundle": {
         "version": "v1.4.1"
     },
-    "sylius/grid": {
-        "version": "v1.4.1"
-    },
     "sylius/grid-bundle": {
         "version": "v1.4.1"
     },
@@ -262,6 +268,9 @@
     },
     "symfony/cache": {
         "version": "v4.2.3"
+    },
+    "symfony/class-loader": {
+        "version": "v3.4.27"
     },
     "symfony/config": {
         "version": "v4.2.3"
@@ -426,6 +435,9 @@
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.10.0"
+    },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.10.0"

@@ -3,9 +3,18 @@ donjon_vanilla_display_room:
     requirements:
         id: '\d+'
     methods: [GET, POST]
-    controller: App\Controller\DonjonController::displayRoomAction
+    controller: App\Controller\DonjonVanillaController::displayRoomAction
 
-donjon_vanilla_display_test_room:
-    path: /test-room
+donjon_vanilla_build_next_room:
+    path: /build-next-room
+    requirements:
+        id: '\d+'
     methods: [GET, POST]
-    controller: App\Controller\DonjonController::displayTestRoomAction
+    controller: App\Controller\DonjonVanillaController::buildNextRoomAction
+
+donjon_vanilla_end_game:
+    path: /end-game
+    requirements:
+        id: '\d+'
+    methods: [GET, POST]
+    controller: App\Controller\DonjonVanillaController::endGameAction

@@ -1,6 +1,0 @@
-donjon_vanilla_display_room:
-    path: /{id}
-    requirements:
-        id: '\d+'
-    methods: [GET, POST]
-    controller: App\Controller\DonjonController::displayRoomAction

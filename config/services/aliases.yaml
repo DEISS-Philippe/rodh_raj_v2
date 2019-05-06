@@ -12,3 +12,6 @@ services:
     App\Factory\RoomAction\ItemActionFactory: '@sylius.factory.room_action_item_action'
     App\Factory\RoomAction\ChanceActionFactory: '@sylius.factory.room_action_chance_action'
     App\Factory\RoomAction\ChoiceFactory: '@sylius.factory.room_action_choice'
+
+    App\Services\Generator\NextRoomGenerator: '@app.service.generator.next_room'
+    App\Services\Binder\TwigChoiceBinder: '@app.service.binder.twig_choice'
