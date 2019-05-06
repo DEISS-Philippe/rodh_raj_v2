@@ -39,7 +39,7 @@ App\Entity\RoomAction:
     manyToMany:
         userBlackList:
             targetEntity: App\Entity\User
-            inversedBy: blackListedRooms
+            mappedBy: blackListedRooms
     oneToMany:
         choices:
             targetEntity: App\Entity\RoomAction\Choice

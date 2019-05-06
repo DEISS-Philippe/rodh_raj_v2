@@ -31,6 +31,10 @@ class DonjonVanillaController extends AbstractController
         if ($lifeToLoose !== null) {
             $user->setLife($currentUserLife - $lifeToLoose);
             $userRepository->add($user);
+
+            if ($user->getLife() === User::LIFE_EMPTY) {
+                return $this->redirectToRoute('donjon_you_died');
+            }
         }
 
         return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $id]);
@@ -52,12 +56,6 @@ class DonjonVanillaController extends AbstractController
 
         $user->setCurrentRoomAction($currentRoomAction);
         $userRepository->add($user);
-
-        $dispatcher = new EventDispatcher();
-
-        if ($user->getLife() === User::LIFE_EMPTY) {
-            return $this->redirectToRoute('donjon_you_died');
-        }
 
         [$resultChoiceArray, $itemChoiceArray] = $twigBinder->bindChoices($currentChoices, $user);
 

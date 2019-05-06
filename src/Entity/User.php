@@ -5,10 +5,11 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Serializable;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements UserInterface, \Serializable, ResourceInterface
+class User implements UserInterface, Serializable, ResourceInterface
 {
     const LIFE_FULL = 3;
     const LIFE_EMPTY = 0;
@@ -183,7 +184,7 @@ class User implements UserInterface, \Serializable, ResourceInterface
     }
 
     /**
-     * @return RoomAction[]|null
+     * @return RoomAction[]|null|Collection
      */
     public function getBlackListedRooms(): Collection
     {
@@ -204,26 +205,18 @@ class User implements UserInterface, \Serializable, ResourceInterface
         }
     }
 
-    /**
-     * @return Item[]|null
-     */
     public function getItems(): Collection
     {
         return $this->items;
     }
 
-    /**
-     * @param Item[]|null $blackListedRooms
-     */
     public function addItem(Item $item): void
     {
         if (!$this->items->contains($item)) {
             $this->items->add($item);
         }
     }
-    /**
-     * @param Item[]|null $blackListedRooms
-     */
+
     public function removeItem(Item $item): void
     {
         if ($this->items->contains($item)) {

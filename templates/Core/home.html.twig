@@ -10,14 +10,14 @@
             <h1>{{ 'app.project.start'|trans }}</h1>
         </div>
         <section class="grid-5 has-gutter menuGrid">
+            {% if app.user.currentRoomAction is not null and app.user.currentRoomAction.code != 'entree_du_donjon_1' %}
+                <div>
+                    <a href="{{ path('donjon_vanilla_process', { 'id': app.user.currentRoomAction.id }) }}">{{ 'app.project.take_back_game'|trans }}</a>
+                </div>
+            {% endif %}
             <div>
                 <div class="bckg-grey">
-                    {% if (app.user is not null) and (app.user.currentRoomAction is not null) %}
-                        {% set targetRoomId = app.user.currentRoomAction.id %}
-                    {% else %}
-                        {% set targetRoomId = 1 %}
-                    {% endif %}
-                    <a href="{{ path('donjon_vanilla_display_room', { 'id': targetRoomId }) }}">{{ 'app.project.vanilla_button'|trans }}</a>
+                    <a href="{{ path('donjon_vanilla_display_room', { 'id': firstRoomId }) }}">{{ 'app.project.vanilla_button'|trans }}</a>
                 </div>
             </div>
             <div class="col-4">{{ 'app.project.vanilla_explanation'|trans }}</div>

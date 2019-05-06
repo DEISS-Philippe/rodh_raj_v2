@@ -32,10 +32,9 @@ class NextRoomGenerator
             if($roomAction->getCode() === 'entree_du_donjon_1' || $roomAction->getCode() === 'salle_du_boss_1') {
                 $availableNextRoomActions->removeElement($roomAction);
             }
-            foreach ($blackListedRoomActions as $blackRoomAction)
-                if ($roomAction->getId() === $blackRoomAction->getId()){
-                    $availableNextRoomActions->removeElement($roomAction);
-                }
+            if ($blackListedRoomActions->contains($roomAction)) {
+                $availableNextRoomActions->removeElement($roomAction);
+            }
         }
         $availableNextRoomActions = $availableNextRoomActions->toArray();
         $availableNextRoomActions = array_values($availableNextRoomActions);

@@ -150,7 +150,7 @@ class VanillaRoomsWarmUp extends Command
                 $this->output->writeln('['.date('Y-m-d H:i:s').'] ---- Success puting Choice "'.$choice['text'].'" in DB.</>', OutputInterface::VERBOSITY_VERBOSE);
             }
 
-            if (!empty($choice['itemAction']['item']) && !empty($choice['itemAction']['action'])) {
+            if (!empty($choice['itemAction']['item'])) {
                 $newItemAction = $this->treatItemAction($choice);
                 if (!$newItemAction instanceof ItemAction) {
                     $this->output->writeln('<bg=red;fg=black>['.date('Y-m-d H:i:s').'] !------ Error puting ItemAction with Item "'.$choice['itemAction']['item'].'" in DB.</>', OutputInterface::VERBOSITY_VERBOSE);

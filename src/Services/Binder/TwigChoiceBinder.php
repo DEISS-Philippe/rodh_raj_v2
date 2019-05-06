@@ -25,6 +25,7 @@ class TwigChoiceBinder
         $itemChoiceArray = [];
         /** @var Choice $choice */
         foreach ($currentChoices as $choice) {
+            dump($choice);
             //Si une chance est associée à la réussite de l'action
             if (!empty($choice->getChanceAction()) && !empty($choice->getChanceAction()->getChance())) {
                 /** @var ChanceAction $chanceAction */
@@ -32,7 +33,7 @@ class TwigChoiceBinder
                 $successChance = $chanceAction->getChance();
 
                 //test si action réussie
-                if ($successChance < rand(0, 10)) {
+                if ($successChance >= rand(0, 10)) {
                     $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getFailRoomAction(), 'text' => $choice->getText()];
                 } else {
                     $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getSuccessRoomAction(), 'text' => $choice->getText()];

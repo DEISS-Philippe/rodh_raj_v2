@@ -28,6 +28,14 @@
 #                successRoomActionCode: 'Code Test'
 #                failureRoomActionCode: 'Code Test'
 
+roomAction1_2:
+    code: 'entree_du_donjon_2'
+    name: 'Entrée du donjon'
+    text: 'Bravo ! Enfin quelqu’un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n’est pas vécue.'
+    choices:
+        choice1:
+            isBackToMenu: 'true'
+            text: 'Retour au Menu'
 roomAction1_1:
     code: 'entree_du_donjon_1'
     isStartRoomAction: 'true'
@@ -44,42 +52,6 @@ roomAction1_1:
         choice2:
             target: 'entree_du_donjon_2'
             text: 'Rentrer chez Maman.'
-roomAction1_2:
-    code: 'entree_du_donjon_2'
-    name: 'Entrée du donjon'
-    text: 'Bravo ! Enfin quelqu’un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n’est pas vécue.'
-    choices:
-        choice1:
-            isBackToMenu: 'true'
-            text: 'Retour au Menu'
-
-roomAction_boss_1:
-    code: 'salle_du_boss_1'
-    name: 'Salle du Boss'
-    isStartRoomAction: 'true'
-    text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : le mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
-           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu’ils n’auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
-           Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier.
-           “Alors comme ça vous avez réussi à m’atteindre ? Bravo à vous. Maintenant mourez rapidement s’il vous plait : j’ai du travail !”.
-           L’air commence à crépiter d’énergie magique : c’est l''heure du combat de boss !
-
-           Soyons honêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?'
-    choices:
-        choice1:
-            text: 'Fuiez pauvre fou !'
-            target: 'entree_du_donjon_2'
-        choice2:
-            text: 'Combattre !'
-            chanceAction:
-                chance: 2
-                successRoomActionCode: 'salle_du_boss_2'
-                failureRoomActionCode: 'salle_du_boss_3'
-        choice3:
-            text: 'Jouer de votre instrument de musique.'
-            target: 'salle_du_boss_4'
-            itemAction:
-                action: 0
-                item: 'Instrument de musique'
 
 roomAction_boss_2:
     code: 'salle_du_boss_2'
@@ -107,6 +79,34 @@ roomAction_boss_4:
         choice1:
             text: 'Retour au menu.'
             isBackToMenu: 'true'
+
+roomAction_boss_1:
+    code: 'salle_du_boss_1'
+    name: 'Salle du Boss'
+    isStartRoomAction: 'true'
+    text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : le mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
+           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu’ils n’auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
+           Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier.
+           “Alors comme ça vous avez réussi à m’atteindre ? Bravo à vous. Maintenant mourez rapidement s’il vous plait : j’ai du travail !”.
+           L’air commence à crépiter d’énergie magique : c’est l''heure du combat de boss !
+
+           Soyons honêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?'
+    choices:
+        choice1:
+            text: 'Fuiez pauvre fou !'
+            target: 'entree_du_donjon_2'
+        choice2:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 2
+                successRoomActionCode: 'salle_du_boss_2'
+                failureRoomActionCode: 'salle_du_boss_3'
+        choice3:
+            text: 'Jouer de votre instrument de musique.'
+            target: 'salle_du_boss_4'
+            itemAction:
+                item: 'Instrument de musique'
+                action: 0
 
 roomAction2_2:
     code: 'les_trois_couloirs_2'
