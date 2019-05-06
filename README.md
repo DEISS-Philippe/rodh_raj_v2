@@ -13,7 +13,7 @@ php php bin/console d:s:u --dump-sql -f
 Setup basic admin user :
 
 ```bash
-php bin/console sylius:fixtures:load
+php bin/console sylius:fixtures:load -v
 ```
 
 - Name : admin
