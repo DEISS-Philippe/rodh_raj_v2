@@ -1,8 +1,5 @@
 # Project Rodh'Raj
 
-For the documentation of Sylius testing/development, [see here](https://github.com/Sylius/PluginSkeleton)
-
-
 ## Setup database
 
 Setup the database skeleton:
