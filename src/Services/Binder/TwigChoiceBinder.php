@@ -20,7 +20,7 @@ class TwigChoiceBinder
 
     public function bindChoices(Collection $currentChoices, User $user): array
     {
-        //Adapte les choice
+        //Adapte les choice pour un rendu twig
         $resultChoiceArray = [];
         $itemChoiceArray = [];
         /** @var Choice $choice */
@@ -39,11 +39,16 @@ class TwigChoiceBinder
                 }
 
                 //test si le joueur à des items liés aux choice si oui, display le choice
-                if (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction()->getItem()) && $choice->getItemAction()->isAction() === false) {
+                if (!empty($choice->getItemAction())
+                    && $user->getItems()->contains($choice->getItemAction()->getItem())
+                    && $choice->getItemAction()->isAction() === false) {
                     $itemChoiceArray[] = ['hasItem' => true, 'resultRoomAction' => $choice->getTargetRoomAction(), 'text' => $choice->getText()];
                 }
+
                 //Donne au joueur un item
-                elseif (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction()->getItem()) && $choice->getItemAction()->isAction() === true) {
+                elseif (!empty($choice->getItemAction())
+                    && $user->getItems()->contains($choice->getItemAction()->getItem())
+                    && $choice->getItemAction()->isAction() === true) {
                     $user->addItem($choice->getItemAction()->getItem());
                     $this->userRepository->add($user);
                 }

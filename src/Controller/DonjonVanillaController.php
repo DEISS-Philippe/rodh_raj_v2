@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use App\Entity\RoomAction;
 use App\Entity\User;
-use App\Event\DonjonControllerEvent;
 use App\Repository\RoomActionRepository;
 use App\Repository\UserRepository;
 use App\Services\Binder\TwigChoiceBinder;
@@ -19,37 +18,22 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class DonjonVanillaController extends AbstractController
 {
-    public function endGameAction(TokenStorageInterface $tokenStorage,
-                                  UserRepository $userRepository, RoomActionRepository $roomActionRepository)
+    public function ProcessAction(int $id, TokenStorageInterface $tokenStorage,
+                                    UserRepository $userRepository, RoomActionRepository $roomActionRepository)
     {
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
-        /** @var RoomAction $firstRoomAction */
-        $firstRoomAction = $roomActionRepository->findOneBy(['code' => 'entree_du_donjon_1']);
+        $currentUserLife = $user->getLife();
+        /** @var RoomAction $currentRoomAction */
+        $previousRoomAction = $roomActionRepository->findOneBy(['id' => $id]);
 
-        $userRepository->resetUserGameData($user, $firstRoomAction);
-
-        return $this->redirectToRoute('homepage');
-    }
-
-    public function buildNextRoomAction(TokenStorageInterface $tokenStorage,
-                                  UserRepository $userRepository, RoomActionRepository $roomActionRepository,
-                                  NextRoomGenerator $nextRoomGenerator)
-    {
-        /** @var User $user */
-        $user = $tokenStorage->getToken()->getUser();
-
-        $roomNumber = $userRepository->addOneToRoomNumber($user);
-        if ($roomNumber >= 7) {
-            /** @var RoomAction $bossRoom */
-            $bossRoom = $roomActionRepository->findOneBy(['code' => 'salle_du_boss_1']);
-            $bossId = $bossRoom->getId();
-
-            return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossId]);
+        $lifeToLoose = $previousRoomAction->getLooseLife();
+        if ($lifeToLoose !== null) {
+            $user->setLife($currentUserLife - $lifeToLoose);
+            $userRepository->add($user);
         }
-        $nextRoomActionId = $nextRoomGenerator->generateNextRoomId($user);
 
-        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $nextRoomActionId]);
+        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $id]);
     }
 
     public function displayRoomAction(Request $request, int $id, RoomActionRepository $roomActionRepository,
@@ -71,10 +55,6 @@ class DonjonVanillaController extends AbstractController
 
         $dispatcher = new EventDispatcher();
 
-        //Life handling
-        $donjonRoomEvent = new DonjonControllerEvent($currentRoomAction, $user);
-        $dispatcher->addListener(DonjonControllerEvent::PRE_DISPLAY_DONJON, $donjonRoomEvent);
-
         if ($user->getLife() === User::LIFE_EMPTY) {
             return $this->redirectToRoute('donjon_you_died');
         }
@@ -91,5 +71,42 @@ class DonjonVanillaController extends AbstractController
         else {
             throw new BadRequestHttpException('Vous vous êtes perdu dans le néant ?');
         }
+    }
+
+    public function endGameAction(TokenStorageInterface $tokenStorage,
+                                  UserRepository $userRepository, RoomActionRepository $roomActionRepository)
+    {
+        /** @var User $user */
+        $user = $tokenStorage->getToken()->getUser();
+        /** @var RoomAction $firstRoomAction */
+        $firstRoomAction = $roomActionRepository->findOneBy(['code' => 'entree_du_donjon_1']);
+
+        $userRepository->resetUserGameData($user, $firstRoomAction);
+
+        return $this->redirectToRoute('homepage');
+    }
+
+    public function buildNextRoomAction(TokenStorageInterface $tokenStorage,
+                                        UserRepository $userRepository, RoomActionRepository $roomActionRepository,
+                                        NextRoomGenerator $nextRoomGenerator)
+    {
+        /** @var User $user */
+        $user = $tokenStorage->getToken()->getUser();
+
+        $roomNumber = $userRepository->addOneToRoomNumber($user);
+        if ($roomNumber > 7) {
+            /** @var RoomAction $bossRoom */
+            $bossRoom = $roomActionRepository->findOneBy(['code' => 'salle_du_boss_1']);
+            $bossId = $bossRoom->getId();
+
+            return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossId]);
+        }
+        $nextRoomAction = $nextRoomGenerator->generateNextRoom($user);
+
+        $blackList = $user->getBlackListedRooms();
+        $blackList->add($nextRoomAction);
+        $userRepository->add($user);
+
+        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $nextRoomAction->getId()]);
     }
 }

@@ -19,7 +19,7 @@ class NextRoomGenerator
         $this->roomActionRepository = $roomActionRepository;
     }
 
-    public function generateNextRoomId(User $user): int
+    public function generateNextRoom(User $user): RoomAction
     {
         //Génère la possible RoomActions à venir
         $blackListedRoomActions = $user->getBlackListedRooms();
@@ -43,8 +43,7 @@ class NextRoomGenerator
 
         /** @var RoomAction $nextRoomAction */
         $nextRoomAction = $availableNextRoomActions[$rand];
-        $nextRoomActionId = $nextRoomAction->getId();
 
-        return $nextRoomActionId;
+        return $nextRoomAction;
     }
 }

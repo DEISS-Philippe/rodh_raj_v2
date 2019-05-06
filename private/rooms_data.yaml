@@ -92,7 +92,7 @@ roomAction_boss_2:
 roomAction_boss_3:
     code: 'salle_du_boss_3'
     name: 'Salle du Boss'
-    text: 'D''un claquement de doigts, votre corps se transforme en merguez géante. Au moins votre mort à été rapide et sans douleure (ou presque).'
+    text: 'D''un claquement de doigts, votre corps se transforme en merguez géante. Au moins votre mort à été rapide et sans douleur (ou presque).'
     choices:
         choice1:
             text: 'Retour au menu.'
