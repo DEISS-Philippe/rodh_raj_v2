@@ -18,6 +18,12 @@
 </head>
 
 <body>
+    {% if app.user is not empty %}
+        <div class="username">
+            {{ app.user.name }}
+        </div>
+    {% endif %}
+
     <div class="wrapper">
         {% if app.user %}
             <div class="logout">

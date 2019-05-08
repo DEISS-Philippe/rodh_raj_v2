@@ -90,7 +90,7 @@ class User implements UserInterface, Serializable, ResourceInterface
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -106,7 +106,7 @@ class User implements UserInterface, Serializable, ResourceInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }

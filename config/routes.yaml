@@ -11,10 +11,10 @@ homepage:
     methods: [GET, POST]
     controller: App\Controller\HomeController::displayAction
 
-forbidden:
-    path: /forbidden
+create_account:
+    path: /register
     methods: [GET, POST]
-    controller: App\Controller\ForbiddenController::displayAction
+    controller: App\Controller\RegistrationController::register
 
 donjon:
     prefix:

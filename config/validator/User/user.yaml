@@ -1,0 +1,9 @@
+App\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+              fields: [name]
+              groups: ['sylius']
+    properties:
+        name:
+            -   NotBlank:
+                    groups: ['sylius']

@@ -1,0 +1,16 @@
+default:
+    extensions:
+        Behat/MinkExtension:
+            base_url: 'http://rodh-raj.devbeta.me'
+            default_session: symfony
+                javascript_session: chrome
+                sessions:
+                    symfony:
+                        symfony: ~
+                    chrome:
+                        selenium2: ~
+        Behat\MinkExtension\Extension:
+            selenium2: ~
+    suites:
+        default:
+            contexts: [FeatureContext, DonjonContext, WebContext]

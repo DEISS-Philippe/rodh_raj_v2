@@ -1,0 +1,10 @@
+parameters:
+    sylius.form.type.user.validation_groups: [sylius]
+
+services:
+    app.form.user:
+        class: App\Form\Type\User\UserType
+        arguments:
+            - '%sylius.model.user.class%'
+            - '%sylius.form.type.user.validation_groups%'
+        tags: { name: form.type }

@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+{% import "Macro/ChoiceButtons.html.twig" as specialChoiceButton %}
+
+{% block title %}
+    <title>{{ 'app.project.create_account'|trans }}</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container_basic">
+        <div class="light_title">
+            <h1>{{ 'app.project.create_account'|trans }}</h1>
+        </div>
+        <div class="comment">
+            {{ 'app.comment.create_account'|trans }}
+        </div>
+        <div>
+            {{ form_start(form, {'action': path('create_account'), 'attr': {'class': 'form'}}) }}
+            <div class="alert--danger">
+                {{ form_errors(form) }}
+            </div>
+            <div class="form_field">
+                {{ form_widget(form.name) }}
+                <div class="border"></div>
+            </div>
+            <div class="form_field">
+                {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'app.form.user.password'|trans } }) }}
+                <div class="border"></div>
+            </div>
+            <div class="form_field">
+                {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'app.form.user.password_repeat'|trans } }) }}
+                <div class="border"></div>
+            </div>
+
+            {{ form_row(form._token) }}
+            <div>
+                <input type="submit" class="basic_submit" value="{{ 'app.form.submit'|trans }}">
+            </div>
+
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+
+{% endblock %}

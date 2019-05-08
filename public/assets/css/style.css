@@ -109,7 +109,7 @@ h1 {
 input{
     display: block;
     width: 100%;
-    padding: 4px 2px 4px 2px;
+    padding: 6px 6px 6px 6px;
     background-color: #EDEDED;
     border-width: 0px;
     border: none;
@@ -117,7 +117,6 @@ input{
 input[type="submit"]{
     margin-top: 20px;
     display: block;
-    background-color: #fff;
     cursor: pointer;
 }
 .alert--danger {
@@ -127,6 +126,14 @@ input[type="submit"]{
     color: #111;
 }
 
+.form_field {
+    margin-bottom: 30px;
+}
+
+.basic_submit {
+    width: 200px;
+    text-align: start;
+}
 /*
 Page
  */
@@ -279,4 +286,27 @@ a.disabled {
 .form_button {
     text-align: left;
     font-weight: 600;
+}
+
+.createAccount {
+    margin-top: 40px;
+}
+
+.light_title {
+    margin-top: 10vh;
+    margin-bottom: 20px;
+}
+.light_title > h1 {
+    font-size: 55px;
+}
+
+.comment {
+    margin-bottom: 8vh;
+}
+
+.username {
+    position: fixed;
+    top:0;
+    left: 0;
+    padding: 8px;
 }

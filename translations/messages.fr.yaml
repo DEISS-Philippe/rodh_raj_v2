@@ -1,8 +1,11 @@
 app:
+    comment:
+        create_account: 'Créer un compte vous permettera de vous identifier en tant que joueur,  vous pourrez donc de reprendre votre partie à tout instant sur un autre poste.'
     project:
         custom_button: 'Donjon Custom'
         custom_explanation: 'Les donjons custom possèdent les salles vanilla en plus de celles créés par la communautée. Choisissez un donjon custom si vous doutez des capacités à faire rire du créateur du site. Après tout, il discrédite ses amis sans le moindre scrupule et prétend connaitre vos goût culinaires...'
         create_room_button: 'Créer une salle'
+        create_account: 'Création de compte'
         create_room_explanation: 'Vous vous sentez d’humeur créative ? Si oui vous avez la possibilité de créer votre salle pour qu’elle puisse être apparaitre en donjon custom.'
         homepage: 'Menu'
         name: 'Le Donjon sans fin'
@@ -22,3 +25,9 @@ app:
         character:
             life: 'Vie :'
             items: 'Objets :'
+    form:
+        submit: 'Soumettre'
+        user:
+            name: 'Nom d''utilisateur'
+            password: 'Mot de passe'
+            password_repeat: 'Confirmation du Mot de passe'

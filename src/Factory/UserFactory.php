@@ -21,4 +21,13 @@ class UserFactory implements Factory\FactoryInterface
     {
         return $this->factory->createNew();
     }
+
+    public function createNewBasicUser()
+    {
+        $user = $this->createNew();
+        $user->setLife(3);
+        $user->setRoomNumber(1);
+
+        return $user;
+    }
 }
