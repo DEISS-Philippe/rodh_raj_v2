@@ -1,5 +1,5 @@
-# Générer les roomAction success et failure AVANT l'insertion de la roomAction qui donne les conditions
-#action:
+# Générer les roomAction tête vers le bas (sinon risque de bug, display en jaune dans la console si -v)
+#ItemAction:
 # 0 : prendre
 # 1 : donner
 # ! les titres doivent matcher à 100% (target) !
@@ -13,7 +13,7 @@
 #    isStartRoomAction: 'true'
 #    choices:
 #        choice1:
-#            target: 'Titre Test'
+#            target: 'entree_du_donjon_1'
 #            text: 'Se rendre au Donjon'
 #            itemAction:
 #                item: 'passoire'
@@ -31,7 +31,7 @@
 roomAction1_2:
     code: 'entree_du_donjon_2'
     name: 'Entrée du donjon'
-    text: 'Bravo ! Enfin quelqu’un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n’est pas vécue.'
+    text: 'Bravo ! Enfin quelqu''un qui fait preuve de bon sens. Une vie ne peut pas être belle si elle n''est pas vécue.'
     choices:
         choice1:
             isBackToMenu: 'true'
@@ -42,8 +42,8 @@ roomAction1_1:
     name: 'Entrée du donjon'
     text: 'Salutations aventurier ! MOI, le maître du jeu vous accompagnerai durant votre folle aventure.
 
-          Certaines épreuves marquent un virage dans une existence. D’autres ne sont que ramassis de futilités posées sur le chemin de la vie tel un étron fumant attendant patiemment le pied du passant distrait.
-          Un donjon est l’épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. De biens nombreuses raisons de s’aventurer dans un endroit ou le danger est à chaque tournant.
+          Certaines épreuves marquent un virage dans une existence. D''autres ne sont que ramassis de futilités posées sur le chemin de la vie tel un étron fumant attendant patiemment le pied du passant distrait.
+          Un donjon est l''épreuve ultime pour tout aventurier recherchant gloire, argent ou corps biens proportionnés. De biens nombreuses raisons de s''aventurer dans un endroit ou le danger est à chaque tournant.
 
           Oserez-vous défier le légendaire mage mauve en pénétrant dans le donjon ?'
     choices:
@@ -74,7 +74,7 @@ roomAction_boss_4:
     name: 'Salle du Boss'
     text: 'Le mage mauve se tortille de douleur face à votre offensive à faire grincer des dents. Petit à petit son corps se désintègre jusqu''à former un petit tas de poussière.
            Si gagne:
-           Qui l''aurait cru ? Toujours est il qu’un coffre rempli de babioles magiques et d’argent vous attend sagement derrière le bureau de feu le maître des lieux. Félicitation aventurier ! La chance vous sourira peut être au prochain donjon ?'
+           Qui l''aurait cru ? Toujours est il qu''un coffre rempli de babioles magiques et d''argent vous attend sagement derrière le bureau de feu le maître des lieux. Félicitation aventurier ! La chance vous sourira peut être au prochain donjon ?'
     choices:
         choice1:
             text: 'Retour au menu.'
@@ -85,10 +85,10 @@ roomAction_boss_1:
     name: 'Salle du Boss'
     isStartRoomAction: 'true'
     text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : le mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
-           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu’ils n’auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
+           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu''ils n''auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
            Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier.
-           “Alors comme ça vous avez réussi à m’atteindre ? Bravo à vous. Maintenant mourez rapidement s’il vous plait : j’ai du travail !”.
-           L’air commence à crépiter d’énergie magique : c’est l''heure du combat de boss !
+           “Alors comme ça vous avez réussi à m''atteindre ? Bravo à vous. Maintenant mourez rapidement s''il vous plait : j''ai du travail !”.
+           L''air commence à crépiter d''énergie magique : c''est l''heure du combat de boss !
 
            Soyons honêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?'
     choices:
@@ -111,7 +111,7 @@ roomAction_boss_1:
 roomAction2_2:
     code: 'les_trois_couloirs_2'
     name: 'Les trois couloirs'
-    text: 'Une herse tombe du plafond et vous barre la route. La voix caverneuse du propriétaire des lieux retentit : “BIEN ESSAYÉ, MAIS TU NE M’AURA PAS COMME ÇA PETIT MALIN !”.'
+    text: 'Une herse tombe du plafond et vous barre la route. La voix caverneuse du propriétaire des lieux retentit : “BIEN ESSAYÉ, MAIS TU NE M''AURA PAS COMME ÇA PETIT MALIN !”.'
     choices:
         choice1:
             text: 'Prendre le couloir de droite.'
@@ -121,7 +121,7 @@ roomAction2_1:
     code: 'les_trois_couloirs_1'
     isStartRoomAction: 'true'
     name: 'Les trois couloirs'
-    text: 'La seule activité de cette salle consiste apparemment à mettre à l’épreuve les capacités décisionnel de l’aventurier. Trois couloirs vous font face, chacun allant dans une direction différente.'
+    text: 'La seule activité de cette salle consiste apparemment à mettre à l''épreuve les capacités décisionnel de l''aventurier. Trois couloirs vous font face, chacun allant dans une direction différente.'
     choices:
         choice1:
             text: 'Prendre le couloir de droite.'
@@ -170,7 +170,7 @@ roomAction3_1:
     text: 'Pour une fois vous voilà face à autre chose que des horreurs: un mur. Celui-ci faisant une dizaine de mètres de haut. Vous apercevez la porte de la salle suivante en son sommet.'
     choices:
         choice1:
-            text: 'Utiliser l’échelle cachée dans un coin de la pièce.'
+            text: 'Utiliser l''échelle cachée dans un coin de la pièce.'
             target: 'salle_au_mur_2'
         choice2:
             text: 'Tenter de grimper à main nues.'
@@ -365,7 +365,7 @@ roomAction7_1:
     code: 'salle_anciennement_vide_1'
     name: 'Salle anciennement vide'
     isStartRoomAction: 'true'
-    text: 'Vous voici face à un taudis construit de divers objets trouvés sur le sol des sombres couloirs du Donjon. Une fois à l’intérieur, vous trouvez un groupe de trois anciens d’aventuriers. Ils vous expliquent qu’ils ont préféré s’installer ici plutôt que de mourir dans une des salles suivante ou de rebrousser chemin. Lors de la conversation vous remarquez un coffre de taille raisonnable au fond du taudis.'
+    text: 'Vous voici face à un taudis construit de divers objets trouvés sur le sol des sombres couloirs du Donjon. Une fois à l''intérieur, vous trouvez un groupe de trois anciens d''aventuriers. Ils vous expliquent qu''ils ont préféré s''installer ici plutôt que de mourir dans une des salles suivante ou de rebrousser chemin. Lors de la conversation vous remarquez un coffre de taille raisonnable au fond du taudis.'
     choices:
         choice1:
             text: 'Faire demi-tour puis les attaquer par surprise.'
@@ -374,12 +374,12 @@ roomAction7_1:
                 successRoomActionCode: 'salle_anciennement_vide_4'
                 failureRoomActionCode: 'salle_anciennement_vide_5'
         choice2:
-            text: 'Discuter et accepter l’infusion aux champignon bleus.'
+            text: 'Discuter et accepter l''infusion aux champignon bleus.'
             chanceAction:
                 chance: 5
                 successRoomActionCode: 'salle_anciennement_vide_2'
                 failureRoomActionCode: 'salle_anciennement_vide_3'
-        choice4:
+        choice3:
             text: 'Sympathiser puis voler le coffre quand l''occasion se présente.'
             chanceAction:
                 chance: 3
@@ -387,6 +387,89 @@ roomAction7_1:
                 failureRoomActionCode: 'salle_anciennement_vide_6'
 
 #TODO salle 8
+roomAction8_2:
+    code: 'salle_au_tresor_2'
+    name: 'Salle au trésor'
+    text: 'Il n''en fallu pas moins pour qu''un rideau de flammes écarlates vous fonce dessus.'
+    looseLife: 10
+    choices:
+        choice1:
+            text: 'Salle suivante'
+roomAction8_9:
+    code: 'salle_au_tresor_9'
+    name: 'Salle au trésor'
+    looseLife: 10
+    text: 'Vous prenez cher.'
+    choices:
+        choice1:
+            text: 'Salle suivante'
+roomAction8_3:
+    code: 'salle_au_tresor_3'
+    name: 'Salle au trésor'
+    text: 'Vous tapez sur votre bouclier avec votre hache. Il n''en fallu pas moins pour qu''un rideau de flammes écarlates vous fonce dessus.'
+    choices:
+        choice1:
+            text: 'Mourrir...'
+            target: 'salle_au_tresor_9'
+roomAction8_4:
+    code: 'salle_au_tresor_4'
+    name: 'Salle au trésor'
+    text: 'Vous passez à la salle suivante sur la pointe de vos pieds. Si bien que l''ongle de votre gros orteil droit se décolle.'
+    choices:
+        choice1:
+            text: 'Salle suivante'
+
+roomAction8_6:
+    code: 'salle_au_tresor_6'
+    name: 'Salle au trésor'
+    text: 'En vous approchant discrètement vous arrivez à repartir avec une partie du trésor.'
+    choices:
+        choice1:
+            text: 'Salle suivante'
+roomAction8_7:
+    code: 'salle_au_tresor_7'
+    name: 'Salle au trésor'
+    text: '*Klonk* et oups seront les derniers sons que vous entenderez de votre vivant.'
+    choices:
+        choice1:
+            text: 'Mourrir...'
+            target: 'salle_au_tresor_9'
+roomAction8_8:
+    code: 'salle_au_tresor_8'
+    name: 'Salle au trésor'
+    text: 'Le dragon est pris d''une frayeur incontrôlable. Il s''envole en faisant un trou dans le plafond sur plusieurs étages.'
+    choices:
+        choice1:
+            text: 'S''emparer du trésor et poursuivre sa route.'
+roomAction8_1:
+    code: 'salle_au_tresor_1'
+    name: 'Salle au trésor'
+    isStartRoomAction: 'true'
+    text: 'Vous n''en croyez pas vos yeux : une montagne d''or et des pierres précieuses font briller les murs de la salle. Le seul hic l''espace restreint qu''offre vos poches et le dragon de trois charrettes de haut qui dort dessus.'
+    choices:
+        choice1:
+            text: 'Pousser votre plus beau cri de guerre et charger le dragon !'
+            chanceAction:
+                chance: 2
+                target: 'salle_au_tresor_2'
+        choice2:
+            text: 'Réveiller le dragon puis engager une conversation.'
+            target: 'salle_au_tresor_3'
+        choice3:
+            text: 'Passer sans le déranger.'
+            target: 'salle_au_tresor_4'
+        choice4:
+            text: 'Chaparder discrètement une partie du trésor.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'salle_au_tresor_6'
+                failureRoomActionCode: 'salle_au_tresor_7'
+        choice5:
+            text: 'Brandir les documents tels les saint écrits.'
+            target: 'salle_au_tresor_8'
+            itemAction:
+                item: 'Pile de 3 kilo de documents administratifs'
+                action: 0
 
 roomAction9_6:
     code: 'salle_des_espoirs_perdus_6'
@@ -430,7 +513,7 @@ roomAction9_1:
     code: 'salle_des_espoirs_perdus_1'
     name: 'Salle des espoirs perdus'
     isStartRoomAction: 'true'
-    text: 'Vous faites face à un homme ordinaire qui prétend lutter pour une cause juste. Après avoir échangé quelques mots avec lui, vous avez appris qu’il lutte contre la chute des bébés girafes lors de leurs naissance. Pour cela il propose de débarrasser les femelles girafes d’une partie de leurs jambes et n’exige de votre part qu’un petit don de sang pour faire avancer sa cause auprès d’un élu vampire.'
+    text: 'Vous faites face à un homme ordinaire qui prétend lutter pour une cause juste. Après avoir échangé quelques mots avec lui, vous avez appris qu''il lutte contre la chute des bébés girafes lors de leurs naissance. Pour cela il propose de débarrasser les femelles girafes d''une partie de leurs jambes et n''exige de votre part qu''un petit don de sang pour faire avancer sa cause auprès d''un élu vampire.'
     choices:
         choice1:
             text: 'Du démarchage en plein donjon ! Ça mérite bien une claque !'
@@ -448,4 +531,132 @@ roomAction9_1:
             text: 'Accepter. Pourquoi pas après tout ?'
             target: 'salle_des_espoirs_perdus_6'
         choice4:
-            text: 'L’ignorer et poursuivre votre route.'
+            text: 'L''ignorer et poursuivre votre route.'
+
+roomAction10_5:
+    code: 'l_antre_de_l_ogresse_vegan_5'
+    name: 'L''antre de l''ogresse vegan'
+    text: 'L''ogresse vous attrape et vous fait manger de force des Choux farcis au tofu en papillote.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Salle *eurk* suivante'
+roomAction10_2:
+    code: 'l_antre_de_l_ogresse_vegan_2'
+    name: 'L''antre de l''ogresse vegan'
+    looseLife: 1
+    text: 'L''ogresse vous partage ses plats tout en racontant des anecdotes cocasses sur ses cousines vivant dans des terres de feu. Il ne vous reste de cette rencontre qu''un système digestif dans la panade et un slip souillé.'
+    choices:
+        choice1:
+            text: 'Salle *eurk* suivante.'
+roomAction10_6:
+    code: 'l_antre_de_l_ogresse_vegan_6'
+    name: 'L''antre de l''ogresse vegan'
+    text: 'Après quelques moulinets d''épée, l''ogresse se transforme tranches plutôt appétissantes.'
+    choices:
+        choice1:
+            text: 'Salle suivante'
+            itemAction:
+                item: 'Viande'
+                action: 1
+roomAction10_3:
+    code: 'l_antre_de_l_ogresse_vegan_3'
+    name: 'L''antre de l''ogresse vegan'
+    text: 'L''ogresse se fâche et vous charge.'
+    choices:
+        choice1:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'l_antre_de_l_ogresse_vegan_5'
+                failureRoomActionCode: 'l_antre_de_l_ogresse_vegan_6'
+roomAction10_4:
+    code: 'l_antre_de_l_ogresse_vegan_4'
+    name: 'L''antre de l''ogresse vegan'
+    text: 'L''ogresse est ravie de cette expérience et vous laisse repartir avec le reste des affaires d''anciens aventuriers.'
+    choices:
+        choice1:
+            text: 'Salle suivante'
+            itemAction:
+                item: 'Canard en plastique'
+                action: 1
+roomAction10_1:
+    code: 'l_antre_de_l_ogresse_vegan_1'
+    name: 'L''antre de l''ogresse vegan'
+    isStartRoomAction: 'true'
+    text: 'Vous voilà devant une situation délicate. La seule ogresse qui ait décidé de se lancer dans le véganisme tente de vous en vanter les mérites. Des mots comme ‘brocolis'' ou ‘lait de soja'' sont bien trop répétés pour qualifier son prononceur de sain d''esprit (même venant d''une ogresse).'
+    choices:
+        choice1:
+            text: 'Goûter un assortiment.'
+            target: 'l_antre_de_l_ogresse_vegan_2'
+        choice2:
+            text: 'Refuser poliment en disant que la viande à bon goût.'
+            target: 'l_antre_de_l_ogresse_vegan_3'
+        choice3:
+            text: 'Lui proposer une infusion à partir de champignons bleus.'
+            target: 'l_antre_de_l_ogresse_vegan_4'
+            itemAction:
+                item: 'Champignons bleus'
+                action: 0
+
+roomAction11_2:
+    code: 'les_bureaux_du_donjon_2'
+    name: 'Les bureaux du donjon'
+    text: 'Après un peu d''action vous repartez avec les documents convoités.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+            itemAction:
+                item: 'Pile de 3 kilo de documents administratifs'
+                action: 1
+roomAction11_3:
+    code: 'les_bureaux_du_donjon_3'
+    name: 'Les bureaux du donjon'
+    text: 'Vous vous prennez un violent coup d''annuaire sur la tête.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+roomAction11_4:
+    code: 'les_bureaux_du_donjon_4'
+    name: 'Les bureaux du donjon'
+    text: 'Vous voilà au bureau suivant. Après une attente aussi plaisante qu''un bain d''acide, vous êtes reçu par le personnel qui vous demande de vous rendre à un bureau suivant, celui-ci étant plus à même de traiter votre dossier.'
+    choices:
+        choice1:
+            text: 'Prouver que la violence résout tout.'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'les_bureaux_du_donjon_2'
+                failureRoomActionCode: 'les_bureaux_du_donjon_3'
+        choice2:
+            text: 'Prendre la paperasse du guichetier et aller au bureau suivant.'
+            target: 'les_bureaux_du_donjon_5'
+roomAction11_5:
+    code: 'les_bureaux_du_donjon_5'
+    name: 'Les bureaux du donjon'
+    text: 'Vous voilà au bureau suivant. Après une attente aussi plaisante qu''un lego sous le pied, vous êtes reçu par le personnel qui vous demande de vous rendre à un bureau suivant, celui-ci étant plus à même de traiter votre dossier.'
+    choices:
+        choice1:
+            text: 'Prouver que la violence résout tout.'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'les_bureaux_du_donjon_2'
+                failureRoomActionCode: 'les_bureaux_du_donjon_3'
+        choice2:
+            text: 'Prendre la paperasse du guichetier et aller au bureau suivant.'
+            target: 'les_bureaux_du_donjon_4'
+roomAction11_1:
+    code: 'les_bureaux_du_donjon_1'
+    name: 'Les bureaux du donjon'
+    isStartRoomAction: 'true'
+    text: 'Pour pouvoir accéder à la prochaine salle, il va falloir acquérir l''autorisation dans un labyrinthe administratif. C''est avec dégoût que vos souvenirs concernant votre inscription à la mutuelle des aventurier vous revient en mémoire.'
+    choices:
+        choice1:
+            text: 'Prouver que la violence résout tout.'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'les_bureaux_du_donjon_2'
+                failureRoomActionCode: 'les_bureaux_du_donjon_3'
+        choice2:
+            text: 'Prendre la paperasse du guichetier et aller au bureau suivant.'
+            target: 'les_bureaux_du_donjon_4'

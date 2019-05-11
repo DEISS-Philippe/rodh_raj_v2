@@ -11,7 +11,6 @@ use App\Services\Binder\TwigChoiceBinder;
 use App\Services\Generator\NextRoomGenerator;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -19,15 +18,15 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class DonjonVanillaController extends AbstractController
 {
     public function ProcessAction(int $id, TokenStorageInterface $tokenStorage,
-                                    UserRepository $userRepository, RoomActionRepository $roomActionRepository)
+                                  UserRepository $userRepository, RoomActionRepository $roomActionRepository)
     {
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
         $currentUserLife = $user->getLife();
         /** @var RoomAction $currentRoomAction */
-        $previousRoomAction = $roomActionRepository->findOneBy(['id' => $id]);
+        $toComeRoomAction = $roomActionRepository->findOneBy(['id' => $id]);
 
-        $lifeToLoose = $previousRoomAction->getLooseLife();
+        $lifeToLoose = $toComeRoomAction->getLooseLife();
         if ($lifeToLoose !== null) {
             $user->setLife($currentUserLife - $lifeToLoose);
             $userRepository->add($user);
@@ -100,6 +99,8 @@ class DonjonVanillaController extends AbstractController
             return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossId]);
         }
         $nextRoomAction = $nextRoomGenerator->generateNextRoom($user);
+
+        if ($nextRoomAction->get)
 
         $blackList = $user->getBlackListedRooms();
         $blackList->add($nextRoomAction);
