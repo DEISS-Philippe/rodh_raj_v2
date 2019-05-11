@@ -11,7 +11,7 @@ donjon_vanilla_build_next_room:
     controller: App\Controller\DonjonVanillaController::buildNextRoomAction
 
 donjon_vanilla_process:
-    path: /process/{id}
+    path: /process-room/{id}
     methods: [GET, POST]
     controller: App\Controller\DonjonVanillaController::ProcessAction
 

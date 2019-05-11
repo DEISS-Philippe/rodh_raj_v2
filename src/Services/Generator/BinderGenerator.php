@@ -39,14 +39,14 @@ class BinderGenerator
         $explodedRoomCode = explode('_', $roomActionCode);
 
         $roomCode = '';
-        for ($i = 0; sizeof($explodedRoomCode)-1; $i++) {
+        for ($i = 0; $i < sizeof($explodedRoomCode); $i++) {
+            dump($roomCode, sizeof($explodedRoomCode)-1, sizeof($explodedRoomCode));
             $roomCode .= $explodedRoomCode[$i].'_';
         }
 
-        dump($roomCode);
-
         /** @var RoomAction[] $roomActionWithCode */
         $roomActionsWithCode = $this->roomActionRepository->findByCode($roomCode);
+        dump($roomActionsWithCode);
 
         /** @var RoomAction $roomActionWithCode */
         foreach($roomActionsWithCode as $roomActionWithCode) {

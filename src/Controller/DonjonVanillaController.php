@@ -121,7 +121,6 @@ class DonjonVanillaController extends AbstractController
         $blackList->add($nextRoomAction);
         $userRepository->add($user);
 
-//        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $nextRoomAction->getId()]);
         return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $binder->getBinderToken()]);
     }
 }

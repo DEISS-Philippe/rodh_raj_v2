@@ -16,3 +16,4 @@ services:
     App\Services\Generator\NextRoomGenerator: '@app.service.generator.next_room'
     App\Services\Generator\RoomTokenGenerator: '@app.service.generator.room_token'
     App\Services\Binder\TwigChoiceBinder: '@app.service.binder.twig_choice'
+    App\Services\Generator\BinderGenerator: '@app.service.generator.binder'

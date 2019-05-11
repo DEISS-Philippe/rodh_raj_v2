@@ -9,7 +9,7 @@ class RoomActionRepository extends \Sylius\Bundle\ResourceBundle\Doctrine\ORM\En
     {
         $qb = $this->createQueryBuilder('ra');
 
-        $qb->andWhere('ra.code LIKE :code%')
+        $qb->andWhere('ra.code LIKE \':code%\'')
             ->setParameter('code', $code);
 
         return $qb->getQuery()->getResult();
