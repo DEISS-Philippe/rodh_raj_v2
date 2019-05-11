@@ -1,0 +1,12 @@
+1.0
+donjon opérationnel avec salles vanilla et combats
+
+2.0
+Création de salles possibles
+clef aléatoire par partie pour chacune des salles du joueur (anti triche)
+
+3.0
+Systeme de like / social
+
+3.1 ?
+Choix de classes

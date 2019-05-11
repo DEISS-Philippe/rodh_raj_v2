@@ -11,22 +11,21 @@
 #    text: 'texte test'
 #    looseLife: 1
 #    isStartRoomAction: 'true'
+#    addItem: 'Item name'
 #    choices:
 #        choice1:
 #            target: 'entree_du_donjon_1'
 #            text: 'Se rendre au Donjon'
 #            itemAction:
 #                item: 'passoire'
-#                action: 0
 #        choice2:
 #            text: 'Se rendre au Donjon'
 #            itemAction:
 #                item: 'passoire'
-#                action: 0
 #            chanceAction:
 #                chance: 6
-#                successRoomActionCode: 'Code Test'
-#                failureRoomActionCode: 'Code Test'
+#                successRoomActionCode: 'Code_Test'
+#                failureRoomActionCode: 'Code_Test'
 
 roomAction1_2:
     code: 'entree_du_donjon_2'
@@ -85,12 +84,12 @@ roomAction_boss_1:
     name: 'Salle du Boss'
     isStartRoomAction: 'true'
     text: 'Vous y voilà enfin ! Devant vous se tient la plus grande menace des environs : le mage mauve. Celui-ci est assis à son bureau sur lequel trônait une pile de paperasse vacillante proche de toucher le plafond.
-           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu''ils n''auront pas leurs augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
+           “Serviteur ! Apporte-moi plus de café ! Et dit au gobelins qu''ils n''auront pas leur augmentation avant de savoir récurer correctement les latrines ! Serviteur ?”
            Après un léger silence, il se retourne subitement et vous fait face avec un grand sourire carnassier.
-           “Alors comme ça vous avez réussi à m''atteindre ? Bravo à vous. Maintenant mourez rapidement s''il vous plait : j''ai du travail !”.
+           “Alors comme ça vous avez réussi à m''atteindre ? Bravo à vous. Maintenant trépassez rapidement s''il vous plait : j''ai du travail !”.
            L''air commence à crépiter d''énergie magique : c''est l''heure du combat de boss !
 
-           Soyons honêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?'
+           Soyons honnêtes, il y a quand même très peu de chances de vaincre un tel adepte de la magie, la fuite reste encore une option. A moins que vous ayez un plan ?'
     choices:
         choice1:
             text: 'Fuiez pauvre fou !'
@@ -106,7 +105,6 @@ roomAction_boss_1:
             target: 'salle_du_boss_4'
             itemAction:
                 item: 'Instrument de musique'
-                action: 0
 
 roomAction2_2:
     code: 'les_trois_couloirs_2'
@@ -293,13 +291,13 @@ roomAction6_1:
     code: 'dortoir_des_serviteurs_1'
     name: 'Dortoir des serviteurs'
     isStartRoomAction: 'true'
-    text: 'En défonçant brutalement la porte vous mettez pied dans une salle senteur lavande. Le maître du Donjon à beau être un meurtrier, il lui tient à coeur de proposer à ses serviteurs lutins des draps propres. Immédiatement après votre arrivée inattendue, les petites créatures se sont toutes tassés dans le coin opposé de la pièce en poussant des cris apeurés.'
+    text: 'En défonçant brutalement la porte vous mettez pied dans une salle senteur lavande. Le maître du Donjon à beau être un meurtrier, il lui tient à coeur de proposer des draps propres à ses serviteurs. Immédiatement après votre arrivée inattendue, les lutins présents dans la salle se sont tous figés en poussant des cris inquiets.'
     choices:
         choice1:
             target: 'dortoir_des_serviteurs_8'
             text: 'Les massacrer !'
         choice2:
-            text: 'Tenter de leurs parler.'
+            text: 'Tenter de leur parler.'
             chanceAction:
                 chance: 3
                 successRoomActionCode: 'dortoir_des_serviteurs_2'
@@ -315,12 +313,10 @@ roomAction7_7:
     code: 'salle_anciennement_vide_7'
     name: 'Salle anciennement vide'
     text: 'Vous partez direction la salle suivante avec trois aventuriers au trousses et un coffre entre les mains. Heureusement, ceux-ci s''essoufflent vite. Il ne pouvaient pas lutter face à votre expérience dans le domaine de la fuite. Apèrs avoir ouvert le coffre, vous y récupérez des champignons bleus.'
+    addItem: 'Champignons bleus'
     choices:
         choice1:
             text: 'Continuer vers la salle suivante'
-            itemAction:
-                item: 'Champignons bleus'
-                action: 1
 roomAction7_6:
     code: 'salle_anciennement_vide_6'
     name: 'Salle anciennement vide'
@@ -332,18 +328,16 @@ roomAction7_6:
 roomAction7_5:
     code: 'salle_anciennement_vide_5'
     name: 'Salle anciennement vide'
-    looseLife: -1
     text: 'Votre victoire fut rapide et sanglante. Vous vous précipitez sur le coffre pour y trouver une pile de champignons bleus.'
+    addItem: 'Champignons bleus'
     choices:
         choice1:
             text: 'Continuer vers la salle suivante'
-            itemAction:
-                item: 'Champignons bleus'
-                action: 1
 roomAction7_4:
     code: 'salle_anciennement_vide_4'
     name: 'Salle anciennement vide'
-    text: 'En vous laissant aller à la conversation, vous apprenez que le maître du donjon à horreur de la mauvaise musique.'
+    text: 'Vous êtes battu à plate de couture.'
+    looseLife: 1
     choices:
         choice1:
             text: 'Continuer vers la salle suivante'
@@ -371,8 +365,8 @@ roomAction7_1:
             text: 'Faire demi-tour puis les attaquer par surprise.'
             chanceAction:
                 chance: 4
-                successRoomActionCode: 'salle_anciennement_vide_4'
-                failureRoomActionCode: 'salle_anciennement_vide_5'
+                successRoomActionCode: 'salle_anciennement_vide_5'
+                failureRoomActionCode: 'salle_anciennement_vide_4'
         choice2:
             text: 'Discuter et accepter l''infusion aux champignon bleus.'
             chanceAction:
@@ -417,7 +411,7 @@ roomAction8_4:
     text: 'Vous passez à la salle suivante sur la pointe de vos pieds. Si bien que l''ongle de votre gros orteil droit se décolle.'
     choices:
         choice1:
-            text: 'Salle suivante'
+            text: 'Continuer vers la salle suivante'
 
 roomAction8_6:
     code: 'salle_au_tresor_6'
@@ -469,7 +463,6 @@ roomAction8_1:
             target: 'salle_au_tresor_8'
             itemAction:
                 item: 'Pile de 3 kilo de documents administratifs'
-                action: 0
 
 roomAction9_6:
     code: 'salle_des_espoirs_perdus_6'
@@ -540,7 +533,7 @@ roomAction10_5:
     looseLife: 1
     choices:
         choice1:
-            text: 'Salle *eurk* suivante'
+            text: 'Continuer vers la *eurk* salle suivante'
 roomAction10_2:
     code: 'l_antre_de_l_ogresse_vegan_2'
     name: 'L''antre de l''ogresse vegan'
@@ -548,17 +541,15 @@ roomAction10_2:
     text: 'L''ogresse vous partage ses plats tout en racontant des anecdotes cocasses sur ses cousines vivant dans des terres de feu. Il ne vous reste de cette rencontre qu''un système digestif dans la panade et un slip souillé.'
     choices:
         choice1:
-            text: 'Salle *eurk* suivante.'
+            text: 'Continuer vers la *eurk* salle suivante.'
 roomAction10_6:
     code: 'l_antre_de_l_ogresse_vegan_6'
     name: 'L''antre de l''ogresse vegan'
     text: 'Après quelques moulinets d''épée, l''ogresse se transforme tranches plutôt appétissantes.'
+    addItem: 'Viande'
     choices:
         choice1:
-            text: 'Salle suivante'
-            itemAction:
-                item: 'Viande'
-                action: 1
+            text: 'Continuer vers la salle suivante.'
 roomAction10_3:
     code: 'l_antre_de_l_ogresse_vegan_3'
     name: 'L''antre de l''ogresse vegan'
@@ -574,12 +565,10 @@ roomAction10_4:
     code: 'l_antre_de_l_ogresse_vegan_4'
     name: 'L''antre de l''ogresse vegan'
     text: 'L''ogresse est ravie de cette expérience et vous laisse repartir avec le reste des affaires d''anciens aventuriers.'
+    addItem: 'Canard en plastique'
     choices:
         choice1:
-            text: 'Salle suivante'
-            itemAction:
-                item: 'Canard en plastique'
-                action: 1
+            text: 'Continuer vers la salle suivante.'
 roomAction10_1:
     code: 'l_antre_de_l_ogresse_vegan_1'
     name: 'L''antre de l''ogresse vegan'
@@ -597,18 +586,15 @@ roomAction10_1:
             target: 'l_antre_de_l_ogresse_vegan_4'
             itemAction:
                 item: 'Champignons bleus'
-                action: 0
 
 roomAction11_2:
     code: 'les_bureaux_du_donjon_2'
     name: 'Les bureaux du donjon'
     text: 'Après un peu d''action vous repartez avec les documents convoités.'
+    addItem: 'Pile de 3 kilo de documents administratifs'
     choices:
         choice1:
             text: 'Continuer vers la salle suivante'
-            itemAction:
-                item: 'Pile de 3 kilo de documents administratifs'
-                action: 1
 roomAction11_3:
     code: 'les_bureaux_du_donjon_3'
     name: 'Les bureaux du donjon'

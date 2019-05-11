@@ -21,7 +21,8 @@ App\Entity\RoomAction\Choice:
             fetch: EAGER
     manyToOne:
         itemAction:
-            targetEntity: App\Entity\RoomAction\ItemAction
+            targetEntity: App\Entity\Item
+            nullable: true
             cascade: [ PERSIST, REMOVE ]
             fetch: EAGER
         roomAction:
@@ -30,7 +31,7 @@ App\Entity\RoomAction\Choice:
             joinColumn:
                 nullable: false
         targetRoomAction:
-            fetch: EAGER
             targetEntity: App\Entity\RoomAction
             joinColumn:
                 nullable: true
+            fetch: EAGER

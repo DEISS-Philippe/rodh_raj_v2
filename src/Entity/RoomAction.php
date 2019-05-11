@@ -34,6 +34,8 @@ class RoomAction implements ResourceInterface
     private $name;
     /** @var string|null */
     private $code;
+    /** @var Item|null */
+    private $addItem;
 
     public function __construct()
     {
@@ -236,6 +238,22 @@ class RoomAction implements ResourceInterface
     public function setCode(?string $code): void
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return Item|null
+     */
+    public function getAddItem(): ?Item
+    {
+        return $this->addItem;
+    }
+
+    /**
+     * @param Item|null $addItem
+     */
+    public function setAddItem(?Item $addItem): void
+    {
+        $this->addItem = $addItem;
     }
 
 }

@@ -13,6 +13,6 @@ App\Entity\Item:
             length: 255
             nullable: false
     manyToMany:
-        user:
+        users:
             targetEntity: App\Entity\User
             inversedBy: items

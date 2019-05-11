@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity\RoomAction;
 
+use App\Entity\Item;
 use App\Entity\RoomAction;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -16,7 +17,7 @@ class Choice implements ResourceInterface
     private $text = '';
     /** @var RoomAction */
     private $targetRoomAction = null;
-    /** @var ItemAction|null */
+    /** @var Item|null */
     private $itemAction = null;
     /** @var ChanceAction|null */
     private $chanceAction = null;
@@ -80,17 +81,17 @@ class Choice implements ResourceInterface
     }
 
     /**
-     * @return ItemAction|null
+     * @return Item|null
      */
-    public function getItemAction(): ?ItemAction
+    public function getItemAction(): ?Item
     {
         return $this->itemAction;
     }
 
     /**
-     * @param ItemAction|null $itemAction
+     * @param Item|null $itemAction
      */
-    public function setItemAction(?ItemAction $itemAction): void
+    public function setItemAction(?Item $itemAction): void
     {
         $this->itemAction = $itemAction;
     }

@@ -213,6 +213,7 @@ class User implements UserInterface, Serializable, ResourceInterface
     public function addItem(Item $item): void
     {
         if (!$this->items->contains($item)) {
+            $item->addUser($this);
             $this->items->add($item);
         }
     }
@@ -220,6 +221,7 @@ class User implements UserInterface, Serializable, ResourceInterface
     public function removeItem(Item $item): void
     {
         if ($this->items->contains($item)) {
+            $item->removeUser($this);
             $this->items->removeElement($item);
         }
     }

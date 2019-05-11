@@ -17,14 +17,12 @@ class YouDiedController extends AbstractController
         UserRepository $userRepository
     )
     {
-        //reset les données de jeu
-
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
         /** @var RoomAction $startRoomAction */
         $startRoomAction = $roomActionRepository->findOneBy(['code' => 'entree_du_donjon_1']);
 
-        //Teste Nouvelle partie : reset des propriétés de jeu pour le joueur
+        //reset les données de jeu
         $userRepository->resetUserGameData($user, $startRoomAction);
 
         return $this->render('Core/you_died.html.twig');

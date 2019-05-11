@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 class Item implements ResourceInterface
@@ -11,8 +12,8 @@ class Item implements ResourceInterface
     private $id;
     /** @var string */
     private $name = '';
-    /** User|null */
-    private $user;
+    /** User[]|null */
+    private $users;
 
     /**
      * @return int
@@ -39,17 +40,24 @@ class Item implements ResourceInterface
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getUsers(): Collection
     {
-        return $this->user;
+        return $this->users;
     }
 
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user): void
+    public function addUser(User $user): void
     {
-        $this->user = $user;
+        if (!$this->users->contains($user)) {
+//            $user->addItem($this);
+            $this->users->add($user);
+        }
     }
 
+    public function removeUser(User $user): void
+    {
+        if ($this->users->contains($user)) {
+//            $user->removeItem($this);
+            $this->users->removeElement($user);
+        }
+    }
 }

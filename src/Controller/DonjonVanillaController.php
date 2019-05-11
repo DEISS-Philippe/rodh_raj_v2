@@ -23,18 +23,29 @@ class DonjonVanillaController extends AbstractController
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
         $currentUserLife = $user->getLife();
-        /** @var RoomAction $currentRoomAction */
-        $toComeRoomAction = $roomActionRepository->findOneBy(['id' => $id]);
+        /** @var RoomAction $roomActionToCome */
+        $roomActionToCome = $roomActionRepository->findOneBy(['id' => $id]);
 
-        $lifeToLoose = $toComeRoomAction->getLooseLife();
+        $lifeToLoose = $roomActionToCome->getLooseLife();
         if ($lifeToLoose !== null) {
             $user->setLife($currentUserLife - $lifeToLoose);
-            $userRepository->add($user);
 
-            if ($user->getLife() === User::LIFE_EMPTY) {
+            if ($user->getLife() <= User::LIFE_EMPTY) {
                 return $this->redirectToRoute('donjon_you_died');
             }
         }
+
+        $itemToAdd = $roomActionToCome->getAddItem();
+        if ($itemToAdd !== null) {
+            if (!$user->getItems()->contains($itemToAdd)) {
+                dump($itemToAdd);
+                $user->addItem($itemToAdd);
+            }
+            dump($user);
+        }
+
+
+        $userRepository->add($user);
 
         return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $id]);
     }
@@ -99,8 +110,6 @@ class DonjonVanillaController extends AbstractController
             return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossId]);
         }
         $nextRoomAction = $nextRoomGenerator->generateNextRoom($user);
-
-        if ($nextRoomAction->get)
 
         $blackList = $user->getBlackListedRooms();
         $blackList->add($nextRoomAction);

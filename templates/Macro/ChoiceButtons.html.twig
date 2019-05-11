@@ -1,6 +1,6 @@
 {% macro displaySpecialButton(choiceArray, isItem) %}
     {% for choice in choiceArray %}
-        {{ dump(choice) }}
+{#        {{ dump(choice) }}#}
         <div class="room_choice bckg-grey {% if isItem == true %}{% if choice.hasItem ? 'bckg-green' : 'displayNone' %}{% endif %}{% endif %}">
             <a href="{{ path('donjon_vanilla_process', {'id': choice.resultRoomAction.id}) }}" class="full_link"></a>
             <div class="fl">

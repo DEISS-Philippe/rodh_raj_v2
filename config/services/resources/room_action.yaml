@@ -1,6 +1,5 @@
 imports:
   - { resource: 'room_action\choice.yaml' }
-  - { resource: 'room_action\item_action.yaml' }
   - { resource: 'room_action\chance_action.yaml' }
 
 sylius_resource:

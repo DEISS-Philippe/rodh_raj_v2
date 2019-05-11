@@ -44,3 +44,7 @@ App\Entity\RoomAction:
         choices:
             targetEntity: App\Entity\RoomAction\Choice
             mappedBy: roomAction
+    manyToOne:
+        addItem:
+            targetEntity: App\Entity\Item
+            fetch: EAGER

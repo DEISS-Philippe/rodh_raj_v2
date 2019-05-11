@@ -7,11 +7,9 @@ services:
             - '@sylius.factory.room_action'
             - '@sylius.factory.room_action_choice'
             - '@sylius.factory.room_action_chance_action'
-            - '@sylius.factory.room_action_item_action'
             - '@sylius.factory.item'
             - '@sylius.repository.room_action_choice'
             - '@sylius.repository.room_action_chance_action'
-            - '@sylius.repository.room_action_item_action'
             - '@sylius.repository.item'
         tags:
             - { name: console.command, command: 'app:vanilla-rooms-warmup' }

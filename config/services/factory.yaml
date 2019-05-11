@@ -28,9 +28,3 @@ services:
         decorates: sylius.factory.room_action_chance_action
         arguments: ['@app.factory.room_action_chance_action.inner']
         public: true
-
-    app.factory.room_action_item_action:
-        class: App\Factory\RoomAction\ItemActionFactory
-        decorates: sylius.factory.room_action_item_action
-        arguments: ['@app.factory.room_action_item_action.inner']
-        public: true

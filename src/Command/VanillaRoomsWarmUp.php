@@ -7,16 +7,13 @@ use App\Entity\Item;
 use App\Entity\RoomAction;
 use App\Entity\RoomAction\ChanceAction;
 use App\Entity\RoomAction\Choice;
-use App\Entity\RoomAction\ItemAction;
 use App\Factory\ItemFactory;
 use App\Factory\RoomAction\ChanceActionFactory;
 use App\Factory\RoomAction\ChoiceFactory;
-use App\Factory\RoomAction\ItemActionFactory;
 use App\Factory\RoomActionFactory;
 use App\Repository\ItemRepository;
 use App\Repository\RoomAction\ChanceActionRepository;
 use App\Repository\RoomAction\ChoiceRepository;
-use App\Repository\RoomAction\ItemActionRepository;
 use App\Repository\RoomActionRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\Console\Command\Command;
@@ -48,10 +45,6 @@ class VanillaRoomsWarmUp extends Command
      */
     private $chanceActionFactory;
     /**
-     * @var ItemActionFactory
-     */
-    private $itemActionFactory;
-    /**
      * @var ItemFactory
      */
     private $itemFactory;
@@ -63,10 +56,6 @@ class VanillaRoomsWarmUp extends Command
      * @var ChanceActionRepository
      */
     private $chanceActionRepository;
-    /**
-     * @var ItemActionRepository
-     */
-    private $itemActionRepository;
     /**
      * @var ItemRepository
      */
@@ -80,10 +69,10 @@ class VanillaRoomsWarmUp extends Command
     public function __construct(UserRepository $userRepository, RoomActionRepository $roomActionRepository,
                                 RoomActionFactory $roomActionFactory,
                                 ChoiceFactory $choiceFactory, ChanceActionFactory $chanceActionFactory,
-                                ItemActionFactory $itemActionFactory, ItemFactory $itemFactory,
+                                ItemFactory $itemFactory,
                                 ChoiceRepository $choiceRepository,
                                 ChanceActionRepository $chanceActionRepository,
-                                ItemActionRepository $itemActionRepository, ItemRepository $itemRepository,
+                                ItemRepository $itemRepository,
                                 string $name = null)
     {
         parent::__construct($name);
@@ -92,11 +81,9 @@ class VanillaRoomsWarmUp extends Command
         $this->roomActionFactory = $roomActionFactory;
         $this->choiceFactory = $choiceFactory;
         $this->chanceActionFactory = $chanceActionFactory;
-        $this->itemActionFactory = $itemActionFactory;
         $this->itemFactory = $itemFactory;
         $this->choiceRepository = $choiceRepository;
         $this->chanceActionRepository = $chanceActionRepository;
-        $this->itemActionRepository = $itemActionRepository;
         $this->itemRepository = $itemRepository;
     }
 
@@ -151,11 +138,12 @@ class VanillaRoomsWarmUp extends Command
             }
 
             if (!empty($choice['itemAction']['item'])) {
-                $newItemAction = $this->treatItemAction($choice);
-                if (!$newItemAction instanceof ItemAction) {
+                $newItemAction = $this->itemExistOrAddInDB($choice['itemAction']['item']);
+                if (!$newItemAction instanceof Item) {
                     $this->output->writeln('<bg=red;fg=black>['.date('Y-m-d H:i:s').'] !------ Error puting ItemAction with Item "'.$choice['itemAction']['item'].'" in DB.</>', OutputInterface::VERBOSITY_VERBOSE);
                     continue;
                 } else {
+                    $newChoice->setItemAction($newItemAction);
                     $this->output->writeln('['.date('Y-m-d H:i:s').'] ------ Success puting ItemAction with Item "'.$choice['itemAction']['item'].'" in DB.', OutputInterface::VERBOSITY_VERBOSE);
                 }
             }
@@ -222,10 +210,25 @@ class VanillaRoomsWarmUp extends Command
         if (!empty($room['isStartRoomAction'])) {
             $newRoomAction->setIsStartRoomAction(true);
         }
+        if (!empty($room['addItem'])) {
+            $item = $this->itemExistOrAddInDB($room['addItem']);
+            $newRoomAction->setAddItem($item);
+        }
 
         $this->roomActionRepository->add($newRoomAction);
 
         return $newRoomAction;
+    }
+
+    public function itemExistOrAddInDB($itemName)
+    {
+        $item = $this->itemRepository->findOneBy(['name' => $itemName]);
+        if (!$item instanceof Item){
+            $item = $this->itemFactory->createNewWithName($itemName);
+            $this->itemRepository->add($item);
+        }
+
+        return $item;
     }
 
     public function treatChoice(array $choice, RoomAction $newRoomAction): Choice
@@ -245,27 +248,6 @@ class VanillaRoomsWarmUp extends Command
         $this->choiceRepository->add($newChoice);
 
         return $newChoice;
-    }
-
-    public function treatItemAction(array $choice)
-    {
-        $itemName = $choice['itemAction']['item'];
-        $action = boolval($choice['itemAction']['action']);
-
-        $item = $this->itemRepository->findOneBy(['name' => $itemName]);
-        if (!$item instanceof Item){
-            $item = $this->itemFactory->createNewWithName($itemName);
-            $this->itemRepository->add($item);
-        }
-
-        /** @var ItemAction $itemAction */
-        $itemAction = $this->itemActionFactory->createNew();
-        $itemAction->setAction($action);
-        $itemAction->setItem($item);
-        $this->choice->setItemAction($itemAction);
-        $this->itemActionRepository->add($itemAction);
-
-        return $itemAction;
     }
 
     public function treatChanceAction(array $choice, Choice $newChoice): ChanceAction
