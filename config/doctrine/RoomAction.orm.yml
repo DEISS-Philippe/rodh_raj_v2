@@ -44,6 +44,9 @@ App\Entity\RoomAction:
         choices:
             targetEntity: App\Entity\RoomAction\Choice
             mappedBy: roomAction
+        binders:
+            targetEntity: App\Entity\RoomAction\Binder
+            mappedBy: roomAction
     manyToOne:
         addItem:
             targetEntity: App\Entity\Item

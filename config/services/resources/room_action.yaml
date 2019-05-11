@@ -1,12 +1,13 @@
 imports:
-  - { resource: 'room_action\choice.yaml' }
-  - { resource: 'room_action\chance_action.yaml' }
+    - { resource: 'room_action\choice.yaml' }
+    - { resource: 'room_action\chance_action.yaml' }
+    - { resource: 'room_action\binder.yaml' }
 
 sylius_resource:
-  resources:
-    sylius.room_action:
-      driver: doctrine/orm
-      classes:
-        controller: App\Controller\Resources\ResourceController
-        model: App\Entity\RoomAction
-        repository: App\Repository\RoomActionRepository
+    resources:
+        sylius.room_action:
+            driver: doctrine/orm
+            classes:
+                controller: App\Controller\Resources\ResourceController
+                model: App\Entity\RoomAction
+                repository: App\Repository\RoomActionRepository

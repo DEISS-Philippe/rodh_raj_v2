@@ -5,9 +5,11 @@ namespace App\Controller;
 
 use App\Entity\RoomAction;
 use App\Entity\User;
+use App\Repository\RoomAction\BinderRepository;
 use App\Repository\RoomActionRepository;
 use App\Repository\UserRepository;
 use App\Services\Binder\TwigChoiceBinder;
+use App\Services\Generator\BinderGenerator;
 use App\Services\Generator\NextRoomGenerator;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -94,7 +96,8 @@ class DonjonVanillaController extends AbstractController
 
     public function buildNextRoomAction(TokenStorageInterface $tokenStorage,
                                         UserRepository $userRepository, RoomActionRepository $roomActionRepository,
-                                        NextRoomGenerator $nextRoomGenerator)
+                                        NextRoomGenerator $nextRoomGenerator, BinderGenerator $binderGenerator,
+                                        BinderRepository $binderRepository)
     {
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
@@ -109,10 +112,16 @@ class DonjonVanillaController extends AbstractController
         }
         $nextRoomAction = $nextRoomGenerator->generateNextRoom($user);
 
+        //Génère les routes possibles
+        $binderGenerator->generateBindingForRoom($nextRoomAction);
+        /** @var RoomAction\Binder $binder */
+        $binder = $binderRepository->findOneBy(['roomAction' => $nextRoomAction]);
+
         $blackList = $user->getBlackListedRooms();
         $blackList->add($nextRoomAction);
         $userRepository->add($user);
 
-        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $nextRoomAction->getId()]);
+//        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $nextRoomAction->getId()]);
+        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $binder->getBinderToken()]);
     }
 }

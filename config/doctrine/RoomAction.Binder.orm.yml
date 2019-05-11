@@ -1,0 +1,20 @@
+App\Entity\RoomAction\Binder:
+    type: entity
+    table: room_action_binder
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        binderToken:
+            type: string
+            length: 255
+            nullable: false
+    manyToOne:
+        roomAction:
+            targetEntity: App\Entity\RoomAction
+            inversedBy: binders
+        user:
+            targetEntity: App\Entity\User

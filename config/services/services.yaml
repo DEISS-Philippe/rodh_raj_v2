@@ -9,3 +9,21 @@ services:
         class: App\Services\Binder\TwigChoiceBinder
         arguments:
             - '@sylius.repository.user'
+
+    app.service.generator.room_token:
+        class: App\Services\Generator\RoomTokenGenerator
+        arguments:
+            - '@sylius.repository.room_action_binder'
+            -
+    app.service.generator.binder:
+        class: App\Services\Generator\BinderGenerator
+        arguments:
+            - '@sylius.repository.room_action_binder'
+            - '@sylius.repository.room_action'
+            - '@security.token_storage'
+            - '@sylius.factory.room_action_binder'
+
+    app.service.finder.room_action:
+        class: App\Services\Generator\RoomTokenGenerator
+        arguments:
+            - '@sylius.repository.room_action_binder'

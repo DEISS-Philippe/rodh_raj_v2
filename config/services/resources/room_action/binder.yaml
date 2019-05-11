@@ -1,8 +1,8 @@
 sylius_resource:
     resources:
-        sylius.room_action_choice:
+        sylius.room_action_binder:
             driver: doctrine/orm
             classes:
                 controller: App\Controller\Resources\ResourceController
-                model: App\Entity\RoomAction\Choice
-                repository: App\Repository\RoomAction\ChoiceRepository
+                model: App\Entity\RoomAction\Binder
+                repository: App\Repository\RoomAction\BinderRepository

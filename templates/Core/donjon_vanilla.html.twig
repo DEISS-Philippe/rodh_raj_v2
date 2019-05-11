@@ -79,9 +79,9 @@
                         {% if choice.isBackToMenu == true %}
                             {% set room_path = path('donjon_vanilla_end_game')%}
                         {% elseif (choice.targetRoomAction is null) %}
-                            {% set room_path = path('donjon_vanilla_build_next_room', { 'id': roomAction.id }) %}
+                            {% set room_path = path('donjon_vanilla_build_next_room', { 'id': roomAction.binderToken }) %}
                         {% else %}
-                            {% set room_path = path('donjon_vanilla_process', { 'id': choice.targetRoomAction.id }) %}
+                            {% set room_path = path('donjon_vanilla_process', { 'id': choice.targetRoomAction.binderToken }) %}
                         {% endif %}
 
                         <div class="room_choice bckg-grey">
@@ -94,27 +94,6 @@
                             </div>
                         </div>
                     {% endif %}
-
-{#                    {% if (choice.itemAction is not null) %}#}
-
-{#                        {% if choice.isBackToMenu == true %}#}
-{#                            {% set room_path = path('donjon_vanilla_end_game')%}#}
-{#                        {% elseif (choice.targetRoomAction is null) %}#}
-{#                            {% set room_path = path('donjon_vanilla_build_next_room', { 'id': roomAction.id }) %}#}
-{#                        {% else %}#}
-{#                            {% set room_path = path('donjon_vanilla_process', { 'id': choice.targetRoomAction.id }) %}#}
-{#                        {% endif %}#}
-
-{#                        <div class="room_choice bckg-grey">#}
-{#                            <a href="{{ room_path }}" class="full_link"></a>#}
-{#                            <div class="fl">#}
-{#                                <img src="{{ asset('assets/images/fleche.png') }}" alt="">#}
-{#                            </div>#}
-{#                            <div class="room_choice_txt">#}
-{#                                {{ choice.text }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    {% endif %}#}
 
                 {% endfor %}
 

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\RoomAction\Binder;
 use App\Entity\RoomAction\Choice;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -36,6 +37,8 @@ class RoomAction implements ResourceInterface
     private $code;
     /** @var Item|null */
     private $addItem;
+    /** @var Binder[]|Collection|null */
+    private $binders;
 
     public function __construct()
     {
@@ -256,4 +259,22 @@ class RoomAction implements ResourceInterface
         $this->addItem = $addItem;
     }
 
+    public function getBinders(): ?Collection
+    {
+        return $this->binders;
+    }
+
+    public function getBinderToken(User $user): ?string
+    {
+        $binders = $this->getBinders();
+
+        /** @var Binder $binder */
+        foreach ($binders as $binder) {
+            if ($binder->getUser() === $user) {
+                return $binder->getBinderToken();
+            }
+        }
+
+        return null;
+    }
 }

@@ -28,3 +28,9 @@ services:
         decorates: sylius.factory.room_action_chance_action
         arguments: ['@app.factory.room_action_chance_action.inner']
         public: true
+
+    app.factory.room_action_binder:
+        class: App\Factory\RoomAction\BinderFactory
+        decorates: sylius.factory.room_action_binder
+        arguments: ['@app.factory.room_action_binder.inner', '@app.service.generator.room_token']
+        public: true
