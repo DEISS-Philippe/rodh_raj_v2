@@ -65,6 +65,7 @@ class VanillaRoomsWarmUp extends Command
     protected $output;
     /** @var Choice */
     protected $choice;
+    private $roomDataYamlLink;
 
     public function __construct(UserRepository $userRepository, RoomActionRepository $roomActionRepository,
                                 RoomActionFactory $roomActionFactory,
@@ -73,6 +74,7 @@ class VanillaRoomsWarmUp extends Command
                                 ChoiceRepository $choiceRepository,
                                 ChanceActionRepository $chanceActionRepository,
                                 ItemRepository $itemRepository,
+                                string $roomDataYamlLink,
                                 string $name = null)
     {
         parent::__construct($name);
@@ -85,6 +87,7 @@ class VanillaRoomsWarmUp extends Command
         $this->choiceRepository = $choiceRepository;
         $this->chanceActionRepository = $chanceActionRepository;
         $this->itemRepository = $itemRepository;
+        $this->roomDataYamlLink = $roomDataYamlLink;
     }
 
     protected function configure(): void
@@ -98,7 +101,7 @@ class VanillaRoomsWarmUp extends Command
     {
         $output->writeln('['.date('Y-m-d H:i:s').'] Warming Vanilla Rooms');
 
-        $roomArray = Yaml::parseFile('C:\xampp\htdocs\rodh_raj\private\rooms_data.yaml');
+        $roomArray = Yaml::parseFile($this->roomDataYamlLink);
         $this->roomArray = $roomArray;
         $this->output = $output;
 
