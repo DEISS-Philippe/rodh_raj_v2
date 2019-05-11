@@ -38,10 +38,8 @@ class DonjonVanillaController extends AbstractController
         $itemToAdd = $roomActionToCome->getAddItem();
         if ($itemToAdd !== null) {
             if (!$user->getItems()->contains($itemToAdd)) {
-                dump($itemToAdd);
                 $user->addItem($itemToAdd);
             }
-            dump($user);
         }
 
 
