@@ -27,31 +27,56 @@ class BinderGenerator
         $this->binderFactory = $binderFactory;
     }
 
-    public function generateBindingForRoom(RoomAction $roomAction)
+    public function generateBindingWithCode(string $roomCode, User $user)
     {
-        /** @var User $user */
-        $user = $this->tokenStorage->getToken()->getUser();
-
-        //On retire les anciens liens pour le user
-        $this->binderRepository->removeFormerBinderForUser($user);
-
-        $roomActionCode = $roomAction->getCode();
-        $explodedRoomCode = explode('_', $roomActionCode);
-
-        $roomCode = '';
-        for ($i = 0; $i < sizeof($explodedRoomCode); $i++) {
-            dump($roomCode, sizeof($explodedRoomCode)-1, sizeof($explodedRoomCode));
-            $roomCode .= $explodedRoomCode[$i].'_';
-        }
-
         /** @var RoomAction[] $roomActionWithCode */
         $roomActionsWithCode = $this->roomActionRepository->findByCode($roomCode);
-        dump($roomActionsWithCode);
 
         /** @var RoomAction $roomActionWithCode */
         foreach($roomActionsWithCode as $roomActionWithCode) {
             $binder = $this->binderFactory->createNewWithToken($user, $roomActionWithCode);
             $this->binderRepository->add($binder);
         }
+    }
+
+    public function generateBindings(RoomAction $roomAction): void
+    {
+        /** @var User $user */
+        $user = $this->tokenStorage->getToken()->getUser();
+
+        $this->generateBindingForRoom($roomAction, $user);
+        $this->generateBindingForMandatoryRoom($user);
+    }
+
+    public function generateBindingForRoom(RoomAction $roomAction, User $user): void
+    {
+        $roomActionCode = $roomAction->getCode();
+        $explodedRoomCode = explode('_', $roomActionCode);
+
+        $roomCode = '';
+        for ($i = 0; $i < sizeof($explodedRoomCode)-1; $i++) {
+            $roomCode .= $explodedRoomCode[$i].'_';
+        }
+
+        $this->generateBindingWithCode($roomCode, $user);
+    }
+
+    public function generateBindingForMandatoryRoom(User $user): void
+    {
+        $this->generateBindingForEntrance($user);
+        $this->generateBindingForBoss($user);
+    }
+
+    public function generateBindingForEntrance(User $user): void
+    {
+        $roomCode = 'entree_du_donjon_';
+
+        $this->generateBindingWithCode($roomCode, $user);
+    }
+    public function generateBindingForBoss(User $user): void
+    {
+        $roomCode = 'salle_du_boss_';
+
+        $this->generateBindingWithCode($roomCode, $user);
     }
 }

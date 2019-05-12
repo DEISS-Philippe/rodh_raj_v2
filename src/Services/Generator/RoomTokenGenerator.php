@@ -17,7 +17,7 @@ class RoomTokenGenerator
 
     public function generateRandomToken(): string
     {
-        $token = \md5(\random_bytes(10));
+        $token = 'room_'.\md5(\random_bytes(8));
 
         if ($this->binderRepository->findOneBy(['binderToken' => $token]) !== null) {
             $this->generateRandomToken();

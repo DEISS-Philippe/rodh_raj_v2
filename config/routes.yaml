@@ -27,3 +27,8 @@ ajax:
         en: /ajax
         fr: /ajax
     resource: 'routes/ajax.yaml'
+
+error:
+    path: /error
+    methods: [GET, POST]
+    controller: App\Controller\SecurityController::login

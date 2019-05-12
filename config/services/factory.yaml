@@ -2,7 +2,7 @@ services:
     app.factory.user:
         class: App\Factory\UserFactory
         decorates: sylius.factory.user
-        arguments: ['@app.factory.user.inner']
+        arguments: ['@app.factory.user.inner', '@sylius.repository.room_action']
         public: true
 
     app.factory.room_action:

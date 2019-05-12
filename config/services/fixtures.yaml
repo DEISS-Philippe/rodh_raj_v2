@@ -10,4 +10,5 @@ services:
         arguments:
             - '@security.user_password_encoder.generic'
             - '@sylius.repository.user'
+            - '@app.service.generator.binder'
         tags: ['sylius_fixtures.fixture']

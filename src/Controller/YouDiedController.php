@@ -12,19 +12,8 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class YouDiedController extends AbstractController
 {
-    public function displayAction(
-        RoomActionRepository $roomActionRepository, TokenStorageInterface $tokenStorage,
-        UserRepository $userRepository
-    )
+    public function displayAction()
     {
-        /** @var User $user */
-        $user = $tokenStorage->getToken()->getUser();
-        /** @var RoomAction $startRoomAction */
-        $startRoomAction = $roomActionRepository->findOneBy(['code' => 'entree_du_donjon_1']);
-
-        //reset les données de jeu
-        $userRepository->resetUserGameData($user, $startRoomAction);
-
         return $this->render('Core/you_died.html.twig');
     }
 }

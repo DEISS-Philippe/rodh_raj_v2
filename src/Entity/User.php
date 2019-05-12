@@ -233,7 +233,10 @@ class User implements UserInterface, Serializable, ResourceInterface
 
     public function resetItems()
     {
-        $this->items = null;
-    }
+        $items = $this->getItems();
 
+        foreach ($items as $item) {
+            $this->removeItem($item);
+        }
+    }
 }

@@ -19,14 +19,18 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class DonjonVanillaController extends AbstractController
 {
-    public function ProcessAction(int $id, TokenStorageInterface $tokenStorage,
-                                  UserRepository $userRepository, RoomActionRepository $roomActionRepository)
+    public function ProcessAction(string $id, TokenStorageInterface $tokenStorage,
+                                  UserRepository $userRepository, BinderRepository $binderRepository)
     {
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
         $currentUserLife = $user->getLife();
+
+        /** @var RoomAction\Binder $binder */
+        $binder = $binderRepository->findOneBy(['binderToken' => $id, 'user' => $user]);
+
         /** @var RoomAction $roomActionToCome */
-        $roomActionToCome = $roomActionRepository->findOneBy(['id' => $id]);
+        $roomActionToCome = $binder->getRoomAction();
 
         $lifeToLoose = $roomActionToCome->getLooseLife();
         if ($lifeToLoose !== null) {
@@ -50,19 +54,21 @@ class DonjonVanillaController extends AbstractController
         return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $id]);
     }
 
-    public function displayRoomAction(Request $request, int $id, RoomActionRepository $roomActionRepository,
+    public function displayRoomAction(Request $request, string $id,
                                       TokenStorageInterface $tokenStorage, UserRepository $userRepository,
-                                      TwigChoiceBinder $twigBinder
+                                      TwigChoiceBinder $twigBinder, BinderRepository $binderRepository
     )
     {
-        /** @var RoomAction $currentRoomAction */
-        $currentRoomAction = $roomActionRepository->find($id);
+        /** @var User $user */
+        $user = $tokenStorage->getToken()->getUser();
+
+        /** @var RoomAction\Binder $binder */
+        $binder = $binderRepository->findOneBy(['binderToken' => $id, 'user' => $user]);
+
+        $currentRoomAction = $binder->getRoomAction();
         $currentRoute = $request->attributes->get('_route');
         /** @var RoomAction\Choice[]|Collection $currentChoices */
         $currentChoices = $currentRoomAction->getChoices();
-
-        /** @var User $user */
-        $user = $tokenStorage->getToken()->getUser();
 
         $user->setCurrentRoomAction($currentRoomAction);
         $userRepository->add($user);
@@ -81,17 +87,25 @@ class DonjonVanillaController extends AbstractController
         }
     }
 
-    public function endGameAction(TokenStorageInterface $tokenStorage,
-                                  UserRepository $userRepository, RoomActionRepository $roomActionRepository)
+    public function startGameAction(TokenStorageInterface $tokenStorage,
+                                    UserRepository $userRepository, RoomActionRepository $roomActionRepository,
+                                    BinderGenerator $binderGenerator, BinderRepository $binderRepository)
     {
         /** @var User $user */
         $user = $tokenStorage->getToken()->getUser();
-        /** @var RoomAction $firstRoomAction */
-        $firstRoomAction = $roomActionRepository->findOneBy(['code' => 'entree_du_donjon_1']);
 
+        // Enlève les anciens bindings
+        $binderRepository->removeFormerBinderForUser($user);
+        $binderGenerator->generateBindingForMandatoryRoom($user);
+
+        /** @var RoomAction $firstRoomAction */
+        $firstRoomAction = $roomActionRepository->findEntranceRoomAction();
         $userRepository->resetUserGameData($user, $firstRoomAction);
 
-        return $this->redirectToRoute('homepage');
+        /** @var RoomAction\Binder $binder */
+        $binder = $binderRepository->findOneBy(['roomAction' => $firstRoomAction, 'user' => $user]);
+
+        return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $binder->getBinderToken()]);
     }
 
     public function buildNextRoomAction(TokenStorageInterface $tokenStorage,
@@ -105,17 +119,21 @@ class DonjonVanillaController extends AbstractController
         $roomNumber = $userRepository->addOneToRoomNumber($user);
         if ($roomNumber > 7) {
             /** @var RoomAction $bossRoom */
-            $bossRoom = $roomActionRepository->findOneBy(['code' => 'salle_du_boss_1']);
-            $bossId = $bossRoom->getId();
+            $bossRoomAction = $roomActionRepository->findBossRoomAction();
+            /** @var RoomAction\Binder $bossBinder */
+            $bossBinder = $binderRepository->findOneBy(['roomAction' => $bossRoomAction, 'user' => $user]);
 
-            return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossId]);
+            return $this->redirectToRoute('donjon_vanilla_display_room', ['id' => $bossBinder->getBinderToken()]);
         }
         $nextRoomAction = $nextRoomGenerator->generateNextRoom($user);
 
-        //Génère les routes possibles
-        $binderGenerator->generateBindingForRoom($nextRoomAction);
+        // Enlève les anciens bindings
+        $binderRepository->removeFormerBinderForUser($user);
+        //Génère les bindings pour les routes possibles
+        $binderGenerator->generateBindings($nextRoomAction);
+
         /** @var RoomAction\Binder $binder */
-        $binder = $binderRepository->findOneBy(['roomAction' => $nextRoomAction]);
+        $binder = $binderRepository->findOneBy(['roomAction' => $nextRoomAction, 'user' => $user]);
 
         $blackList = $user->getBlackListedRooms();
         $blackList->add($nextRoomAction);

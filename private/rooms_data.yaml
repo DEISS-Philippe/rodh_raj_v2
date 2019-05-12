@@ -97,7 +97,7 @@ roomAction_boss_1:
         choice2:
             text: 'Combattre !'
             chanceAction:
-                chance: 2
+                chance: 1
                 successRoomActionCode: 'salle_du_boss_2'
                 failureRoomActionCode: 'salle_du_boss_3'
         choice3:
@@ -238,6 +238,7 @@ roomAction6_8:
 roomAction6_7:
     code: 'dortoir_des_serviteurs_7'
     name: 'Dortoir des serviteurs'
+    looseLife: 1
     text: 'Vous poursuivrez donc votre aventure avec une multitudes de petites morsures sur tous le corps et surtout la honte d''avoir perdu face à des lutins.'
     choices:
         choice1:
@@ -364,7 +365,7 @@ roomAction7_1:
         choice1:
             text: 'Faire demi-tour puis les attaquer par surprise.'
             chanceAction:
-                chance: 4
+                chance: 5
                 successRoomActionCode: 'salle_anciennement_vide_5'
                 failureRoomActionCode: 'salle_anciennement_vide_4'
         choice2:

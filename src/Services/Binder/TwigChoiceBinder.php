@@ -25,22 +25,24 @@ class TwigChoiceBinder
         /** @var Choice $choice */
         foreach ($currentChoices as $choice) {
             //Si une chance est associée à la réussite de l'action
-            if (!empty($choice->getChanceAction()) && !empty($choice->getChanceAction()->getChance())) {
+            if (!empty($choice->getChanceAction())) {
                 /** @var ChanceAction $chanceAction */
                 $chanceAction = $choice->getChanceAction();
                 $successChance = $chanceAction->getChance();
 
-                //test si action réussie
-                if ($successChance >= rand(0, 10)) {
-                    $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getFailRoomAction(), 'text' => $choice->getText()];
-                } else {
+                if ($successChance >= rand(1, 10)) { //Success
                     $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getSuccessRoomAction(), 'text' => $choice->getText()];
+                } else { // Failure
+                    $resultChoiceArray[] = ['resultRoomAction' => $chanceAction->getFailRoomAction(), 'text' => $choice->getText()];
                 }
+            }
 
-                //test si le joueur à des items liés aux choice si oui, display le choice
-                if (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction())) {
-                    $itemChoiceArray[] = ['hasItem' => true, 'resultRoomAction' => $choice->getTargetRoomAction(), 'text' => $choice->getText()];
-                }
+            //test si le joueur à des items liés aux choice si oui, display le choice
+            if (!empty($choice->getItemAction()) && $user->getItems()->contains($choice->getItemAction())) {
+                $itemChoiceArray[] = ['hasItem' => true, 'resultRoomAction' => $choice->getTargetRoomAction(), 'text' => $choice->getText()];
+
+                $user->removeItem($choice->getItemAction());
+                $this->userRepository->add($user);
             }
         }
 
