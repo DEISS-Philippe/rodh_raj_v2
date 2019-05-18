@@ -381,7 +381,6 @@ roomAction7_1:
                 successRoomActionCode: 'salle_anciennement_vide_7'
                 failureRoomActionCode: 'salle_anciennement_vide_6'
 
-#TODO salle 8
 roomAction8_2:
     code: 'salle_au_tresor_2'
     name: 'Salle au trésor'
@@ -647,3 +646,323 @@ roomAction11_1:
         choice2:
             text: 'Prendre la paperasse du guichetier et aller au bureau suivant.'
             target: 'les_bureaux_du_donjon_4'
+
+#WIP
+#roomAction12_1:
+#    code: 'la_taverne_du_donjon_1'
+#    name: 'La taverne du donjon'
+#    isStartRoomAction: 'true'
+#    text: 'Vous en aviez déjà entendu parler dans des légendes, mais jamais vous n''aurez imaginé y mettre les pieds. Vous voici dans la taverne du donjon. Après avoir mis un premier pas dans la pièce faiblement éclairé, vous êtes assailli par une forte odeur d''alcool et de vomi. Autour de vous se tient la majorité des monstres contenus dans votre bestiaire. Les festivités de la veille ayant mal tournés, ils sont soit ivre mort, soit assommés et traînent çà et là entre des tables en miettes.'
+#    choices:
+#        choice1:
+#            text: 'Prouver que la violence résout tout.'
+#            chanceAction:
+#                chance: 6
+#                successRoomActionCode: 'les_bureaux_du_donjon_2'
+#                failureRoomActionCode: 'les_bureaux_du_donjon_3'
+#        choice2:
+#            text: 'Prendre la paperasse du guichetier et aller au bureau suivant.'
+#            target: 'les_bureaux_du_donjon_4'
+
+#WIP
+roomAction13_2:
+    code: 'la_chambre_froide_2'
+    name: 'La chambre froide'
+    text: 'Et la lumière fut ! Révélant une horrible créature congelée de plusieurs mètres de haut dans un bloc de glace. En plus du monstre se trouve un parchemin comportant d''anciennes inscriptions magiques. Cependant, vous n''êtes pas en capacités d''établir sa rareté et sa puissance au travers de la glace. De toute manière, vous êtes aussi qualifié en la langue arcanique qu''une vache pour la philosophie.'
+    choices:
+        choice1:
+            text: 'Sortir votre pioche et commencer à creuser le bloc pour atteindre le parchemin.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'les_bureaux_du_donjon_4'
+                failureRoomActionCode: 'les_bureaux_du_donjon_5'
+        choice2:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction13_4:
+    code: 'la_chambre_froide_4'
+    name: 'La chambre froide'
+    text: 'Vous libérez sans problèmes le parchemin prisonnier de la glace et le mettez dans votre sac.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction13_5:
+    code: 'la_chambre_froide_5'
+    name: 'La chambre froide'
+    text: 'Après un coup de pioche vigoureux, une fissure se forme et progresse jusqu''en haut du bloc de glace. Ce dernier se fend sous vos yeux ébahi, libérant ainsi la créature cauchemardesque.'
+    choices:
+        choice1:
+            text: 'Combattre ...'
+            chanceAction:
+                chance: 2
+                successRoomActionCode: 'les_bureaux_du_donjon_6'
+                failureRoomActionCode: 'les_bureaux_du_donjon_7'
+
+roomAction13_6:
+    code: 'la_chambre_froide_6'
+    name: 'La chambre froide'
+    text: 'D''un seul regard de ses innombrables yeux, le monde se met à tanguer. Vous vous réveillez dans la salle suivante avec une bonne migraine et probablement une partie de votre âme en moins.'
+    looseLife: 2
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+
+roomAction13_7:
+    code: 'la_chambre_froide_7'
+    name: 'La chambre froide'
+    text: 'Vos esquives bien rythmés (ou votre chance, les dieux seuls savent) vous permettent d''éviter les tentacules crochus du monstre. Vous parvenez à atteindre la salle suivante en récupérant au passage le parchemin.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+
+roomAction13_8:
+    code: 'la_chambre_froide_8'
+    name: 'La chambre froide'
+    looseLife: 1
+    text: 'Après avoir fait une série de petits pas, vous pensez apercevoir la sortie. C''est à ce moments précis que vos sens de chauve souris cessent de fonctionner. Vous vous prenez un objet dur en plein sur le nez. Vous poursuivez néanmoins et réussissez trouvez la porte vers la prochaine salle.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
+
+roomAction13_1:
+    code: 'la_chambre_froide_1'
+    name: 'La chambre froide'
+    isStartRoomAction: 'true'
+    text: '*Brrr* Une fois entré dans la salle, vous vous mettez à grelotter et à expirer de fins nuages. Vous vous maudissez alors de ne pas avoir écouté votre maman quand il s''agissait d''ajouter une petite laine à votre attirail d''aventurier.
+            <br/><br/>
+           L''absence d''éclairage vous empêche de voir quoi que ce soit et aucun son menaçant ne se fait entendre.'
+    choices:
+        choice1:
+            text: 'Allumer une torche et poursuivre sa route.'
+            target: 'la_chambre_froide_2'
+        choice2:
+            text: 'Continuer sans lumière avec les bras tendus vers l''avant.'
+            target: 'la_chambre_froide_8'
+
+
+roomAction14_2:
+    code: 'la_salle_de_l_engime_2'
+    name: 'La chambre froide'
+    isStartRoomAction: 'true'
+    text: 'Des piques de mettent à sortir du sol et labourent votre chair tendre. ça ne devait pas être la bonne solution. Cependant, le mur se soulève vous laissant poursuivre votre aventure.'
+    choices:
+        choice2:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction14_1:
+    code: 'la_salle_de_l_engime_1'
+    name: 'La chambre froide'
+    isStartRoomAction: 'true'
+    text: 'Vous vous tenez à présent face à un mur comprenant des gravures étranges. Suite à leur analyse et au micro pendant maladroitement du plafond tous les doutes s''efface quand à l''épreuve de cette salle: vous êtes face à un mur à énigmes.<br/><br/>Il est écrit: “0+0 = ?”.'
+    choices:
+        choice1:
+            text: 'Répondre "La tête à toto".'
+            target: 'la_salle_de_l_engime_2'
+        choice2:
+            text: 'Répondre "0".'
+            target: 'la_salle_de_l_engime_2'
+        choice3:
+            text: 'Répondre "O".'
+            target: 'la_salle_de_l_engime_2'
+
+
+roomAction15_2:
+    code: 'salle_des_potions_2'
+    name: 'Salle des potions'
+    text: 'Cette salle est une vraie caverne au trésor, vous vous sentez obligé de tenter votre chance, peut être qu''une potion soignera vos hémorroïdes ?. Votre curiosité vous ronge, vous devez en essayer au moins une !'
+    choices:
+        choice1:
+            text: 'Boire la potion tête de mort.'
+            target: 'salle_des_potions_3'
+        choice2:
+            text: 'Boire la potion dorée.'
+            target: 'salle_des_potions_4'
+
+roomAction15_3:
+    code: 'salle_des_potions_3'
+    name: 'Salle des potions'
+    text: 'La tête de mort est en général de mauvaise augure, mais vous vous dites que c''est sûrement de la psychologie inversée.
+           Gloups. “y aurait-y pas de la pomme dedans ?” seront vos dernières paroles. Le poison est indolore mais a fait effet en quelques secondes.'
+    choices:
+        choice1:
+            text: 'Rejoindre le paradis des aventuriers.'
+            target: 'salle_des_potions_5'
+
+roomAction15_4:
+    code: 'salle_des_potions_3'
+    name: 'Salle des potions'
+    text: 'Une potion dorée ? Donne-elle le pouvoir de transformer le plomb en or ? Chance aux jeux ? Remède contre la lèpre ? En tout cas, cette potion vous à l''air d''être bénéfique.
+           Gloups. La potion a un goût de peinture pour radiateurs. Mais vous vous sentez mieux et continuez.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction15_5:
+    code: 'salle_des_potions_5'
+    name: 'Salle des potions'
+    text: 'Le paradis des aventuriers.'
+    looseLife: 10
+    choices:
+        choice1:
+            text: 'Rejoindre le paradis des aventuriers.'
+
+roomAction15_1:
+    code: 'salle_des_potions_1'
+    name: 'Salle des potions'
+    isStartRoomAction: 'true'
+    text: 'Si il n''y a pas d''obstacle particulier dans cette salle, vous vous arrêtez tout de même pour regarder autour de vous.  Les murs sont couverts d''étagères pleines de flacons et pots, contenants toutes sortes de potions étranges, poisons perfides, onguents pour les bleus et sirops pour la toux.'
+    choices:
+        choice1:
+            text: 'Se demander quelles sont ces potions en les examinant.'
+            target: 'salle_des_potions_2'
+        choice2:
+            text: 'Boire la potion tête de mort.'
+            target: 'salle_des_potions_3'
+        choice3:
+            text: 'Boire la potion dorée.'
+            target: 'salle_des_potions_4'
+
+
+roomAction16_2:
+    code: 'le_poste_de_garde_2'
+    name: 'Le poste de garde'
+    text: 'Les orcs vous encerclent et profite de l''avantage numérique pour vous mettre une dérouillée.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_3:
+    code: 'le_poste_de_garde_3'
+    name: 'Le poste de garde'
+    text: 'Votre charge déespérée pred l''ennemi au dépourvu. Votre stratégie imparable vous permet de les anéantir un à un sans la moindre égratinure.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_4:
+    code: 'le_poste_de_garde_4'
+    name: 'Le poste de garde'
+    text: 'Malgré votre mauvaise posture, vos sens d''aventurier reprennent le dessus et vous permet de venir à bout des gardes au prix de quelques légères coupures.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_5:
+    code: 'le_poste_de_garde_5'
+    name: 'Le poste de garde'
+    text: 'Vous engagez la discussion. Les gardes, d''abord surpris, vous laissent passer, au nom de leur protestation contre les récentes coupes de leur solde.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_6:
+    code: 'le_poste_de_garde_6'
+    name: 'Le poste de garde'
+    text: 'Vous engagez la conversation. Cependant les orcs vous chargent leurs gueule baveuse grande ouverte.'
+    choices:
+        choice1:
+            text: 'Combattre.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'le_poste_de_garde_4'
+                failureRoomActionCode: 'le_poste_de_garde_2'
+
+roomAction16_7:
+    code: 'le_poste_de_garde_7'
+    name: 'Le poste de garde'
+    text: 'Vous exhibez vos muscles tout en essayant de paraitre dangereux. En vous voyant, les gardes haussent les épaules et reprennent leur partie sur fond d’accusation de triche. Vous auriez du vous en rappeller : vous n''avez pas de muscles.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_8:
+    code: 'le_poste_de_garde_8'
+    name: 'Le poste de garde'
+    text: 'Vous exhibez vos muscles tout en essayant de paraitre dangereux. En vous voyant, les gardes s''emparent de leurs armes et se jettent sur vous.'
+    choices:
+        choice1:
+            text: 'Combattre.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'le_poste_de_garde_4'
+                failureRoomActionCode: 'le_poste_de_garde_2'
+
+roomAction16_9:
+    code: 'le_poste_de_garde_9'
+    name: 'Le poste de garde'
+    text: 'Vous enlevez vos bottes et avancez sur la pointe des pieds. Vous réussissez à passer sans vous faire voir. Les gardes ont rapidement repris leur partie, non sans se disputer sur fond d’accusation de triche.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_10:
+    code: 'le_poste_de_garde_10'
+    name: 'Le poste de garde'
+    text: 'Vous enlevez vos bottes et avancez sur la pointe des pieds. *Pouêêt* fait un étrange objet sous votre pied. En vous penchant, vous ramassez ce qui ressemble à un canard en plastique jaune. Vous n''avez pas le temps de vous interroger sur comment cet objet aurait pu atterrir ici. Ceci car vous êtes pieds nu face à une poignée d''orcs.'
+    addItem: 'Canard en plastique'
+    choices:
+        choice1:
+            text: 'Combattre.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'le_poste_de_garde_4'
+                failureRoomActionCode: 'le_poste_de_garde_2'
+
+roomAction16_11:
+    code: 'le_poste_de_garde_11'
+    name: 'Le poste de garde'
+    looseLife: 1
+    text: 'Quelle idée géniale : une personne qui passe est un moindre problème quand la moitié de la salle est en feu. La prochaine fois les gardes feront attention à nettoyer la graisse après les barbecues. Par contre, la  force des flammes vous a autant surpris que les gardes, vous vous en tirez avec un bras qui sent le bacon trop grillé.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_12:
+    code: 'le_poste_de_garde_12'
+    name: 'Le poste de garde'
+    looseLife: 1
+    text: 'Vous abordez les gardes en leurs montrant votre jeu de cartes collector. Les règles improvisée semblent être appréciées. Vous vous faites quelques parties en buvant de la bière. Vous laissez cependant le jeu de cartes à vos nouveaux amis.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction16_1:
+    code: 'le_poste_de_garde_1'
+    name: 'Le poste de garde'
+    isStartRoomAction: 'true'
+    text: 'Vous entrez dans la salle, et tombez nez à nez sur des gardes orcs en train de jouer aux cartes. Ils vous entendent, mais l''obscurité vous cache toujours. Leurs mains se dirigent vers leurs armes, et le temps s''arrête, que faire ?'
+    choices:
+        choice1:
+            text: 'CHAAAAAAAAAAARGER !'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'le_poste_de_garde_2'
+                failureRoomActionCode: 'le_poste_de_garde_3'
+        choice2:
+            text: 'Taper la discut''.'
+            chanceAction:
+                chance: 3
+                successRoomActionCode: 'le_poste_de_garde_5'
+                failureRoomActionCode: 'le_poste_de_garde_6'
+        choice3:
+            text: 'Bander vos muscles pour les dissuader d''agir.'
+            chanceAction:
+                chance: 3
+                successRoomActionCode: 'le_poste_de_garde_7'
+                failureRoomActionCode: 'le_poste_de_garde_8'
+        choice4:
+            text: 'Tenter de passer discrètement.'
+            chanceAction:
+                chance: 5
+                successRoomActionCode: 'le_poste_de_garde_9'
+                failureRoomActionCode: 'le_poste_de_garde_10'
+        choice5:
+            text: 'Mettre le feu à la salle.'
+            target: 'le_poste_de_garde_11'
+        choice6:
+            text: 'Sortir son jeu de cartes collector.'
+            target: 'le_poste_de_garde_12'
+            itemAction:
+                item: 'Jeu de Cartes collector'
