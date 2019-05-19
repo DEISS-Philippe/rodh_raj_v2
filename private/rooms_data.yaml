@@ -647,57 +647,102 @@ roomAction11_1:
             text: 'Prendre la paperasse du guichetier et aller au bureau suivant.'
             target: 'les_bureaux_du_donjon_4'
 
-#WIP
-#roomAction12_1:
-#    code: 'la_taverne_du_donjon_1'
-#    name: 'La taverne du donjon'
-#    isStartRoomAction: 'true'
-#    text: 'Vous en aviez déjà entendu parler dans des légendes, mais jamais vous n''aurez imaginé y mettre les pieds. Vous voici dans la taverne du donjon. Après avoir mis un premier pas dans la pièce faiblement éclairé, vous êtes assailli par une forte odeur d''alcool et de vomi. Autour de vous se tient la majorité des monstres contenus dans votre bestiaire. Les festivités de la veille ayant mal tournés, ils sont soit ivre mort, soit assommés et traînent çà et là entre des tables en miettes.'
-#    choices:
-#        choice1:
-#            text: 'Prouver que la violence résout tout.'
-#            chanceAction:
-#                chance: 6
-#                successRoomActionCode: 'les_bureaux_du_donjon_2'
-#                failureRoomActionCode: 'les_bureaux_du_donjon_3'
-#        choice2:
-#            text: 'Prendre la paperasse du guichetier et aller au bureau suivant.'
-#            target: 'les_bureaux_du_donjon_4'
 
-#WIP
-roomAction13_2:
-    code: 'la_chambre_froide_2'
-    name: 'La chambre froide'
-    text: 'Et la lumière fut ! Révélant une horrible créature congelée de plusieurs mètres de haut dans un bloc de glace. En plus du monstre se trouve un parchemin comportant d''anciennes inscriptions magiques. Cependant, vous n''êtes pas en capacités d''établir sa rareté et sa puissance au travers de la glace. De toute manière, vous êtes aussi qualifié en la langue arcanique qu''une vache pour la philosophie.'
+
+roomAction12_7:
+    code: 'la_taverne_du_donjon_7'
+    name: 'La taverne du donjon'
+    text: 'Vous vous mettez à beugler comme un ivrogne et réveillez la majeure partie des monstres de salle. Heureusement pour vous, leurs gueules de bois empêchent leurs coups de vous atteindre. Vous atteignez la salle suivante sans encombres.'
     choices:
         choice1:
-            text: 'Sortir votre pioche et commencer à creuser le bloc pour atteindre le parchemin.'
+            text: 'Continuer vers la salle suivante.'
+
+roomAction12_6:
+    code: 'la_taverne_du_donjon_6'
+    name: 'La taverne du donjon'
+    text: 'C''est donc en titubant que vous vous dirigez vers la salle suivante jusqu''à ce que votre chemin rencontre celui d''un Ogre peu compréhensif. Sa baffe vous fait planer jusqu''à la salle suivante. Retenez la leçon : l''alcool c''est mal !'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction12_2:
+    code: 'la_taverne_du_donjon_2'
+    name: 'La taverne du donjon'
+    text: 'Vous atteignez la porte de la salle suivnate sans problèmes. Les créatures étant trop occupés à décuver.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction12_3:
+    code: 'la_taverne_du_donjon_3'
+    name: 'La taverne du donjon'
+    text: 'Vous marchez accidentellement sur la queue d''un homme bête. Celui-ci vous rend l''ascenseur à sa manière.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction12_4:
+    code: 'la_taverne_du_donjon_4'
+    name: 'La taverne du donjon'
+    text: 'Brutalement, tous les monstres se relève et reprennent leurs anciennes activités, à savoir: se taper dessus ou vider des tonneaux de bière dans un brouhaha assourdissant. Personne ne porte son attention sur vous. Vous en profitez donc pour atteindre la salle suivante.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction12_5:
+    code: 'la_taverne_du_donjon_5'
+    name: 'La taverne du donjon'
+    text: 'Vous vous approchez du comptoir et effectuez votre commande auprès d''un barman à la mine renfrognée. Quelques instants plus tards le breuvage convoité vous arrive entre le mains. Sa couleur ambrée et son odeur se veulent rassurante. Vous empoignez la chope et la videz d''une traite. Aussitôt, votre vue se trouble et vos sens s''amenuisent.'
+    choices:
+        choice1:
+            text: '*hips*'
             chanceAction:
-                chance: 4
-                successRoomActionCode: 'les_bureaux_du_donjon_4'
-                failureRoomActionCode: 'les_bureaux_du_donjon_5'
+                chance: 5
+                successRoomActionCode: 'la_taverne_du_donjon_6'
+                failureRoomActionCode: 'la_taverne_du_donjon_7'
         choice2:
-            text: 'Continuer vers la salle suivante.'
-
-roomAction13_4:
-    code: 'la_chambre_froide_4'
-    name: 'La chambre froide'
-    text: 'Vous libérez sans problèmes le parchemin prisonnier de la glace et le mettez dans votre sac.'
-    choices:
-        choice1:
-            text: 'Continuer vers la salle suivante.'
-
-roomAction13_5:
-    code: 'la_chambre_froide_5'
-    name: 'La chambre froide'
-    text: 'Après un coup de pioche vigoureux, une fissure se forme et progresse jusqu''en haut du bloc de glace. Ce dernier se fend sous vos yeux ébahi, libérant ainsi la créature cauchemardesque.'
-    choices:
-        choice1:
-            text: 'Combattre ...'
+            text: '*hips*'
             chanceAction:
-                chance: 2
-                successRoomActionCode: 'les_bureaux_du_donjon_6'
-                failureRoomActionCode: 'les_bureaux_du_donjon_7'
+                chance: 5
+                successRoomActionCode: 'la_taverne_du_donjon_6'
+                failureRoomActionCode: 'la_taverne_du_donjon_7'
+        choice3:
+            text: '*hips*'
+            chanceAction:
+                chance: 5
+                successRoomActionCode: 'la_taverne_du_donjon_6'
+                failureRoomActionCode: 'la_taverne_du_donjon_7'
+
+roomAction12_1:
+    code: 'la_taverne_du_donjon_1'
+    name: 'La taverne du donjon'
+    isStartRoomAction: 'true'
+    text: 'Vous en aviez déjà entendu parler dans des légendes, mais jamais vous n''aurez imaginé y mettre les pieds. Vous voici dans la taverne du donjon. Après avoir mis un premier pas dans la pièce faiblement éclairé, vous êtes assailli par une forte odeur d''alcool et de vomi. Autour de vous se tient la majorité des monstres contenus dans votre bestiaire. Les festivités de la veille ayant mal tournés, ils sont soit ivre mort, soit assommés et traînent çà et là entre des tables en miettes.'
+    choices:
+        choice1:
+            text: 'Traverser la salle sans se faire remarquer.'
+            chanceAction:
+                chance: 7
+                successRoomActionCode: 'la_taverne_du_donjon_2'
+                failureRoomActionCode: 'la_taverne_du_donjon_3'
+        choice2:
+            text: 'Crier à la énième tournée générale.'
+            target: 'les_bureaux_du_donjon_4'
+        choice3:
+            text: 'Commander une bière.'
+            target: 'les_bureaux_du_donjon_5'
+
+
+roomAction13_8:
+    code: 'la_chambre_froide_8'
+    name: 'La chambre froide'
+    looseLife: 1
+    text: 'Après avoir fait une série de petits pas, vous pensez apercevoir la sortie. C''est à ce moments précis que vos sens de chauve souris cessent de fonctionner. Vous vous prenez un objet dur en plein sur le nez. Vous poursuivez néanmoins et réussissez trouvez la porte vers la prochaine salle.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante'
 
 roomAction13_6:
     code: 'la_chambre_froide_6'
@@ -716,14 +761,39 @@ roomAction13_7:
         choice1:
             text: 'Continuer vers la salle suivante'
 
-roomAction13_8:
-    code: 'la_chambre_froide_8'
+roomAction13_5:
+    code: 'la_chambre_froide_5'
     name: 'La chambre froide'
-    looseLife: 1
-    text: 'Après avoir fait une série de petits pas, vous pensez apercevoir la sortie. C''est à ce moments précis que vos sens de chauve souris cessent de fonctionner. Vous vous prenez un objet dur en plein sur le nez. Vous poursuivez néanmoins et réussissez trouvez la porte vers la prochaine salle.'
+    text: 'Après un coup de pioche vigoureux, une fissure se forme et progresse jusqu''en haut du bloc de glace. Ce dernier se fend sous vos yeux ébahi, libérant ainsi la créature cauchemardesque.'
     choices:
         choice1:
-            text: 'Continuer vers la salle suivante'
+            text: 'Combattre ...'
+            chanceAction:
+                chance: 2
+                successRoomActionCode: 'la_chambre_froide_6'
+                failureRoomActionCode: 'la_chambre_froide_7'
+
+roomAction13_4:
+    code: 'la_chambre_froide_4'
+    name: 'La chambre froide'
+    text: 'Vous libérez sans problèmes le parchemin prisonnier de la glace et le mettez dans votre sac.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction13_2:
+    code: 'la_chambre_froide_2'
+    name: 'La chambre froide'
+    text: 'Et la lumière fut ! Révélant une horrible créature congelée de plusieurs mètres de haut dans un bloc de glace. En plus du monstre se trouve un parchemin comportant d''anciennes inscriptions magiques. Cependant, vous n''êtes pas en capacités d''établir sa rareté et sa puissance au travers de la glace. De toute manière, vous êtes aussi qualifié en la langue arcanique qu''une vache pour la philosophie.'
+    choices:
+        choice1:
+            text: 'Sortir votre pioche et commencer à creuser le bloc pour atteindre le parchemin.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'la_chambre_froide_4'
+                failureRoomActionCode: 'la_chambre_froide_5'
+        choice2:
+            text: 'Continuer vers la salle suivante.'
 
 roomAction13_1:
     code: 'la_chambre_froide_1'
@@ -767,30 +837,8 @@ roomAction14_1:
             target: 'la_salle_de_l_engime_2'
 
 
-roomAction15_2:
-    code: 'salle_des_potions_2'
-    name: 'Salle des potions'
-    text: 'Cette salle est une vraie caverne au trésor, vous vous sentez obligé de tenter votre chance, peut être qu''une potion soignera vos hémorroïdes ?. Votre curiosité vous ronge, vous devez en essayer au moins une !'
-    choices:
-        choice1:
-            text: 'Boire la potion tête de mort.'
-            target: 'salle_des_potions_3'
-        choice2:
-            text: 'Boire la potion dorée.'
-            target: 'salle_des_potions_4'
-
-roomAction15_3:
-    code: 'salle_des_potions_3'
-    name: 'Salle des potions'
-    text: 'La tête de mort est en général de mauvaise augure, mais vous vous dites que c''est sûrement de la psychologie inversée.
-           Gloups. “y aurait-y pas de la pomme dedans ?” seront vos dernières paroles. Le poison est indolore mais a fait effet en quelques secondes.'
-    choices:
-        choice1:
-            text: 'Rejoindre le paradis des aventuriers.'
-            target: 'salle_des_potions_5'
-
 roomAction15_4:
-    code: 'salle_des_potions_3'
+    code: 'salle_des_potions_4'
     name: 'Salle des potions'
     text: 'Une potion dorée ? Donne-elle le pouvoir de transformer le plomb en or ? Chance aux jeux ? Remède contre la lèpre ? En tout cas, cette potion vous à l''air d''être bénéfique.
            Gloups. La potion a un goût de peinture pour radiateurs. Mais vous vous sentez mieux et continuez.'
@@ -806,6 +854,28 @@ roomAction15_5:
     choices:
         choice1:
             text: 'Rejoindre le paradis des aventuriers.'
+
+roomAction15_3:
+    code: 'salle_des_potions_3'
+    name: 'Salle des potions'
+    text: 'La tête de mort est en général de mauvaise augure, mais vous vous dites que c''est sûrement de la psychologie inversée.
+           Gloups. “y aurait-y pas de la pomme dedans ?” seront vos dernières paroles. Le poison est indolore mais a fait effet en quelques secondes.'
+    choices:
+        choice1:
+            text: 'Rejoindre le paradis des aventuriers.'
+            target: 'salle_des_potions_5'
+
+roomAction15_2:
+    code: 'salle_des_potions_2'
+    name: 'Salle des potions'
+    text: 'Cette salle est une vraie caverne au trésor, vous vous sentez obligé de tenter votre chance, peut être qu''une potion soignera vos hémorroïdes ?. Votre curiosité vous ronge, vous devez en essayer au moins une !'
+    choices:
+        choice1:
+            text: 'Boire la potion tête de mort.'
+            target: 'salle_des_potions_3'
+        choice2:
+            text: 'Boire la potion dorée.'
+            target: 'salle_des_potions_4'
 
 roomAction15_1:
     code: 'salle_des_potions_1'
@@ -872,7 +942,7 @@ roomAction16_6:
 roomAction16_7:
     code: 'le_poste_de_garde_7'
     name: 'Le poste de garde'
-    text: 'Vous exhibez vos muscles tout en essayant de paraitre dangereux. En vous voyant, les gardes haussent les épaules et reprennent leur partie sur fond d’accusation de triche. Vous auriez du vous en rappeller : vous n''avez pas de muscles.'
+    text: 'Vous exhibez vos muscles tout en essayant de paraitre dangereux. En vous voyant, les gardes haussent les épaules et reprennent leur partie sur fond d''accusation de triche. Vous auriez du vous en rappeller : vous n''avez pas de muscles.'
     choices:
         choice1:
             text: 'Continuer vers la salle suivante.'
@@ -892,7 +962,7 @@ roomAction16_8:
 roomAction16_9:
     code: 'le_poste_de_garde_9'
     name: 'Le poste de garde'
-    text: 'Vous enlevez vos bottes et avancez sur la pointe des pieds. Vous réussissez à passer sans vous faire voir. Les gardes ont rapidement repris leur partie, non sans se disputer sur fond d’accusation de triche.'
+    text: 'Vous enlevez vos bottes et avancez sur la pointe des pieds. Vous réussissez à passer sans vous faire voir. Les gardes ont rapidement repris leur partie, non sans se disputer sur fond d''accusation de triche.'
     choices:
         choice1:
             text: 'Continuer vers la salle suivante.'
@@ -966,3 +1036,216 @@ roomAction16_1:
             target: 'le_poste_de_garde_12'
             itemAction:
                 item: 'Jeu de Cartes collector'
+
+roomAction17_2:
+    code: 'vivarium_aux_illisible_géantes_2'
+    name: 'Vivarium aux *illisible* géantes'
+    text: 'Votre attaque improvisée a touché son but. En vous approchant, vous trouvez trois cadavres d''araignées d''environs deux mètres de diamètre, la chitine fendue par vos flèches. Avec un frisson, vous enjambez les corps et passez à la suite.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction17_3:
+    code: 'vivarium_aux_illisible_géantes_3'
+    name: 'Vivarium aux *illisible* géantes'
+    text: 'Le bruit dégagé par votre tentative désespérée attire les monstres sur vous.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction17_4:
+    code: 'vivarium_aux_illisible_géantes_4'
+    name: 'Vivarium aux *illisible* géantes'
+    text: 'Avec un morceau de tissu et des grands gestes, vous arrivez à dompter les bêtes, qui se réfugient dans un coin sombre et vous laissent passer.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction17_5:
+    code: 'vivarium_aux_illisible_géantes_5'
+    name: 'Vivarium aux *illisible* géantes'
+    text: 'Vous ignorez les bêtes, et passez tout droit vers la sortie en récitant votre mantra. “Je fais un avec le script et le script est un avec moi.” Les bêtes s''écartent de votre passage.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction17_6:
+    code: 'vivarium_aux_illisible_géantes_6'
+    name: 'Vivarium aux *illisible* géantes'
+    text: 'Vous commencez à réciter votre mantra, mais vous ne vous souvenez plus de la fin. C''est ballot.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction17_7:
+    code: 'vivarium_aux_illisible_géantes_7'
+    name: 'Vivarium aux *illisible* géantes'
+    text: 'Vous courrez dans tous les sens en hurant. Autour de vous les sifflements des bêtes se font de plus en plus proches. Vous appercevez enfin la lumière au bout du tunnel et vous y précipitez à toute vitesse. Vous remarquez que les bêtes ne vous suivent pas. Sûrement ont elle peur de la lueur des torches.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction17_1:
+    code: 'vivarium_aux_illisible_géantes_1'
+    name: 'Vivarium aux *illisible* géantes'
+    isStartRoomAction: 'true'
+    text: 'Cette salle n''a pas de fenêtre, pas de torches, aucune lumière. Cependant, vous pouvez voir plusieurs paires d''yeux vous observer. Beaucoup trop de paires pour des animaux bienveillants. Beaucoup trop grands pour des animaux inoffensifs. Une goutte de sueur coule sur votre menton.'
+    choices:
+        choice1:
+            text: 'Tirer des flèches aléatoirement.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'vivarium_aux_illisible_géantes_2'
+                failureRoomActionCode: 'vivarium_aux_illisible_géantes_3'
+        choice2:
+            text: 'Tenter d''amadouer les bêtes.'
+            chanceAction:
+                chance: 2
+                successRoomActionCode: 'vivarium_aux_illisible_géantes_4'
+                failureRoomActionCode: 'vivarium_aux_illisible_géantes_3'
+        choice3:
+            text: 'Avancer en ligne droite en récitant une mantra.'
+            chanceAction:
+                chance: 3
+                successRoomActionCode: 'vivarium_aux_illisible_géantes_5'
+                failureRoomActionCode: 'vivarium_aux_illisible_géantes_6'
+        choice4:
+            text: 'Céder à la panique.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'vivarium_aux_illisible_géantes_7'
+                failureRoomActionCode: 'vivarium_aux_illisible_géantes_3'
+
+
+roomAction18_9:
+    code: 'le_pigeonnier_9'
+    name: 'Le pigeonnier'
+    text: 'Vous montrez à ces volatiles qui est l''alpha, essentiellement en criant et en donnant des coups de pieds dans des tas de paille. Elles s''inclinent et vous laisse continuer.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction18_3:
+    code: 'le_pigeonnier_3'
+    name: 'Le pigeonnier'
+    text: 'Du sang et des plumes. C''est tout ce qu''il reste des harpies après votre passage.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction18_4:
+    code: 'le_pigeonnier_4'
+    name: 'Le pigeonnier'
+    text: 'Vous vous dirigez en courant vers la salle suivante en vous faisant picorer la tête par les volatils.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction18_5:
+    code: 'le_pigeonnier_5'
+    name: 'Le pigeonnier'
+    text: 'Vous vous cachez sous un tas de paille. Et ça fonctionne ! Les harpies passent à autre chose et repartent.'
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction18_6:
+    code: 'le_pigeonnier_6'
+    name: 'Le pigeonnier'
+    text: 'Vous vous jettez dans le tas de paille pour découvrir douloureusement l''existance d''un rocher en dessous. Les harpies sembent avoir pitié de vous et repartent dans une tempête de plumes.'
+    looseLife: 1
+    choices:
+        choice1:
+            text: 'Continuer vers la salle suivante.'
+
+roomAction18_2:
+    code: 'le_pigeonnier_2'
+    name: 'Le pigeonnier'
+    text: 'Vous décidez de hurler des insultes. Bonne ou mauvaise idée, des harpies arrivent, plutôt énervée de voir un intru dans leur nid.'
+    choices:
+        choice1:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'le_pigeonnier_3'
+                failureRoomActionCode: 'le_pigeonnier_4'
+        choice2:
+            text: 'Se cacher dans le tas de paille proche.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'le_pigeonnier_5'
+                failureRoomActionCode: 'le_pigeonnier_6'
+        choice3:
+            text: 'Tenter de dompter les créatures.'
+            chanceAction:
+                chance: 3
+                successRoomActionCode: 'le_pigeonnier_9'
+                failureRoomActionCode: 'le_pigeonnier_4'
+
+roomAction18_7:
+    code: 'le_pigeonnier_7'
+    name: 'Le pigeonnier'
+    text: 'Vous fouillez les environs et trouvez un jeu de cartes édition collector sous un tas de paille. En revanche les habitantes originaux des lieux retournent dans le pigeonnier, et vous vous retrouvez face à une dizaine de harpies énervées.'
+    addItem: 'Jeu de cartes collector'
+    choices:
+        choice1:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'le_pigeonnier_3'
+                failureRoomActionCode: 'le_pigeonnier_4'
+        choice2:
+            text: 'Se cacher dans le tas de paille proche.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'le_pigeonnier_5'
+                failureRoomActionCode: 'le_pigeonnier_6'
+        choice3:
+            text: 'Tenter de dompter les créatures.'
+            chanceAction:
+                chance: 3
+                successRoomActionCode: 'le_pigeonnier_9'
+                failureRoomActionCode: 'le_pigeonnier_4'
+
+roomAction18_8:
+    code: 'le_pigeonnier_8'
+    name: 'Le pigeonnier'
+    text: 'A peine avez vous le temps d''avancer d''un pas q''un nuage de harpies font sur vous.'
+    choices:
+        choice1:
+            text: 'Combattre !'
+            chanceAction:
+                chance: 6
+                successRoomActionCode: 'le_pigeonnier_3'
+                failureRoomActionCode: 'le_pigeonnier_4'
+        choice2:
+            text: 'Se cacher dans le tas de paille proche.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'le_pigeonnier_5'
+                failureRoomActionCode: 'le_pigeonnier_6'
+        choice3:
+            text: 'Tenter de dompter les créatures.'
+            chanceAction:
+                chance: 3
+                successRoomActionCode: 'le_pigeonnier_9'
+                failureRoomActionCode: 'le_pigeonnier_4'
+
+roomAction18_1:
+    code: 'le_pigeonnier_1'
+    name: 'Le pigeonnier'
+    isStartRoomAction: 'true'
+    text: 'Vous arrivez dans un pigeonnier vide. Des graines trainent encore par terre. Les emplacements pour les volatiles vous semblent en revanche vraiment grands pour des pigeons.'
+    choices:
+        choice1:
+            text: 'Faire du bruit.'
+            target: 'le_pigeonnier_2'
+        choice2:
+            text: 'Fouiller les environs.'
+            chanceAction:
+                chance: 4
+                successRoomActionCode: 'le_pigeonnier_7'
+                failureRoomActionCode: 'le_pigeonnier_8'

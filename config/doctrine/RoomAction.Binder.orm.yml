@@ -18,3 +18,4 @@ App\Entity\RoomAction\Binder:
             inversedBy: binders
         user:
             targetEntity: App\Entity\User
+            inversedBy: binders

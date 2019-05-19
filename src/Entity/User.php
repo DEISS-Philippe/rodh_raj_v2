@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\RoomAction\Binder;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Serializable;
@@ -33,6 +34,8 @@ class User implements UserInterface, Serializable, ResourceInterface
     private $currentRoomAction = null;
     /** @var int */
     private $roomNumber = 1;
+    /** @var Binder[]|Collection|null */
+    private $binders;
 
     public function __construct()
     {
@@ -237,6 +240,28 @@ class User implements UserInterface, Serializable, ResourceInterface
 
         foreach ($items as $item) {
             $this->removeItem($item);
+        }
+    }
+
+    /**
+     * @return Binder[]|Collection|null
+     */
+    public function getBinders()
+    {
+        return $this->binders;
+    }
+
+    public function addBinder(Binder $binder): void
+    {
+        if (!$this->binders->contains($binder)) {
+            $this->binders->add($binder);
+        }
+    }
+
+    public function removeBinder(Binder $binder): void
+    {
+        if ($this->binders->contains($binder)) {
+            $this->binders->removeElement($binder);
         }
     }
 }

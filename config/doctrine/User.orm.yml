@@ -37,3 +37,8 @@ App\Entity\User:
             targetEntity: App\Entity\Item
             mappedBy: users
             fetch: EAGER
+    oneToMany:
+        binders:
+            targetEntity: App\Entity\RoomAction\Binder
+            mappedBy: user
+            cascade: [ all ]
