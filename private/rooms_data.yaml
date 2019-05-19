@@ -800,7 +800,6 @@ roomAction13_1:
     name: 'La chambre froide'
     isStartRoomAction: 'true'
     text: '*Brrr* Une fois entré dans la salle, vous vous mettez à grelotter et à expirer de fins nuages. Vous vous maudissez alors de ne pas avoir écouté votre maman quand il s''agissait d''ajouter une petite laine à votre attirail d''aventurier.
-            <br/><br/>
            L''absence d''éclairage vous empêche de voir quoi que ce soit et aucun son menaçant ne se fait entendre.'
     choices:
         choice1:
