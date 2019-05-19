@@ -240,6 +240,23 @@ a.disabled {
     left: 10px;
 }
 
+.skullLink {
+    position: relative;
+    top: 0;
+    left: 0;
+    transition: all 0.2s ease;
+    width: 250px;
+}
+.skullBackLink {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.skullBackLink:hover {
+    transition: all 0.2s ease;
+    left: 10px;
+}
+
 .fl {
     position: relative;
     top: -1px;
@@ -273,7 +290,9 @@ a.disabled {
     text-align: center;
 }
 .skullComment {
-    margin-top: 10vh;
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 .menuLink {
     margin-top: 15px;
@@ -309,4 +328,5 @@ a.disabled {
     top:0;
     left: 0;
     padding: 8px;
+    font-size: 12px;
 }

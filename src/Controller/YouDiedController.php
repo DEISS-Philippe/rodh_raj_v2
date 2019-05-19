@@ -14,6 +14,15 @@ class YouDiedController extends AbstractController
 {
     public function displayAction()
     {
-        return $this->render('Core/you_died.html.twig');
+        $deathNotes = [
+            'Heureusement que vous êtes là pour nourrir les rats !',
+            'Vous avez combattu vaillamment ! Non je rigole, je vais vous épargner les détails...',
+            'Vous pensiez vraiment que l’issue allait être différente ?',
+            '*Sarcasme* Ah ben en voilà une surprise !',
+            'Tiens ? Vous êtes en êtes de nouveau là ?',
+            'Un chimpanzé aurait fait mieux.',
+        ];
+
+        return $this->render('Core/you_died.html.twig', ['deathNote' => $deathNotes[ rand(0,(sizeof($deathNotes)-1)) ] ]);
     }
 }

@@ -815,6 +815,7 @@ roomAction14_2:
     name: 'La chambre froide'
     isStartRoomAction: 'true'
     text: 'Des piques de mettent à sortir du sol et labourent votre chair tendre. ça ne devait pas être la bonne solution. Cependant, le mur se soulève vous laissant poursuivre votre aventure.'
+    looseLife: 1
     choices:
         choice2:
             text: 'Continuer vers la salle suivante.'

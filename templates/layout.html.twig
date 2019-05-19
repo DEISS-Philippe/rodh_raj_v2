@@ -20,7 +20,12 @@
 <body>
     {% if app.user is not empty %}
         <div class="username">
-            {{ app.user.name }}
+            <p>
+                <a href="{{ path('homepage') }}">{{ 'app.project.menu'|trans }}</a>
+            </p>
+            <p>
+                Joueur : {{ app.user.name }}
+            </p>
         </div>
     {% endif %}
 

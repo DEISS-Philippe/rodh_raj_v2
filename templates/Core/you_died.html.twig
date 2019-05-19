@@ -15,17 +15,11 @@
                     <p>You Died !</p>
                 </div>
                 <div class="skullComment">
-                    <p>Heureusement que vous êtes là pour nourrir les rats !</p>
+                    <p>{{ deathNote }}</p>
                 </div>
                 <div class="skullBackLink">
-                    <div class="menuLink bckg-grey">
-                        <a href="{{ path('homepage') }}" class="full_link"></a>
-                        <div class="fl">
-                            <img src="{{ asset('assets/images/fleche.png') }}" alt="">
-                        </div>
-                        <div class="room_choice_txt">
-                            {{ 'app.project.back_to_menu'|trans }}
-                        </div>
+                    <div class="menuLink bckg-grey skullLink">
+                        <a href="{{ path('homepage') }}">{{ 'app.project.back_to_menu'|trans }}</a>
                     </div>
                 </div>
             </div>

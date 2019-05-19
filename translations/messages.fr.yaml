@@ -2,6 +2,7 @@ app:
     comment:
         create_account: 'Créer un compte vous permettera de vous identifier en tant que joueur,  vous pourrez donc de reprendre votre partie à tout instant sur un autre poste.'
     project:
+        menu: 'Menu'
         custom_button: 'Donjon Custom'
         custom_explanation: 'Les donjons custom possèdent les salles vanilla en plus de celles créés par la communautée. Choisissez un donjon custom si vous doutez des capacités à faire rire du créateur du site. Après tout, il discrédite ses amis sans le moindre scrupule et prétend connaitre vos goût culinaires...'
         create_room_button: 'Créer une salle'
