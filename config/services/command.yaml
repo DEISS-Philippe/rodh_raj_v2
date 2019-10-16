@@ -11,6 +11,5 @@ services:
             - '@sylius.repository.room_action_choice'
             - '@sylius.repository.room_action_chance_action'
             - '@sylius.repository.item'
-            - '%env(ROOMS_DATA_YAML_LINK)%'
         tags:
             - { name: console.command, command: 'app:vanilla-rooms-warmup' }

@@ -729,10 +729,10 @@ roomAction12_1:
                 failureRoomActionCode: 'la_taverne_du_donjon_3'
         choice2:
             text: 'Crier à la énième tournée générale.'
-            target: 'les_bureaux_du_donjon_4'
+            target: 'la_taverne_du_donjon_4'
         choice3:
             text: 'Commander une bière.'
-            target: 'les_bureaux_du_donjon_5'
+            target: 'la_taverne_du_donjon_5'
 
 
 roomAction13_8:

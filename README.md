@@ -9,10 +9,6 @@ php php bin/console d:s:u --dump-sql -f
 ```
 
 ## Setup data
-in .env set variable: ROOMS_DATA_YAML_LINK (link to the file rooms_data.yaml on your computer)
-
-example: ROOMS_DATA_YAML_LINK=C:\pathToProject\rodh_raj\private\rooms_data.yaml
-
 
 Setup vanilla rooms in database :
 
