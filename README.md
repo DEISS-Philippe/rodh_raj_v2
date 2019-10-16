@@ -26,3 +26,8 @@ php bin/console sylius:fixtures:load
 
 - Name : admin
 - Password : p@ssw0rd
+
+## WIP
+
+- custom dungeon
+- create dungeon
