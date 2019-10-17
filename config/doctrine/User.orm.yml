@@ -42,3 +42,7 @@ App\Entity\User:
             targetEntity: App\Entity\RoomAction\Binder
             mappedBy: user
             cascade: [ all ]
+        roomActions:
+            targetEntity: App\Entity\RoomAction
+            mappedBy: createdBy
+            cascade: [ all ]

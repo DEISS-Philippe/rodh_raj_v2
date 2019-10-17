@@ -36,11 +36,15 @@ class User implements UserInterface, Serializable, ResourceInterface
     private $roomNumber = 1;
     /** @var Binder[]|Collection|null */
     private $binders;
+    /** @var RoomAction[]|Collection|null */
+    private $roomActions;
 
     public function __construct()
     {
         $this->blackListedRooms = new ArrayCollection();
         $this->items = new ArrayCollection();
+        $this->roomActions = new ArrayCollection();
+        $this->binders = new ArrayCollection();
     }
 
     public function getRoles(): array
@@ -246,7 +250,7 @@ class User implements UserInterface, Serializable, ResourceInterface
     /**
      * @return Binder[]|Collection|null
      */
-    public function getBinders()
+    public function getBinders(): Collection
     {
         return $this->binders;
     }
@@ -262,6 +266,28 @@ class User implements UserInterface, Serializable, ResourceInterface
     {
         if ($this->binders->contains($binder)) {
             $this->binders->removeElement($binder);
+        }
+    }
+
+    /**
+     * @return RoomAction[]|Collection|null
+     */
+    public function getRoomActions(): Collection
+    {
+        return $this->roomActions;
+    }
+
+    public function addRoomAction(RoomAction $roomAction): void
+    {
+        if (!$this->roomActions->contains($roomAction)) {
+            $this->roomActions->add($roomAction);
+        }
+    }
+
+    public function removeRoomAction(RoomAction $roomAction): void
+    {
+        if ($this->roomActions->contains($roomAction)) {
+            $this->roomActions->removeElement($roomAction);
         }
     }
 }

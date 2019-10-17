@@ -36,6 +36,9 @@ App\Entity\RoomAction:
         code:
             type: string
             nullable: false
+        isValid:
+            type: boolean
+
     manyToMany:
         userBlackList:
             targetEntity: App\Entity\User
@@ -44,10 +47,14 @@ App\Entity\RoomAction:
         choices:
             targetEntity: App\Entity\RoomAction\Choice
             mappedBy: roomAction
+            cascade: [persist, remove]
         binders:
             targetEntity: App\Entity\RoomAction\Binder
             mappedBy: roomAction
+            cascade: [persist, remove]
     manyToOne:
         addItem:
             targetEntity: App\Entity\Item
             fetch: EAGER
+        createdBy:
+            targetEntity: App\Entity\User

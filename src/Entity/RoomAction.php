@@ -39,6 +39,10 @@ class RoomAction implements ResourceInterface
     private $addItem;
     /** @var Binder[]|Collection|null */
     private $binders;
+    /** @var User|null */
+    private $createdBy;
+    /** @var bool */
+    private $isValid = false;
 
     public function __construct()
     {
@@ -277,4 +281,37 @@ class RoomAction implements ResourceInterface
 
         return null;
     }
+
+    /**
+     * @return User|null
+     */
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * @param User|null $createdBy
+     */
+    public function setCreatedBy(?User $createdBy): void
+    {
+        $this->createdBy = $createdBy;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValid(): bool
+    {
+        return $this->isValid;
+    }
+
+    /**
+     * @param bool $isValid
+     */
+    public function setIsValid(bool $isValid): void
+    {
+        $this->isValid = $isValid;
+    }
+
 }

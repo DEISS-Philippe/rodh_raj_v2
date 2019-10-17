@@ -90,7 +90,7 @@ class VanillaRoomsWarmUp extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Fill the DB with vanilla rooms.')
+            ->setDescription('Fill the DB with vanilla rooms, skip the existing ones.')
             ->setHelp('Get Vanilla Rooms from yaml file and update them in the DB.');
     }
 

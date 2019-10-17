@@ -32,6 +32,7 @@ App\Entity\RoomAction\Choice:
                 nullable: false
         targetRoomAction:
             targetEntity: App\Entity\RoomAction
+            onDelete: SET NULL
             joinColumn:
                 nullable: true
             fetch: EAGER

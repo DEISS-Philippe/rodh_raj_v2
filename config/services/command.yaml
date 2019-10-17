@@ -13,3 +13,14 @@ services:
             - '@sylius.repository.item'
         tags:
             - { name: console.command, command: 'app:vanilla-rooms-warmup' }
+
+    app.command.remove_vanilla_rooms:
+        class: App\Command\VanillaRoomsDelete
+        arguments:
+            - '@sylius.repository.user'
+            - '@sylius.repository.room_action'
+            - '@sylius.repository.room_action_choice'
+            - '@sylius.repository.room_action_chance_action'
+            - '@sylius.repository.item'
+        tags:
+            - { name: console.command, command: 'app:vanilla-rooms-delete' }
