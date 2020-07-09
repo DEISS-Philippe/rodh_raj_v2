@@ -24,6 +24,12 @@ Setup basic admin user (rooms need to be present in DB before executing this com
 php bin/console sylius:fixtures:load
 ```
 
+start localhost :
+
+```bash
+php bin/console server:start
+```
+
 - Name : admin
 - Password : p@ssw0rd
 

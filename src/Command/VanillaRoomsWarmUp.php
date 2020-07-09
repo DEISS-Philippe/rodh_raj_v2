@@ -98,7 +98,7 @@ class VanillaRoomsWarmUp extends Command
     {
         $output->writeln('['.date('Y-m-d H:i:s').'] Warming Vanilla Rooms');
 
-        $roomArray = Yaml::parseFile(__DIR__.'\private\rooms_data.yaml'); // a tester
+        $roomArray = Yaml::parseFile(__DIR__.'\..\..\private\rooms_data.yaml'); // a tester
         $this->roomArray = $roomArray;
         $this->output = $output;
 
